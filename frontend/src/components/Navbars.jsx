@@ -19,6 +19,7 @@ const Navbars = () => {
             <Nav.Link className='navButton' as={Link} to='/'>Login</Nav.Link>
             <Nav.Link className='navButton' as={Link} to="/registration">Registration</Nav.Link>
             <Nav.Link className='navButton' as={Link} to='/profile'>Profile</Nav.Link>
+            <Nav.Link className='navButton' as={Link} to='/game'>Game</Nav.Link>
 
             
           </Nav>
