@@ -1,9 +1,11 @@
-{
+require('dotenv').config();
+
+module.exports ={
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "ograyfbl",
+    "password": process.env.DB_PASSWORD,
+    "database": "ograyfbl",
+    "host": "suleiman.db.elephantsql.com",
     "dialect": "mysql"
   },
   "test": {
