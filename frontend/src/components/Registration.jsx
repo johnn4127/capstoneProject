@@ -4,6 +4,11 @@ import Form from 'react-bootstrap/Form';
 import '../stylesheets/Registration.css'
 
 const Registration = () => {
+  const [formData,setFormData]= useState({email:'',password:''})
+  const handleFormSubmit = async (e)=>{e.preventDefault()
+  
+  
+  };
   return (
     <div id='registration'>
       <Form>
