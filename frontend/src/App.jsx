@@ -9,6 +9,7 @@ const App = () => {
     <div>
       <Navbars/>
 
+
       <Routes>
       <Route path='/' element= {<Login/>}/>
       <Route path='/registration' element= {<Registration/>}/>
