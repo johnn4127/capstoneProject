@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import mp3 from '../assets/music/Registration.mp3'
+
 
 function RegisterForm() {
+
+  const audio = new Audio(mp3)
+
+  
+
   const [formData, setFormData] = useState({
    
     email: '',
@@ -22,7 +29,9 @@ function RegisterForm() {
         body: JSON.stringify(formData),
       });
   };
-
+  useEffect(()=>{
+    audio.play()
+  }, [])
   return (
     <div>
       <h2>User Registration</h2>
