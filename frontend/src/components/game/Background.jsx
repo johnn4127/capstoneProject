@@ -35,14 +35,14 @@ const Background = () => {
 
     const { x, y } = position
 
-    const checkCollision = (component1, component2) => {
-        return (
-            component1.x < component2.x + component2.width &&
-            component1.x + component1.width > component2.x && 
-            component1.y < component2.y + component2.height &&
-            component1.y + component1.height > component2.y
-            )
-    }
+    // const checkCollision = (component1, component2) => {
+    //     return (
+    //         component1.x < component2.x + component2.width &&
+    //         component1.x + component1.width > component2.x && 
+    //         component1.y < component2.y + component2.height &&
+    //         component1.y + component1.height > component2.y
+    //         )
+    // }
 
   return (
     <div id='background'
@@ -52,9 +52,7 @@ const Background = () => {
         top: y,
         height: '96%',
         backgroundImage: `url('https://i.pinimg.com/originals/9c/3a/f7/9c3af7361bf5d65d3b1fd84a73c750f4.png')`,
-        backgroundRepeat: 'repeat-x',
-        overflow: 'hidden',
-        
+        backgroundRepeat: 'repeat-x', //set background image to repeat on the x-axis
     }}>
         <Player />
     </div>

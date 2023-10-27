@@ -1,6 +1,5 @@
 import React from 'react'
 import Background from './Background'
-import Player from './Player'
 import '../../stylesheets/Game.css'
 
 const Playarea = () => {
@@ -13,7 +12,6 @@ const Playarea = () => {
         overflow: 'hidden'
     }}>
         <Background />
-        {/* <Player /> */}
     </div>
   )
 }
