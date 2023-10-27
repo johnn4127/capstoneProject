@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    
+  };
+
+  const handleLogin = async () => {
+   
+    const response = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)})
+      if(response.status===200){
+        setLoggedin==TRUE
+      }
+  
+  };
+    
   return (
     <div>
- <Form>
+ <Form onSubmit={handleInputChange}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" />
@@ -21,7 +45,7 @@ const Login = () => {
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button onClick={handleLogin} variant="primary" type="submit">
         Submit
       </Button>
     </Form>
