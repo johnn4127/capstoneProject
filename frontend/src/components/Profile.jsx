@@ -5,12 +5,13 @@ const Profile = () => {
 
 
   const fetchUsersData = async () => {
-    try {
-      const response = await fetch('http://localhost:5500/register');
-      setUsers(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+    const response = await fetch('http://localhost:3000/login', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
   };
 
   useEffect(() => {

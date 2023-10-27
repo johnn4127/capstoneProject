@@ -50,6 +50,7 @@ app.get("/", (req, res) => {
     res.send(newUser)
     }
   );
+  
 
 
   app.listen(3000, () => {
