@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Profile from './Profile'; // Import your Profile component
+import Profile from './Profile'; 
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -26,11 +26,10 @@ const Login = () => {
     });
 
     if (response.status === 200) {
-      // Successful login
+      
       setLoggedIn(true);
     } else {
-      // Handle unsuccessful login
-      // You can display an error message to the user, for example.
+   
     }
   };
 
