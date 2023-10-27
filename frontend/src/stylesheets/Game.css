@@ -1,7 +1,8 @@
 #playArea{
-    height: 93vh;
-    width: 100%;
-    background-color: darkgray;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 

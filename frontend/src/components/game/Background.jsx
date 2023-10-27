@@ -47,14 +47,15 @@ const Background = () => {
   return (
     <div id='background'
     style={{
-        position: 'relative',
+        position: 'absolute',
         left: x,
         top: y,
-        height: '96%',
+        height: '70vh',
+        width: '300vh',
         backgroundImage: `url('https://i.pinimg.com/originals/9c/3a/f7/9c3af7361bf5d65d3b1fd84a73c750f4.png')`,
         backgroundRepeat: 'repeat-x', //set background image to repeat on the x-axis
+        overflow: 'visible'
     }}>
-        <Player />
     </div>
   )
 }
