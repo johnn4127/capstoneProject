@@ -35,14 +35,6 @@ const Background = () => {
 
     const { x, y } = position
 
-    // const checkCollision = (component1, component2) => {
-    //     return (
-    //         component1.x < component2.x + component2.width &&
-    //         component1.x + component1.width > component2.x && 
-    //         component1.y < component2.y + component2.height &&
-    //         component1.y + component1.height > component2.y
-    //         )
-    // }
 
   return (
     <div id='background'

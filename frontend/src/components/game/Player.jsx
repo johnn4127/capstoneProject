@@ -35,7 +35,7 @@ const Player = () => {
     }
 
     useEffect(() => {
-        document.addEventListener('keydown', handleKeyPress) //adds 'keydown' event listenr on component render and assigns it the handleKeyPress function
+        document.addEventListener('keydown', handleKeyPress) //adds 'keydown' event listener on component render and assigns it the handleKeyPress function
 
         return () => {
             document.removeEventListener('keydown', handleKeyPress)}
@@ -50,7 +50,8 @@ const Player = () => {
             bottom: y,
             width: '100px',
             height: '100px',
-            background: 'green'
+            background: 'green',
+            zIndex: 2
         }}>
             <p>Player</p>
         </div>

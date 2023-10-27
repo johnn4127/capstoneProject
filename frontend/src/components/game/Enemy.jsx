@@ -19,6 +19,8 @@ const Enemy = () => {
         }
     }
 
+    
+
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress) //adds 'keydown' event listenr on component render and assigns it the handleKeyPress function
 

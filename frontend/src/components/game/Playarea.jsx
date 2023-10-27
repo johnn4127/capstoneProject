@@ -6,6 +6,8 @@ import Enemy from './Enemy'
 import Boss from './Boss'
 
 const Playarea = () => {
+
+
   return (
 
     <div id='playArea'>
