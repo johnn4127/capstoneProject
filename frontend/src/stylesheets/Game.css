@@ -1,0 +1,12 @@
+#playArea{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#background{
+    height: 100%;
+    width: 100%;
+}
