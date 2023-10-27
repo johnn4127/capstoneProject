@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 const Boss = () => {
 
-    const [position, setPosition] = useState({ x: 400, y: -1000 }) //sets initial position of player avatar
+    const [position, setPosition] = useState({ x: 400, y: -100 }) //sets initial position of player avatar
     const stepSize = 30; //controls how far player avatar moves 
     
 
