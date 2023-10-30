@@ -67,7 +67,13 @@ const Shop = () => {
     }
 
     const shop = [skill1, skill2, skill3, skill4, skill5]
-
+    // const [disClick, setDisClick] = useState(false)
+    // const testClick = (e, item) => {
+    //     console.log(e, item)
+    //     if(e.target.value === item.name){
+    //         setDisClick(true)
+    //     }
+    // }
     const buy = (item) => {
         if (player.exp >= item.price) { //checks if player has enough experience to purchase item
             setPlayer({
@@ -99,7 +105,9 @@ const Shop = () => {
                 {shop.map((item, index) => (
                     <div key={index}>
                         <button 
-                        onClick={() => buy(item)}>
+                        value={item.name}
+                        onClick={() => buy(item)}
+                        disabled={item.bought === true}>
                             {item.name}
                         </button>
                         <p>Experience Price: {item.price}</p>
