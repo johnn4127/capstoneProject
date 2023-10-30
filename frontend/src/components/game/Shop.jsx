@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Shop = () => {
     const [player, setPlayer] = useState(
         {
-            attack: 12,
+            proficiency: 12,
             confidence: 30,
             skills: [],
             exp: 1000
@@ -21,8 +21,19 @@ const Shop = () => {
         price: 300,
         bought: false
     }
+    const skill2 = {
+        name: 'Resume Template',
+        effect: () => { //sets the skill effect as a function
+            {
+                setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * .15)) })
+                console.log(player.proficiency)
+            }
+        },
+        price: 200,
+        bought: false
+    }
 
-    const shop = [skill1]
+    const shop = [skill1, skill2]
 
     const buy = (item) => {
         if (player.exp >= item.price) { //checks if player has enough experience to purchase item
@@ -42,7 +53,7 @@ const Shop = () => {
         <>
             <div>
                 <ul>
-                    <li>attack: {player.attack}</li>
+                    <li>proficiency: {player.proficiency}</li>
                     <li>confidence: {player.confidence}</li>
                     <li>skills: {player.skills.map((skill, index) => (
                         <span key={index}>{skill.name},</span>
@@ -55,10 +66,10 @@ const Shop = () => {
                 {shop.map((item, index) => (
                     <div key={index}>
                         <button 
-                        onClick={item.effect}>
+                        onClick={() => buy(item)}>
                             {item.name}
                         </button>
-                        <p>price: {item.price}</p>
+                        <p>Experience Price: {item.price}</p>
                     </div>
                 ))}
             </div>
