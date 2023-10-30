@@ -1,13 +1,46 @@
-import React, {useState, useEFfect, useContext, createContext,} from 'react'
+import React, { useState, createContext, useEffect} from 'react'
 import Background from './Background'
 import Player from './Player'
 import '../../stylesheets/Game.css'
 import Enemy from './Enemy'
 import Boss from './Boss'
 
-export const PositionData = createContext({playerPosition: { x: 0, y: 0 }, setPlayerPosition: () => { }, enemyPosition: { x: 0, y: 0 }, setEnemyPosition: () => { }, bossPosition: { x: 0, y: 0 }, setBossPosition: () => { } })
+export const  PositionData = createContext()
 
 const Playarea = () => {
+const [playerPosition, setPlayerPosition] = useState({ x: 0, y: -350, width: 100 }) //sets initial position of player avatar
+const [enemyPosition, setEnemyPosition] = useState({ x: 400, y: 120, width: 100 }) //sets initial position of player avatar
+const [bossPosition, setBossPosition] = useState({ x: 1200, y: -600, width: 300 }) //sets initial position of player avatar
+
+const [battle, setBattle] = useState(false)
+
+const checkCollision = () => {
+  const playerLeft = playerPosition.x;
+  const playerRight = playerPosition.x + playerPosition.width;
+  
+
+  const enemyLeft = enemyPosition.x;
+  const enemyRight = enemyPosition.x + enemyPosition.width;
+
+  const bossLeft = bossPosition.x;
+  const bossRight = bossPosition.x + bossPosition.width;
+  
+  if(
+    playerRight > enemyLeft && 
+    playerLeft < enemyRight 
+  ) {
+    console.log('Collision detected')
+  } 
+}
+
+useEffect(() => {
+  document.addEventListener('keydown', (event) => {
+
+    checkCollision();
+  })
+
+},[playerPosition, enemyPosition])
+
 
   return (
 
@@ -20,11 +53,21 @@ const Playarea = () => {
           overflow: 'hidden',
           backgroundColor: 'darkgray'
         }}>
-        <Background />
-        
-        <Player />
-        <Boss />
-        <Enemy />
+        <PositionData.Provider value={{playerPosition, setPlayerPosition, enemyPosition, setEnemyPosition, bossPosition, setBossPosition}}>
+        {!battle ? (
+          <>
+          <Background />
+          <Player />
+          <Boss />
+          <Enemy />
+          </>
+          ) : (
+            <>
+            {/* add battle component here */}
+            </>
+          )
+        }
+        </PositionData.Provider>
       </div>
     </div>
   )

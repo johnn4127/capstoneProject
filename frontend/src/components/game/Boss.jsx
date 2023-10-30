@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { PositionData } from './Playarea';
 
 const Boss = () => {
 
-    const [position, setPosition] = useState({ x: 1200, y: -600 }) //sets initial position of player avatar
+    const { bossPosition, setBossPosition } = useContext(PositionData) 
     const stepSize = 30; //controls how far player avatar moves 
     
 
-    const handleKeyPress = (event) => { //function to allow player avatar to move upon key press
-        const { x, y } = position;
+    const handleKeyPress = (event) => { //function that handles distance between boss and players
+        const { x, y, width } = bossPosition;
 
         switch (event.key) {
             case 'a':
-                    setPosition({ x: x + stepSize, y }) //if 'a' key is pressed player avatar moves left
+                    setBossPosition({ x: x + stepSize, y, width }) //if 'a' key is pressed boss moves further from player
                 break;
             case 'd':
-                    setPosition({ x: x - stepSize, y }) //if 'd' key is pressed player avatar moves right
+                    setBossPosition({ x: x - stepSize, y, width }) //if 'd' key is pressed boss moves closer to player
                 break;
-            default: break //stops character movement if nothing is pressed
+            default: break //stops boss movement if nothing is pressed
         }
     }
 
@@ -25,9 +26,9 @@ const Boss = () => {
 
         return () => {
             document.removeEventListener('keydown', handleKeyPress)}
-    }, [position])
+    }, [bossPosition])
 
-    const { x, y } = position //sets variables x and y to equal position.x and position.y respectively
+    const { x, y } = bossPosition //sets variables x and y to equal position.x and position.y respectively
 
   return (
     <div id='Boss' 
