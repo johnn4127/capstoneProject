@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Profile from './Profile'; 
+import Profile from './Profile';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const Login = () => {
   });
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,33 +24,36 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     });
 
     if (response.status === 200) {
-      
+      const data = await response.json();
+      const userId = data.userId; // Replace 'userId' with the actual field name from your API response
+
       setLoggedIn(true);
+
+      // Redirect to the dynamic /profile/:ID route after a successful login
+      navigate("/profile");
     } else {
-   
+      // Handle login failure
     }
   };
 
   return (
     <div>
       {loggedIn ? (
-        
         <Profile />
       ) : (
-        
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+          <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
-              placeholder="Enter email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
+              placeholder="Enter email"
             />
           </Form.Group>
 
@@ -56,10 +61,10 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Password"
               name="password"
               value={formData.password}
               onChange={handleInputChange}
+              placeholder="Password"
             />
           </Form.Group>
 
@@ -72,4 +77,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;
