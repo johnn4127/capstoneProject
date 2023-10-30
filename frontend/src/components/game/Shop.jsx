@@ -32,8 +32,41 @@ const Shop = () => {
         price: 200,
         bought: false
     }
+    const skill3 = {
+        name: 'Star Method',
+        effect: () => { //sets the skill effect as a function
+            {
+                setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * .20)) })
+                console.log(player.confidence)
+            }
+        },
+        price: 350,
+        bought: false
+    }
+    const skill4 = {
+        name: 'Charm',
+        effect: () => { //sets the skill effect as a function
+            {
+                setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * .10)) })
+                console.log(player.confidence)
+            }
+        },
+        price: 200,
+        bought: false
+    }
+    const skill5 = {
+        name: 'Concise Elevator Pitch',
+        effect: () => { //sets the skill effect as a function
+            {
+                setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * .10)) })
+                console.log(player.proficiency)
+            }
+        },
+        price: 300,
+        bought: false
+    }
 
-    const shop = [skill1, skill2]
+    const shop = [skill1, skill2, skill3, skill4, skill5]
 
     const buy = (item) => {
         if (player.exp >= item.price) { //checks if player has enough experience to purchase item
