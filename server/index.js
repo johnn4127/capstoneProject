@@ -23,35 +23,25 @@ app.get("/", (req, res) => {
 app.post("/register", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-
+  const charName = req.body.charName
 
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
   const newUser = await Users.create({
     email: email,
-    password: hashedPassword 
+    password: hashedPassword,
+    charName: charName
   });
   res.send(newUser);
 });
-app.post("/profile", async (req, res) => {
-  const characterName = req.body.characterName;
-  const confidence = req.body.confidence;
-  const proficiency = req.body.proficiency;
-  const skills = req.body.skills;
-  const Charstats = await characters.create({
-    characterName: characterName,
-    confidence: confidence,
-    proficiency:proficiency,
-    skills:skills
-  });
-  res.send(Charstats);
-});
-app.get('/profile',async (req,res)=>{
-  const charData = await characters.findOne({
-    where:{
-      userID:ID
-    }
-  });
+
+app.get('/profile', async (req, res) => {
+  const charData = await Users.findOne({
+    where: {
+      ID: ID
+    },
+
+  }); res.send(charData.charName)
 })
 
 app.get("/users", async (req, res) => {
@@ -71,7 +61,7 @@ app.post("/login", async (req, res) => {
   });
 
   if (!user) {
-   
+
     res.status(401).send("Invalid login credentials");
     return;
   }
@@ -79,7 +69,7 @@ app.post("/login", async (req, res) => {
   const passwordMatch = await bcrypt.compare(password, user.password);
 
   if (passwordMatch) {
-    
+
     res.send("Authentication successful");
   } else {
 

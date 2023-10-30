@@ -5,6 +5,7 @@ import Profile from './components/Profile'
 import Login from './components/Login'
 import Registration from './components/Registration'
 import Game from './components/game/Game'
+import Shop from './components/game/Shop'
 import Actionbar from './components/Actionbar'
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <Route path='/registration' element= {<Registration/>}/>
       <Route path='/profile' element= {<Profile/>}/>
       <Route path='/game' element= {<Game />}/>
+      <Route path='/shop' element= {<Shop />}   />
       <Route path='/actionbar' element= {<Actionbar/>}/>
 
       
