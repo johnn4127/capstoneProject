@@ -1,34 +1,35 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { PositionData } from './Playarea';
 
 const Player = () => {
-    const [position, setPosition] = useState({ x: 0, y: -350 }) //sets initial position of player avatar
+    const {playerPosition, setPlayerPosition } = useContext(PositionData) //sets initial position of player avatar
     const stepSize = 30; //controls how far player avatar moves 
     
 
     const handleKeyPress = (event) => { //function to allow player avatar to move upon key press
-        const { x, y } = position;
+        const { x, y } = playerPosition;
         const maxX = 840;
         const maxY = 10000;
 
         switch (event.key) {
             case 'a':
                 if(x - stepSize >= 0){ // checks whether player is within bounds of background
-                    setPosition({ x: x - stepSize, y }) //if 'a' key is pressed player avatar moves left
+                    setPlayerPosition({ x: x - stepSize, y }) //if 'a' key is pressed player avatar moves left
                 }
                 break;
             case 'd':
                 if(x + stepSize <= maxX){
-                    setPosition({ x: x + stepSize, y }) //if 'd' key is pressed player avatar moves right
+                    setPlayerPosition({ x: x + stepSize, y }) //if 'd' key is pressed player avatar moves right
                 }
                 break;
             case 'w':
                 if(y + stepSize <= maxY){
-                    setPosition({ x, y: y + stepSize }) //if 'w' key is pressed player avatar moves up
+                    setPlayerPosition({ x, y: y + stepSize }) //if 'w' key is pressed player avatar moves up
                 }
                 break;
             case 's':
                 if(y - stepSize <= 0)
-                setPosition({ x, y: y - stepSize }) //if 's' key is pressed player avatar moves down
+                setPlayerPosition({ x, y: y - stepSize }) //if 's' key is pressed player avatar moves down
                 break;
             default: break //stops character movement if nothing is pressed
         }
@@ -39,9 +40,9 @@ const Player = () => {
 
         return () => {
             document.removeEventListener('keydown', handleKeyPress)}
-    }, [position])
+    }, [playerPosition])
 
-    const { x, y } = position //sets variables x and y to equal position.x and position.y respectively
+    const { x, y } = playerPosition //sets variables x and y to equal position.x and position.y respectively
 
     return (
         <div id='player' style={{
