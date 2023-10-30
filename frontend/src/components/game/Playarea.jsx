@@ -12,7 +12,7 @@ const [playerPosition, setPlayerPosition] = useState({ x: 0, y: -350, width: 100
 const [enemyPosition, setEnemyPosition] = useState({ x: 400, y: 120, width: 100 }) //sets initial position of player avatar
 const [bossPosition, setBossPosition] = useState({ x: 1200, y: -600, width: 300 }) //sets initial position of player avatar
 
-const [battle, setBattle] = useState(true)
+const [battle, setBattle] = useState(false)
 
 const checkCollision = () => {
   const playerLeft = playerPosition.x;
@@ -31,10 +31,6 @@ const checkCollision = () => {
   ) {
     console.log('Collision detected')
   } 
-  console.log(
-    typeof(playerPosition.width),
-    playerPosition.width
-  )
 }
 
 useEffect(() => {
@@ -67,6 +63,7 @@ useEffect(() => {
           </>
           ) : (
             <>
+            {/* add battle component here */}
             </>
           )
         }
