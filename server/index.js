@@ -33,6 +33,26 @@ app.post("/register", async (req, res) => {
   });
   res.send(newUser);
 });
+app.post("/profile", async (req, res) => {
+  const characterName = req.body.characterName;
+  const confidence = req.body.confidence;
+  const proficiency = req.body.proficiency;
+  const skills = req.body.skills;
+  const Charstats = await characters.create({
+    characterName: characterName,
+    confidence: confidence,
+    proficiency:proficiency,
+    skills:skills
+  });
+  res.send(Charstats);
+});
+app.get('/profile',async (req,res)=>{
+  const charData = await characters.findOne({
+    where:{
+      userID:ID
+    }
+  });
+})
 
 app.get("/users", async (req, res) => {
   const userData = await Users.findAll();

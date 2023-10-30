@@ -5,6 +5,7 @@ import Profile from './components/Profile'
 import Login from './components/Login'
 import Registration from './components/Registration'
 import Game from './components/game/Game'
+import Actionbar from './components/Actionbar'
 const App = () => {
   return (
     <div>
@@ -12,10 +13,12 @@ const App = () => {
 
 
       <Routes>
+
       <Route path='/' element= {<Login/>}/>
       <Route path='/registration' element= {<Registration/>}/>
       <Route path='/profile' element= {<Profile/>}/>
       <Route path='/game' element= {<Game />}/>
+      <Route path='/actionbar' element= {<Actionbar/>}/>
 
       
       </Routes>
