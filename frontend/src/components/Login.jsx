@@ -36,7 +36,7 @@ const Login = () => {
       setLoggedIn(true);
   
       // Redirect to the dynamic /profile/:ID route after a successful login
-      navigate(`/profile/${userId}`); // Pass the userId to the profile route
+      navigate(`/profile`); // Pass the userId to the profile route
     } else {
       // Handle login failure
     }
