@@ -7,59 +7,59 @@ const Shop = () => {
 
     const skill1 = {
         name: 'Take a Breather',
-        effect: () => { //sets the skill effect as a function
-            {
-                setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * .10)) })
-                console.log(player.confidence)
-            }
+        description: 'Heals your confidence by 10%.',
+        effect: () => {
+            setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
+            console.log(player.confidence);
         },
         price: 300,
         bought: false
-    }
+    };
+    
     const skill2 = {
         name: 'Resume Template',
-        effect: () => { //sets the skill effect as a function
-            {
-                setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * .15)) })
-                console.log(player.proficiency)
-            }
+        description: 'Boosts your proficiency by 15%.',
+        effect: () => {
+            setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * 0.15)) });
+            console.log(player.proficiency);
         },
         price: 200,
         bought: false
-    }
+    };
+    
     const skill3 = {
         name: 'Star Method',
-        effect: () => { //sets the skill effect as a function
-            {
-                setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * .20)) })
-                console.log(player.confidence)
-            }
+        description: 'Heals your confidence by 20%.',
+        effect: () => {
+            setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.20)) });
+            console.log(player.confidence);
         },
         price: 350,
         bought: false
-    }
+    };
+    
     const skill4 = {
         name: 'Charm',
-        effect: () => { //sets the skill effect as a function
-            {
-                setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * .10)) })
-                console.log(player.confidence)
-            }
+        description: 'Heals your confidence by 10%.',
+        effect: () => {
+            setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
+            console.log(player.confidence);
         },
         price: 200,
         bought: false
-    }
+    };
+    
     const skill5 = {
         name: 'Concise Elevator Pitch',
-        effect: () => { //sets the skill effect as a function
-            {
-                setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * .10)) })
-                console.log(player.proficiency)
-            }
+        description: 'Boosts your proficiency by 10%.',
+        effect: () => {
+            setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * 0.10)) });
+            console.log(player.proficiency);
         },
         price: 300,
         bought: false
-    }
+    };    
+    
 
     const shop = [skill1, skill2, skill3, skill4, skill5]
     // const [disClick, setDisClick] = useState(false)
@@ -89,7 +89,8 @@ const Shop = () => {
 
     return (
         <>
-            <div>
+        <div>
+            <div >
                 <ul>
                     <li>proficiency: {player.proficiency}</li>
                     <li>confidence: {player.confidence}</li>
@@ -109,11 +110,13 @@ const Shop = () => {
                         disabled={item.bought === true}>
                             {item.name}
                         </button>
+                        <p> Description: {item.description}</p>
                         <p>Experience Price: {item.price}</p>
                     </div>
                 ))}
                 <button onClick={() => closeShop()}>Close Shop</button>
             </div>
+         </div>
         </>
     )
 }
