@@ -1,0 +1,25 @@
+/* Battle.css */
+.box {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .target-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 45%;
+  }
+  
+  .damage-info-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .enemy-message-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+  }
+  

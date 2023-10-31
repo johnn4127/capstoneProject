@@ -35,7 +35,7 @@ app.post("/register", async (req, res) => {
   res.send(newUser);
 });
 
-app.get('/profile/:userID', async (req, res) => {
+app.get('/profile', async (req, res) => {
   const userID = req.params.userID;
 
   try {
@@ -55,7 +55,7 @@ app.get('/profile/:userID', async (req, res) => {
 app.get(`/users`, async (req, res) => {
   const userData = await Users.findAll();
   console.log("Users");
-  res.json(userData[1].charName);
+  res.json(userData);
 });
 
 app.post("/login", async (req, res) => {
