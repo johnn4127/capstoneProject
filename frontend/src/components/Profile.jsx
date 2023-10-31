@@ -57,7 +57,7 @@ const Profile = () => {
         <button onClick={updateCharacterName}>Update Character Name</button>
       </Form.Group>
 
-      <Nav.Link className="navButton" as={Link} to="/game">
+      <Nav.Link className="navButton" as={Link} to="/battle">
         Start Game
       </Nav.Link>
     </>
