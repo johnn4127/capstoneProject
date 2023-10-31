@@ -21,24 +21,29 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    const response = await fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-  
-    if (response.status === 200) {
-      const data = await response.json();
-      const userId = data.userId; // Replace 'userId' with the actual field name from your API response
-  
-      setLoggedIn(true);
-  
-      // Redirect to the dynamic /profile/:ID route after a successful login
-      navigate(`/profile`); // Pass the userId to the profile route
-    } else {
-      // Handle login failure
+    try {
+      // CHANGE THIS ONCE YOU'VE DEPLOYED THE SERVER HEREHEHREHRHERHERHEHREHRE
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.status === 200) {
+        
+        setLoggedIn(true);
+
+      
+        navigate('/profile'); 
+      } else {
+        
+        console.log('Login failed');
+      }
+    } catch (error) {
+      
+      console.error('Error during login:', error);
     }
   };
 

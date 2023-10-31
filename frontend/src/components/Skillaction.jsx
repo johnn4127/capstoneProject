@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PlayerData } from './game/Game'
+import { BattleContext } from './Battle'
 
 const Skillaction = () => {
+
+  const { player, setPlayer } = useContext(PlayerData)
+  const { setHidden } = useContext(BattleContext)
+
   return (
     <div>
-        <p>This is not hidden</p>
+        {player.skills.map((skill, index) => (
+          <button key={index} onClick={skill.effect}>{skill.name}</button>
+        ))}
 
 
     </div>

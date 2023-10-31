@@ -1,12 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import { useCharacter } from './CharacterContext';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../stylesheets/Battle.css';
+import { PlayerData } from './game/Game';
+import Actionbar from './Actionbar';
+
+export const BattleContext = createContext()
 
 const Battle = () => {
+
+  const [hidden, setHidden] = useState(true)
+
+
+const handleHide = () => {
+    if(hidden){
+        setHidden(false)
+    }
+    if(!hidden){
+        setHidden(true)
+    }
+}
+
+  const { player, setPlayer, setBattle } = useContext(PlayerData)
+
   const { charName } = useCharacter();
-  const [userCharacterConfidence, setUserCharacterConfidence] = useState(100);
-  const [enemyConfidence, setEnemyConfidence] = useState(100);
+  // const [playerCharCon, setPlayerCharCon] = useState(100);
+  const [enemyCon, setEnemyCon] = useState(100);
   const [damageLog, setDamageLog] = useState('');
   const [enemyMessage, setEnemyMessage] = useState('');
   const [enemyLines, setEnemyLines] = useState([
@@ -21,28 +40,12 @@ const Battle = () => {
     return enemyLines[randomIndex];
   };
 
-  const handleAttack = () => {
-    const damage = Math.floor(Math.random() * (15 - 5 + 1) + 5);
+  const endBattle = () => {
+    if(enemyCon === 0){
+      setBattle(false)
+    }
+  }
 
-    
-    setUserCharacterConfidence(userCharacterConfidence - damage);
-
-    
-    setDamageLog(`You attacked Coding Enemy for ${damage} confidence damage.`);
-
-    
-    const enemyDamage = Math.floor(Math.random() * (15 - 5 + 1) + 5);
-    setEnemyConfidence(enemyConfidence - enemyDamage);
-
-    const enemyLine = getRandomEnemyLine();
-    setEnemyMessage(`Coding Enemy: "${enemyLine}"`);
-
-  
-    setDamageLog(prevDamageLog => [
-      `${prevDamageLog}`,
-      `Coding Enemy attacked you for ${enemyDamage} confidence damage.`,
-    ]);
-  };
 
   return (
     <div>
@@ -50,21 +53,23 @@ const Battle = () => {
       <div className="box">
         <div className="target-box">
           <h2>{charName}</h2>
-          <ProgressBar now={userCharacterConfidence} label={`Confidence: ${userCharacterConfidence}`} max={100} variant="success" />
+          <ProgressBar now={player.confidence} label={`Confidence: ${player.confidence}`} min='0' max={player.maxConfidence} variant="success" />
         </div>
         <div className="target-box">
           <h2>CODING ENEMY</h2>
-          <ProgressBar now={enemyConfidence} label={`Confidence: ${enemyConfidence}`} max={100} variant="danger" />
+          <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} min='0' max={100} variant="danger" />
         </div>
       </div>
-      <button onClick={handleAttack}>Attack</button>
-      <p>It's your turn to attack</p>
-      <div className="enemy-message-box">
-        {enemyMessage && <p>{enemyMessage}</p>}
-      </div>
-      <div className="damage-info-box">
-        {damageLog && <p>{damageLog}</p>}
-      </div>
+      <BattleContext.Provider value={{ hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog }}>
+        <p>It's your turn to attack</p>
+        <div className="enemy-message-box">
+          {enemyMessage && <p>{enemyMessage}</p>}
+        </div>
+        <div className="damage-info-box">
+          {damageLog && <p>{damageLog}</p>}
+          <Actionbar />
+        </div>
+      </BattleContext.Provider>
     </div>
   );
 };
