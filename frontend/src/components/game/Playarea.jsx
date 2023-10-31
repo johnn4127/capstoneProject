@@ -7,6 +7,8 @@ import Boss from './Boss'
 import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from '../Battle'
+
+
 export const PositionData = createContext()
 
 const Playarea = () => {
@@ -70,9 +72,7 @@ const Playarea = () => {
               <Background />
               <Player />
               <Boss />
-              {defeated ? (
                 <Enemy />
-              ) : null}
             </>
           ) : null}
 
