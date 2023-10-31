@@ -25,7 +25,7 @@ const Battle = () => {
   const handleAttack = () => {
     const damage = Math.floor(Math.random() * (15 - 5 + 1) + 5);
 
-    // Your attack
+    // User attack
     setUserCharacterConfidence(userCharacterConfidence - damage);
 
     // Update the damage log with the most recent damage
