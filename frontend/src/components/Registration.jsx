@@ -12,7 +12,7 @@ function RegisterForm() {
    
     email: '',
     password: '',
-    charName:''
+    
   });
 
   const handleInputChange = (e) => {
@@ -53,13 +53,13 @@ function RegisterForm() {
           value={formData.password}
           onChange={handleInputChange}
         />
-        <input
+        {/* <input
           type="text"
           name="charName"
           placeholder="Character Name"
           value={formData.charName}
           onChange={handleInputChange}
-        />
+        /> */}
         <button type="button" onClick={handleRegister}>
           Register
         </button>

@@ -1,8 +1,10 @@
+// Login.js
+
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Profile from './Profile';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +13,7 @@ const Login = () => {
   });
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,15 +28,15 @@ const Login = () => {
       },
       body: JSON.stringify(formData),
     });
-
+  
     if (response.status === 200) {
       const data = await response.json();
       const userId = data.userId; // Replace 'userId' with the actual field name from your API response
-
+  
       setLoggedIn(true);
-
+  
       // Redirect to the dynamic /profile/:ID route after a successful login
-      navigate("/profile");
+      navigate(`/profile/${userId}`); // Pass the userId to the profile route
     } else {
       // Handle login failure
     }
@@ -47,7 +49,7 @@ const Login = () => {
       ) : (
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
               name="email"

@@ -35,19 +35,27 @@ app.post("/register", async (req, res) => {
   res.send(newUser);
 });
 
-app.get('/profile', async (req, res) => {
-  const charData = await Users.findOne({
-    where: {
-      ID: ID
-    },
+app.get('/profile/:userID', async (req, res) => {
+  const userID = req.params.userID;
 
-  }); res.send(charData.charName)
-})
+  try {
+    const charData = await Users.findByPk(userID);
+    if (!charData) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
 
-app.get("/users", async (req, res) => {
+    res.json({ charName: charData.charName });
+  } catch (error) {
+    console.error("Error fetching profile:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get(`/users`, async (req, res) => {
   const userData = await Users.findAll();
   console.log("Users");
-  res.json(userData);
+  res.json(userData[1].charName);
 });
 
 app.post("/login", async (req, res) => {
@@ -62,7 +70,7 @@ app.post("/login", async (req, res) => {
 
   if (!user) {
 
-    res.status(401).send("Invalid login credentials");
+    res.status(401).json("Invalid login credentials");
     return;
   }
 
@@ -70,10 +78,10 @@ app.post("/login", async (req, res) => {
 
   if (passwordMatch) {
 
-    res.send("Authentication successful");
+    res.json("Authentication successful");
   } else {
 
-    res.status(401).send("Invalid login credentials");
+    res.status(401).json("Invalid login credentials");
   }
 });
 
