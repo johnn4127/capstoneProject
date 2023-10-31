@@ -63,8 +63,8 @@ const Playarea = () => {
       <div id='canvas'
         style={{
           position: 'relative',
-          width: '80vw',
-          height: '70vh',
+          width: '100vw',
+          height: '100vh',
           overflow: 'hidden',
           backgroundColor: 'darkgray'
         }}>
@@ -74,7 +74,7 @@ const Playarea = () => {
               <Background />
               <Player />
               <Boss />
-                <Enemy />
+              <Enemy />
             </>
           ) : null}
 
