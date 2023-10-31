@@ -72,7 +72,7 @@ const Playarea = () => {
               <Background />
               <Player />
               <Boss />
-                <Enemy />
+              <Enemy />
             </>
           ) : null}
 
