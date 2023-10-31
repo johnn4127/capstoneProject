@@ -1,47 +1,63 @@
-import React, { useState, useEffect } from "react";
-import { Button, Form, Container, Card, ListGroup, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Form, Nav } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
+import { useCharacter } from './CharacterContext'; // Import the useCharacter hook
 
 const Profile = () => {
-  const [charName, setCharName] = useState(""); // Change variable name to charName to store character name
+  const [newCharName, setNewCharName] = useState('');
+  const { userId } = useParams();
+  const { charName, setCharacterName } = useCharacter();
 
   const fetchUsersData = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/users:${id}`, {
-        method: "GET",
+      const response = await fetch(`http://localhost:3000/profile/${userId}`, {
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
       if (response.ok) {
         const data = await response.json();
-        const hello=JSON.stringify(data)
-        console.log(hello)
-        console.log('wahlfaksdjfklsjda')
-        setCharName(hello); // Set the character name in the state
+        const charName = data.charName;
+        setCharacterName(charName);
       } else {
-        console.error("Failed to fetch user data");
+        console.error('Failed to fetch user data');
       }
     } catch (error) {
-      console.error("An error occurred while fetching user data:", error);
+      console.error('An error occurred while fetching user data:', error);
     }
   };
 
   useEffect(() => {
     fetchUsersData();
-  }, []);
+  }, [userId]);
+
+  const handleInputChange = (e) => {
+    setNewCharName(e.target.value);
+  };
+
+  const updateCharacterName = () => {
+    setCharacterName(newCharName);
+  };
 
   return (
     <>
       <h2>CHARACTERS</h2>
 
-      <Form.Label>{charName}</Form.Label> 
-      <Form.Label>PROFICIENCY:</Form.Label> 
-      <Form.Label>{charName}</Form.Label> 
-      <Form.Label>{charName}</Form.Label> 
+      <Form.Label>Character Name: {charName}</Form.Label>
 
-      <Nav.Link className="navButton" as={Link} to="/game">
+      <Form.Group>
+        <Form.Control
+          type="text"
+          placeholder="Enter new character name"
+          value={newCharName}
+          onChange={handleInputChange}
+        />
+        <button onClick={updateCharacterName}>Update Character Name</button>
+      </Form.Group>
+
+      <Nav.Link className="navButton" as={Link} to="/battle">
         Start Game
       </Nav.Link>
     </>
