@@ -89,7 +89,8 @@ const Shop = () => {
 
     return (
         <>
-            <div>
+        <div>
+            <div >
                 <ul>
                     <li>proficiency: {player.proficiency}</li>
                     <li>confidence: {player.confidence}</li>
@@ -109,11 +110,13 @@ const Shop = () => {
                         disabled={item.bought === true}>
                             {item.name}
                         </button>
+                        <p> Description: {item.description}</p>
                         <p>Experience Price: {item.price}</p>
                     </div>
                 ))}
                 <button onClick={() => closeShop()}>Close Shop</button>
             </div>
+         </div>
         </>
     )
 }
