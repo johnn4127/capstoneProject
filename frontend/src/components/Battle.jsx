@@ -35,7 +35,6 @@ const handleHide = () => {
     "Tell me about your salary expectations.",
     "What are some of your weaknesses?"
   ]);
-
   const getRandomEnemyLine = () => {
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
