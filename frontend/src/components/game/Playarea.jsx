@@ -7,6 +7,7 @@ import Boss from './Boss'
 import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from '../Battle'
+import Enemy2 from './Enemy2'
 
 
 
@@ -23,7 +24,9 @@ const Playarea = () => {
   const [enemy3Position, setEnemy3Position] = useState({ x: 1200, y: 120, width: 100 }) //sets initial position of player avatar
   const [bossPosition, setBossPosition] = useState({ x: 1600, y: -600, width: 300 }) //sets initial position of player avatar
 
-  
+  const [firstEnemyDefeated, setFirstEnemyDefeated] = useState(false)
+  const [secondEnemyDefeated, setSecondEnemyDefeated] = useState(false)
+  const [thirdEnemyDefeated, setThirdEnemyDefeated] = useState(false)
 
   const checkCollision = () => {
     const playerLeft = playerPosition.x; //sets the left side of the player div
@@ -46,8 +49,20 @@ const Playarea = () => {
   }
 
   const endBattle = () => { //used to undrender battle component and render shop componnent. Should later be moved to battle component during testing.
-    setBattle(false)
-    setShop(true)
+    if(!firstEnemyDefeated){
+      setFirstEnemyDefeated(true)
+      setBattle(false)
+      setShop(true)
+    }
+    else if(firstEnemyDefeated && !secondEnemyDefeated){
+      setSecondEnemyDefeated(true)
+      setBattle(false)
+      setShop(true)
+    } else if(firstEnemyDefeated && secondEnemyDefeated && !thirdEnemyDefeated){
+      setThirdEnemyDefeated(true)
+      setBattle(false)
+      setShop(true)
+    }
   }
 
   useEffect(() => {
@@ -67,18 +82,19 @@ const Playarea = () => {
           position: 'relative',
           width: '100vw',
           height: '100vh',
-          overflow: 'scroll',
+          overflow: 'hidden',
           backgroundColor: 'darkgray'
         }}>
-        <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPosition, setEnemyPosition, bossPosition, setBossPosition }}>
+        <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPosition, setEnemyPosition, enemy2Position, setEnemy2Position, enemy3Position, setEnemy3Position, bossPosition, setBossPosition }}>
           {!battle && !shop ? ( //if shop and battle are false render this
             <>
               <Background />
               <Player />
               <Boss />
               <Enemy />
+              <Enemy2 />
             </>
-          ) : null}
+              ) : null}
 
           {battle ? ( //if battle is true render this
             <>
