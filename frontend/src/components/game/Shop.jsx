@@ -1,13 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { PlayerData } from './Game'
 
 const Shop = () => {
-    const [player, setPlayer] = useState(
-        {
-            proficiency: 12,
-            confidence: 30,
-            skills: [],
-            exp: 1000
-        })
+    const {player, setPlayer, setShop} = useContext(PlayerData)
 
 
     const skill1 = {
@@ -87,6 +82,10 @@ const Shop = () => {
 
     }
 
+    const closeShop = () => {
+        setShop(false)
+    }
+
 
     return (
         <>
@@ -113,6 +112,7 @@ const Shop = () => {
                         <p>Experience Price: {item.price}</p>
                     </div>
                 ))}
+                <button onClick={() => closeShop()}>Close Shop</button>
             </div>
         </>
     )
