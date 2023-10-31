@@ -32,7 +32,7 @@ const Playarea = () => {
 
     if ( //checks to see if divs intersect
       playerRight > enemyLeft &&
-      playerLeft < enemyRight
+      playerLeft < enemyRight 
     ) {
       console.log('Collision detected')
       setBattle(true)
