@@ -4,13 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import '../stylesheets/Navbar.css'
 const Navbars = () => {
   return (
     <div>
         <div>
-        
-        <Navbar bg="primary" data-bs-theme="dark">
-          
+        <Navbar className='navbar'  data-bs-theme="dark">
         <Container>
         <Link style={{textDecoration:'none'}} to="/">
           <Navbar.Brand className='homeNavButton' href="#home">Capstone</Navbar.Brand>
@@ -20,8 +19,6 @@ const Navbars = () => {
             <Nav.Link className='navButton' as={Link} to="/registration">Registration</Nav.Link>
             <Nav.Link className='navButton' as={Link} to='/profile'>Profile</Nav.Link>
             <Nav.Link className='navButton' as={Link} to='/game'>Game</Nav.Link>
-
-            
           </Nav>
         </Container>
       </Navbar>
