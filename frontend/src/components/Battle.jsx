@@ -14,9 +14,8 @@ const Battle = () => {
     "Prepare to be coded out!",
     "I'm the master coder!",
     "Tell me about your salary expectations.",
-    "What are some of your weaknesses"
+    "What are some of your weaknesses?"
   ]);
-
   const getRandomEnemyLine = () => {
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
