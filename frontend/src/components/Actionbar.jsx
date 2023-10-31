@@ -11,26 +11,28 @@ const Actionbar = () => {
   const { hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage ,setDamageLog } = useContext(BattleContext)
 
 const handleAttack = () => {
-  const damage = Math.floor(Math.random() * (15 - 5 + 1) + 5);
+  const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 5);
+  const enemyDamage = Math.floor(Math.random() * (10 - 5 + 1) + 5);
 
 
-  setPlayer({...player, confidence: player.confidence - damage});
+  setPlayer({...player, confidence: player.confidence - enemyDamage});
+  setDamageLog(`You attacked Coding Enemy for ${playerDamage} confidence damage. `);
 
 
-  setDamageLog(`You attacked Coding Enemy for ${damage} confidence damage.`);
 
-
-  const enemyDamage = Math.floor(Math.random() * (15 - 5 + 1) + 5);
-  setEnemyCon(enemyCon - enemyDamage);
 
   const enemyLine = getRandomEnemyLine();
   setEnemyMessage(`Coding Enemy: "${enemyLine}"`);
 
-
+  setEnemyCon(enemyCon - playerDamage);
   setDamageLog(prevDamageLog => [
     `${prevDamageLog}`,
     `Coding Enemy attacked you for ${enemyDamage} confidence damage.`,
   ]);
+
+  if(playerDamage > enemyCon){
+    setEnemyCon(0)
+  }
 };
 
   return (
