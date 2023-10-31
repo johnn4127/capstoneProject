@@ -19,7 +19,9 @@ const Playarea = () => {
 
   const [playerPosition, setPlayerPosition] = useState({ x: 0, y: -350, width: 100 }) //sets initial position of player avatar
   const [enemyPosition, setEnemyPosition] = useState({ x: 400, y: 120, width: 100 }) //sets initial position of player avatar
-  const [bossPosition, setBossPosition] = useState({ x: 1200, y: -600, width: 300 }) //sets initial position of player avatar
+  const [enemy2Position, setEnemy2Position] = useState({ x: 800, y: 120, width: 100 }) //sets initial position of player avatar
+  const [enemy3Position, setEnemy3Position] = useState({ x: 1200, y: 120, width: 100 }) //sets initial position of player avatar
+  const [bossPosition, setBossPosition] = useState({ x: 1600, y: -600, width: 300 }) //sets initial position of player avatar
 
   
 
@@ -65,7 +67,7 @@ const Playarea = () => {
           position: 'relative',
           width: '100vw',
           height: '100vh',
-          overflow: 'hidden',
+          overflow: 'scroll',
           backgroundColor: 'darkgray'
         }}>
         <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPosition, setEnemyPosition, bossPosition, setBossPosition }}>
