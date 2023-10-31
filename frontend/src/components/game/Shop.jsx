@@ -7,7 +7,7 @@ const Shop = () => {
 
     const skill1 = {
         name: 'Take a Breather',
-        description: 'Boosts your confidence by 10%.',
+        description: 'Heals your confidence by 10%.',
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
             console.log(player.confidence);
@@ -18,7 +18,7 @@ const Shop = () => {
     
     const skill2 = {
         name: 'Resume Template',
-        description: 'Improves your proficiency by 15%.',
+        description: 'Boosts your proficiency by 15%.',
         effect: () => {
             setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * 0.15)) });
             console.log(player.proficiency);
@@ -29,7 +29,7 @@ const Shop = () => {
     
     const skill3 = {
         name: 'Star Method',
-        description: 'Enhances your confidence by 20%.',
+        description: 'Heals your confidence by 20%.',
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.20)) });
             console.log(player.confidence);
@@ -40,7 +40,7 @@ const Shop = () => {
     
     const skill4 = {
         name: 'Charm',
-        description: 'Increases your confidence by 10%.',
+        description: 'Heals your confidence by 10%.',
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
             console.log(player.confidence);
