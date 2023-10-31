@@ -25,20 +25,20 @@ const Battle = () => {
   const handleAttack = () => {
     const damage = Math.floor(Math.random() * (15 - 5 + 1) + 5);
 
-    // User attack
+    
     setUserCharacterConfidence(userCharacterConfidence - damage);
 
-    // Update the damage log with the most recent damage
+    
     setDamageLog(`You attacked Coding Enemy for ${damage} confidence damage.`);
 
-    // Enemy's attack
+    
     const enemyDamage = Math.floor(Math.random() * (15 - 5 + 1) + 5);
     setEnemyConfidence(enemyConfidence - enemyDamage);
 
     const enemyLine = getRandomEnemyLine();
     setEnemyMessage(`Coding Enemy: "${enemyLine}"`);
 
-    // Add the enemy message to the damage log
+  
     setDamageLog(prevDamageLog => [
       `${prevDamageLog}`,
       `Coding Enemy attacked you for ${enemyDamage} confidence damage.`,

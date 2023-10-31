@@ -6,7 +6,7 @@ import Enemy from './Enemy'
 import Boss from './Boss'
 import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
-
+import Battle from '../Battle'
 export const PositionData = createContext()
 
 const Playarea = () => {
@@ -76,6 +76,7 @@ const Playarea = () => {
 
           {battle ? ( //if battle is true render this
             <>
+            <Battle/>
               <button onClick={() => endBattle()}>End Battle</button>
             </>
           ) : null
