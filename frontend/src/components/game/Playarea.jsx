@@ -70,7 +70,9 @@ const Playarea = () => {
               <Background />
               <Player />
               <Boss />
-              <Enemy />
+              {defeated ? (
+                <Enemy />
+              ) : null}
             </>
           ) : null}
 

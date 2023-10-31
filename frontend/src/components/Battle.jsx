@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 import { useCharacter } from './CharacterContext';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../stylesheets/Battle.css';
@@ -42,11 +42,14 @@ const handleHide = () => {
   };
 
   const endBattle = () => {
-    if(enemyCon === 0){
+    if(enemyCon <= 0){
       setBattle(false)
     }
   }
 
+  useEffect(() =>{
+    endBattle()
+  },[enemyCon])
 
   return (
     <div>
@@ -58,7 +61,7 @@ const handleHide = () => {
         </div>
         <div className="target-box">
           <h2>CODING ENEMY</h2>
-          <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} min='0' max={100} variant="danger" />
+          <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} max={100} variant="danger" />
         </div>
       </div>
       <BattleContext.Provider value={{ hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog }}>

@@ -10,7 +10,7 @@ const Skillaction = () => {
   return (
     <div>
         {player.skills.map((skill, index) => (
-          <button key={index} onClick={skill.effect}>{skill.name}</button>
+          <button key={index} onClick={() => {skill.effect; setHidden(true)}}>{skill.name}</button>
         ))}
 
 
