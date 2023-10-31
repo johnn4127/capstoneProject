@@ -43,12 +43,12 @@ const handleHide = () => {
   const endBattle = () => {
     if(enemyCon <= 0){
       setBattle(false)
-    }
+    setPlayer({...player, confidence: player.maxConfidence})}
   }
 
   useEffect(() =>{
     endBattle()
-  },[enemyCon])
+  }, [enemyCon])
 
   return (
     <div>
