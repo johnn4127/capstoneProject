@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Nav } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
-import { useCharacter } from './CharacterContext'; // Import the useCharacter hook
+import { useCharacter } from './CharacterContext';
+import controls from '../assets/images/letter_a.png'
 
 const Profile = () => {
   const [newCharName, setNewCharName] = useState('');
@@ -60,6 +61,12 @@ const Profile = () => {
       <Nav.Link className="navButton" as={Link} to="/battle">
         Start Game
       </Nav.Link>
+
+      <div>
+<h3>QUICK TUTORIAL</h3>
+<p>Move left or right using A for left, and D for right. After every battle, you can learn a new skill that will help you with your progress.</p>
+<img src={controls} />
+      </div>
     </>
   );
 };
