@@ -4,12 +4,13 @@ import { Link, useParams } from 'react-router-dom';
 import { useCharacter } from './CharacterContext';
 import { usePicture } from './PictureContext'; 
 // import controls from '../assets/images/letter_a.png';
-import Char1 from './Char1'
+
 import char2 from '../assets/images/chris2.png';
+import char1 from '../assets/images/chris.png';
 import { useSelectedChar } from './SelectedCharContext';
 const Profile = () => {
   const [newCharName, setNewCharName] = useState('');
-  const [selectedCharacter, setSelectedCharacter] = useState(<Char1/>); 
+  const [selectedCharacter, setSelectedCharacter] = useState(<char1/>); 
   const { userId } = useParams();
   const { setSelectedChar } = useSelectedChar();
   const handleCharacterSelect = (characterImage) => {
@@ -79,8 +80,8 @@ const Profile = () => {
 
       <div>
         <h2>CHOOSE YOUR CHARACTER</h2>
-        <button onClick={() => handlePictureSelect(<Char1/>)}>
-          <img style={{width:"50px"}} src={<Char1/>} alt="Picture 1" />
+        <button onClick={() => handlePictureSelect(char1)}>
+          <img style={{width:"50px"}} src={char1} alt="Picture 1" />
         </button>
         <button onClick={() => handlePictureSelect(char2)}>
           <img style={{width:"50px"}} src={char2} alt="Picture 2" />

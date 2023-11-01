@@ -8,7 +8,7 @@ import Game from './components/Game'
 import Shop from './components/Shop'
 import Actionbar from './components/Actionbar'
 import Battle from './components/Battle'
-import Char1 from './components/Char1'
+
 import Homepage from './components/Homepage'
 const App = () => {
   return (
@@ -27,7 +27,7 @@ const App = () => {
       <Route path='/actionbar' element= {<Actionbar/>}/>
       <Route path='/profile' element={<Profile />} />
       <Route path='/battle' element={<Battle />} />
-      <Route path='/chris' element={<Char1 />} />
+      
       <Route path='/login' element={<Login />} />
 
       
