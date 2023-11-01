@@ -4,7 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert'; 
 import Profile from './Profile';
 import { useNavigate } from 'react-router-dom';
-
+import {Link} from 'react-router-dom'
+import '../stylesheets/Login.css'
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -49,6 +50,7 @@ const Login = () => {
   };
 
   return (
+    <div className='mainBody'>
     <div className="d-flex justify-content-center align-items-start" style={{ minHeight: '100vh' }}>
       <div className="border rounded p-4" style={{ marginTop: '100px' }}>
         <h1 className="text-center">Login</h1>
@@ -79,7 +81,11 @@ const Login = () => {
             <Button onClick={handleLogin} variant="primary" type="button">
               Submit
             </Button>
+            <Link style={{textDecoration:'none', marginTop:'10px'}} to="/registration">
+            <a ><p style={{marginTop:'10px'}} >Need to Register?</p></a>
+            </Link>
           </div>
+          
           {errorMessage && (
             <Alert variant="danger">
               {errorMessage}
@@ -87,6 +93,7 @@ const Login = () => {
           )}
         </Form>
       </div>
+    </div>
     </div>
   );
 };
