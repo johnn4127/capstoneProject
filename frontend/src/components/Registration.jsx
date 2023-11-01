@@ -27,6 +27,7 @@ function RegisterForm() {
      
       setRegistrationStatus('passwordMismatch');
       return;
+      
     }
 
     if (!formData.email.trim() || !formData.password.trim()) {
