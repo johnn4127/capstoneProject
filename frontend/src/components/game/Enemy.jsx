@@ -1,49 +1,68 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react';
 import { PositionData } from './Playarea';
 
-const Enemy = () => {
-    const { enemyPosition, setEnemyPosition } = useContext(PositionData) 
-    const stepSize = 30; //controls how far player avatar moves 
-    
+const Enemy = ({ index }) => {
+  const { enemyPositions, setEnemyPositions } = useContext(PositionData);
+  const stepSize = 30;
 
-    const handleKeyPress = (event) => { //function that handles distance between enemy and player 
-        const { x, y, width } = enemyPosition;
+  const [enemyPosition, setEnemyPosition] = useState(enemyPositions[index]); // initialize state with the enemy's position
 
-        switch (event.key) {
-            case 'a':
-                    setEnemyPosition({ x: x + stepSize, y, width }) //if 'a' key is pressed enemy avatar moves right
-                break;
-            case 'd':
-                    setEnemyPosition({ x: x - stepSize, y, width }) //if 'd' key is pressed enemy avatar moves left
-                break;
-            default: break //stops enemy movement if nothing is pressed
+  const handleKeyPress = (event) => {
+    const { x } = enemyPosition; // sets x to the x key of enemyPosition
+
+    switch (event.key) {
+      case 'a':
+        if (x) {
+          setEnemyPosition({ ...enemyPosition, x: x + stepSize });
         }
+        break;
+      case 'd':
+        if (x - stepSize >= 0) {
+          setEnemyPosition({ ...enemyPosition, x: x - stepSize });
+        }
+        break;
+      default:
+        break;
     }
+  };
 
-    
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress); 
 
-    useEffect(() => {
-        document.addEventListener('keydown', handleKeyPress) //adds 'keydown' event listenr on component render and assigns it the handleKeyPress function
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [enemyPosition]);
 
-        return () => {
-            document.removeEventListener('keydown', handleKeyPress)}
-    }, [enemyPosition])
+  
+  useEffect(() => { // updates the original enemyPosition with the updated enemy position
+    setEnemyPositions((prevPositions) => {
+      return prevPositions.map((position, i) => {
+        if (i === index) {
+          return enemyPosition;
+        }
+        return position;
+      });
+    });
+  }, [enemyPosition, index, setEnemyPositions]);
 
-    const { x, y } = enemyPosition //sets variables x and y to equal position.x and position.y respectively
+  const { x, y } = enemyPosition;
 
   return (
-    <div className='enemy' 
-    style={{
-        position: 'sticky',
-        left: x, 
+    <div
+      className='enemy'
+      style={{
+        position: 'absolute',
+        left: x,
         bottom: y,
         width: '100px',
         height: '100px',
-        background: 'red'
-    }}>
-        <p>Enemy</p>
+        background: 'red',
+      }}
+    >
+      <p>Enemy {index + 1}</p>
     </div>
-  )
-}
+  );
+};
 
-export default Enemy
+export default Enemy;

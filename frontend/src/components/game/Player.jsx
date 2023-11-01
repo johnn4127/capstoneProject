@@ -9,7 +9,6 @@ const Player = () => {
     const handleKeyPress = (event) => { //function to allow player avatar to move upon key press
         const { x, y, width } = playerPosition;
         const maxX = 840;
-        const maxY = 10000;
 
         switch (event.key) {
             case 'a':
@@ -22,15 +21,6 @@ const Player = () => {
                     setPlayerPosition({ x: x + stepSize, y, width }) //if 'd' key is pressed player avatar moves right
                 }
                 break;
-            // case 'w':
-            //     if(y + stepSize <= maxY){
-            //         setPlayerPosition({ x, y: y + stepSize, width}) //if 'w' key is pressed player avatar moves up
-            //     }
-            //     break;
-            // case 's':
-            //     if(y - stepSize <= 0)
-            //     setPlayerPosition({ x, y: y - stepSize, width }) //if 's' key is pressed player avatar moves down
-            //     break;
             default: break //stops character movement if nothing is pressed
         }
     }

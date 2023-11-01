@@ -8,7 +8,7 @@ import { BattleContext } from './Battle';
 const Actionbar = () => {
 
   const {player, setPlayer } = useContext(PlayerData)
-  const { hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage ,setDamageLog } = useContext(BattleContext)
+  const { hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog } = useContext(BattleContext)
 
 const handleAttack = () => {
   const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 5);
