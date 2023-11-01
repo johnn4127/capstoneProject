@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import mp3 from '../assets/music/Registration.mp3';
 import { Form, Button, Alert, Container } from 'react-bootstrap';
-
+import '../stylesheets/Registration.css'
 function RegisterForm() {
   const audio = new Audio(mp3);
   
@@ -27,6 +27,7 @@ function RegisterForm() {
      
       setRegistrationStatus('passwordMismatch');
       return;
+      
     }
 
     if (!formData.email.trim() || !formData.password.trim()) {
@@ -59,6 +60,7 @@ function RegisterForm() {
   }, []);
 
   return (
+    <div className='mainContainer'>
     <Container
       className="d-flex justify-content-center align-items-start"
       style={{ minHeight: '100vh' }}
@@ -132,6 +134,7 @@ function RegisterForm() {
         )}
       </div>
     </Container>
+    </div>
   );
 }
 
