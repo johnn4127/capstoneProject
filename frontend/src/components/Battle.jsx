@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 import { useCharacter } from './CharacterContext';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../stylesheets/Battle.css';
-import { PlayerData } from './game/Game';
+import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
 
 export const BattleContext = createContext()

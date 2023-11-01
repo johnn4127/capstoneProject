@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import '../../stylesheets/Game.css'
+import '../stylesheets/Game.css'
 import Player from './Player'
 
 const Background = () => {

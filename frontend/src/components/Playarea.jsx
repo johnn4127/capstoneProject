@@ -1,12 +1,12 @@
 import React, { useState, createContext, useContext, useEffect } from 'react'
 import Background from './Background'
 import Player from './Player'
-import '../../stylesheets/Game.css'
+import '../stylesheets/Game.css'
 import Enemy from './Enemy'
 import Boss from './Boss'
 import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
-import Battle from '../Battle'
+import Battle from './Battle'
 
 export const PositionData = createContext()
 

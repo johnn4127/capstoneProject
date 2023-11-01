@@ -4,8 +4,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
+    flex-direction: column; /* Stack children vertically */
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .MIDDLE {
@@ -15,22 +17,28 @@
 
 .MIDDLEBOX {
     width: 25vw;
-    height: 50vh;
+    height: 35vh;
     z-index: 10000000;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; 
-    border: solid 5px white;
-    margin-top: 10px
+    flex-direction: column;
+    border: 5px solid white;
+    margin-top: 10px;
 }
 
-.REGISTERLINK {
+
+.REGISTERLINK, .LOGINLINK {
     font-size: 25px; /* Adjust the font size as needed */
     text-decoration: none;
-    
 }
 
-.LOGINLINK {
-    font-size: 25px; /* Adjust the font size as needed */
+.HOMEPAGETITLE {
+    font-size: 75px; /* Adjust the font size as needed */
+    color: rgb(224, 234, 237);
+    border: 2px solid rgb(238, 228, 85);
+    
+}
+.ACTUALTITLE{
+    font-size: 75px;
 }
