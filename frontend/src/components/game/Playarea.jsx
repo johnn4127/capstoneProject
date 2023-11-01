@@ -8,6 +8,7 @@ import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from '../Battle'
 export const PositionData = createContext()
+
 const Playarea = () => {
   
   const { player, setPlayer, battle, setBattle, shop, setShop } = useContext(PlayerData)

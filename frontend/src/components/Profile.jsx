@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Form, Nav } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import { useCharacter } from './CharacterContext';
-import { usePicture } from './PictureContext'; // Import the new context
+import { usePicture } from './PictureContext'; 
 // import controls from '../assets/images/letter_a.png';
-import char1 from '../assets/images/letter_a.png';
-import char2 from '../assets/images/letter_d.png';
+import char1 from '../assets/images/chris.png';
+import char2 from '../assets/images/chris2.png';
 import { useSelectedChar } from './SelectedCharContext';
 const Profile = () => {
   const [newCharName, setNewCharName] = useState('');
-  const [selectedCharacter, setSelectedCharacter] = useState(char1); // Default character
+  const [selectedCharacter, setSelectedCharacter] = useState(char1); 
   const { userId } = useParams();
   const { setSelectedChar } = useSelectedChar();
   const handleCharacterSelect = (characterImage) => {
@@ -73,40 +73,25 @@ const Profile = () => {
         <button onClick={updateCharacterName}>Update Character Name</button>
       </Form.Group>
 
-      <Nav.Link className="navButton" as={Link} to="/battle">
+      <Nav.Link className="navButton" as={Link} to="/game">
         Start Game
       </Nav.Link>
 
       <div>
         <h2>CHOOSE YOUR CHARACTER</h2>
-        <button onClick={() => handleCharacterSelect(char1)}>
-          <img src={char1} alt="Character 1" />
-        </button>
-        <button onClick={() => handleCharacterSelect(char2)}>
-          <img src={char2} alt="Character 2" />
-        </button>
-      </div>
-
-      <div>
-        <h3>Selected Character</h3>
-        <img src={selectedCharacter} alt="Selected Character" />
-      </div>
-
-      <div>
-        <h2>CHOOSE YOUR PICTURE</h2>
         <button onClick={() => handlePictureSelect(char1)}>
-          <img src={char1} alt="Picture 1" />
+          <img  style={{width:"50px"}} src={char1} alt="Picture 1" />
         </button>
         <button onClick={() => handlePictureSelect(char2)}>
-          <img src={char2} alt="Picture 2" />
+          <img  style={{width:"50px"}} src={char2} alt="Picture 2" />
         </button>
       </div>
 
       <div>
-        <h3>Selected Picture</h3>
-        {selectedPicture && (
-          <img src={selectedPicture} alt="Selected Picture" />
-        )}
+        <h3>Selected CHARACTER</h3>
+        
+          <img src={selectedPicture} alt="HELLO?" style={{width:"50px"}} />
+        
       </div>
     </>
   );
