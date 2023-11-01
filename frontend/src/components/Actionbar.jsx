@@ -1,6 +1,6 @@
 import React, {useState, createContext, useContext } from 'react'
 import Skillaction from './Skillaction'
-import { PlayerData } from './game/Game';
+import { PlayerData } from './Game';
 import { BattleContext } from './Battle';
 
 

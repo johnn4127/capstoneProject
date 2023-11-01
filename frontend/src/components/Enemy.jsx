@@ -49,19 +49,23 @@ const Enemy = ({ index }) => {
   const { x, y } = enemyPosition;
 
   return (
-    <div
-      className='enemy'
-      style={{
-        position: 'absolute',
-        left: x,
-        bottom: y,
-        width: '100px',
-        height: '100px',
-        background: 'red',
-      }}
-    >
-      <p>Enemy {index + 1}</p>
-    </div>
+    <>
+    {!enemyPositions[index].defeated ? (
+        <div
+          className='enemy'
+          style={{
+            position: 'absolute',
+            left: x,
+            bottom: y,
+            width: '100px',
+            height: '100px',
+            background: 'red',
+          }}
+        >
+          <p>Enemy {index + 1}</p>
+        </div>
+    ) : null}
+    </>
   );
 };
 

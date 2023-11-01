@@ -1,12 +1,12 @@
 import React, { useState, createContext, useContext, useEffect } from 'react'
 import Background from './Background'
 import Player from './Player'
-import '../../stylesheets/Game.css'
+import '../stylesheets/Game.css'
 import Enemy from './Enemy'
 import Boss from './Boss'
 import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
-import Battle from '../Battle'
+import Battle from './Battle'
 
 export const PositionData = createContext()
 
@@ -16,9 +16,9 @@ const Playarea = () => {
   const [playerPosition, setPlayerPosition] = useState({ x: 0, y: -350, width: 100 }) //sets initial position of player avatar
 
   const [enemyPositions, setEnemyPositions] = useState([ //sets the position data for different enemies
-    { x: 400, y: 365, width: 100 },
-    { x: 800, y: 365, width: 100 },
-    { x: 1200, y: 365, width: 100 },
+    { x: 400, y: 365, width: 100, defeated: false },
+    { x: 800, y: 365, width: 100, defeated: false  },
+    { x: 1200, y: 365, width: 100, defeated: false },
   ]);
 
   const [bossPosition, setBossPosition] = useState({ x: 1600, y: -600, width: 300 }) //sets initial position of player avatar
