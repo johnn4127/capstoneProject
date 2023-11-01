@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { PlayerData } from './game/Game'
+import { PlayerData } from './Game'
 import { BattleContext } from './Battle'
 
 const Skillaction = () => {
