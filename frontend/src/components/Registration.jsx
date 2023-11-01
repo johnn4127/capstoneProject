@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import mp3 from '../assets/music/Registration.mp3';
 import { Form, Button, Alert, Container } from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 import '../stylesheets/Registration.css'
 function RegisterForm() {
   const audio = new Audio(mp3);
@@ -100,13 +101,21 @@ function RegisterForm() {
               onChange={handleInputChange}
             />
           </Form.Group>
-
+            <div style={{justifyContent:''}}></div>
           <div style={{ textAlign: 'center', margin: '10px' }}>
             <Button variant="primary" type="button" onClick={handleRegister}>
               Register
             </Button>
           </div>
+        <div style={{ textAlign: 'center', margin: '10px' }}>
+          <Link to="/login">
+            <Button variant="primary" type="button">
+              Login
+            </Button>
+            </Link>
+        </div>
         </Form>
+      
         {registrationStatus === 'success' && (
           <Alert variant="success" className="mt-3">
             Registration successful!
