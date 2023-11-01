@@ -54,7 +54,7 @@ const Player = () => {
             background: 'green',
             zIndex: 2
         }}>
-            <p>Player</p>
+          
         </div>
     )
 }
