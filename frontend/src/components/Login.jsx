@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert'; 
 import Profile from './Profile';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ const Login = () => {
   });
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(''); 
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -20,7 +22,6 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      // CHANGE THIS ONCE YOU'VE DEPLOYED THE SERVER HEREHEHREHRHERHERHEHREHRE
       const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
@@ -32,11 +33,18 @@ const Login = () => {
       if (response.status === 200) {
         setLoggedIn(true);
         navigate('/profile');
-      } else {
-        console.log('Login failed');
+      } else if (response.status === 401) {
+        const data = await response.json(); 
+
+        if (data.message === 'Unknown email') {
+          setErrorMessage('No user found with this email'); 
+        } else {
+          setErrorMessage('Invalid email or password');
+        }
       }
     } catch (error) {
       console.error('Error during login:', error);
+      setErrorMessage('An error occurred during login');
     }
   };
 
@@ -72,6 +80,11 @@ const Login = () => {
               Submit
             </Button>
           </div>
+          {errorMessage && (
+            <Alert variant="danger">
+              {errorMessage}
+            </Alert>
+          )}
         </Form>
       </div>
     </div>
