@@ -10,7 +10,7 @@ const Game = () => {
 
   return (
     <PlayerData.Provider value={{ player, setPlayer, battle, setBattle, shop, setShop }}>
-      <Playarea selectedCharacter={selectedCharacter} />
+      <Playarea/>
     </PlayerData.Provider>
   );
 };

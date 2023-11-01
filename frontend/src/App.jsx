@@ -22,7 +22,7 @@ const App = () => {
       <Route path='/game' element= {<Game />}/>
       <Route path='/shop' element= {<Shop />}   />
       <Route path='/actionbar' element= {<Actionbar/>}/>
-      <Route path='/profile/:userId' element={<Profile />} />
+      <Route path='/profile' element={<Profile />} />
       <Route path='/battle' element={<Battle />} />
 
       
