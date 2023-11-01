@@ -4,6 +4,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../stylesheets/Battle.css';
 import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
+import Enemy from './Enemy';
 
 export const BattleContext = createContext()
 
@@ -62,6 +63,9 @@ const handleHide = () => {
           <h2>CODING ENEMY</h2>
           <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} max={100} variant="danger" />
         </div>
+      </div>
+      <div>
+        <Enemy />
       </div>
       <BattleContext.Provider value={{ hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog }}>
         <p>It's your turn to attack</p>

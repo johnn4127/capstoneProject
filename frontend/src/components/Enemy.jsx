@@ -1,8 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { PositionData } from './Playarea';
+import { PlayerData } from './Game';
 
 const Enemy = ({ index }) => {
   const { enemyPositions, setEnemyPositions } = useContext(PositionData);
+
+  const { battle } = useContext(PlayerData)
   const stepSize = 30;
 
   const [enemyPosition, setEnemyPosition] = useState(enemyPositions[index]); // initialize state with the enemy's position
@@ -50,21 +53,30 @@ const Enemy = ({ index }) => {
 
   return (
     <>
-    {!enemyPositions[index].defeated ? (
-        <div
-          className='enemy'
-          style={{
-            position: 'absolute',
-            left: x,
-            bottom: y,
-            width: '100px',
-            height: '100px',
-            background: 'red',
-          }}
-        >
-          <p>Enemy {index + 1}</p>
-        </div>
-    ) : null}
+    {!battle ? (
+      <>
+      {!enemyPositions[index].defeated ? (
+          <div
+            className='enemy'
+            style={{
+              position: 'absolute',
+              left: x,
+              bottom: y,
+              width: '100px',
+              height: '100px',
+              background: 'red',
+            }}
+          >
+            <p>Enemy {index + 1}</p>
+          </div>
+      ) : null}
+      </>
+    ): (
+      <div>
+
+    </div> 
+    )
+  }
     </>
   );
 };
