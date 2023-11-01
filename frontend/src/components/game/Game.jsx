@@ -1,11 +1,11 @@
-import React, { useState, createContext } from 'react'
-import Playarea from './Playarea'
+import React, { useState, createContext } from 'react';
+import Playarea from './Playarea';
 
 
-export const PlayerData = createContext()
+export const PlayerData = createContext();
 
 const Game = () => {
-
+  
   const [player, setPlayer] = useState({proficiency: 15, confidence: 200, maxConfidence: 200, skills: [], exp: 0})
   const [battle, setBattle] = useState(false) //controls rendering of battle component
   const [shop, setShop] = useState(false) //controls rendering of shop component
@@ -16,12 +16,10 @@ const Game = () => {
   const {boss, setBoss} = useState({proficiency: 20, confidence: 500, maxConfidence: 500, exp: 1000, defeated: false})
   
   return (
-    <> 
-    <PlayerData.Provider value={{player, setPlayer, battle, setBattle, shop, setShop}} > 
-       <Playarea />
+    <PlayerData.Provider value={{ player, setPlayer, battle, setBattle, shop, setShop }}>
+      <Playarea/>
     </PlayerData.Provider>
-    </>
-  )
-}
+  );
+};
 
-export default Game
+export default Game;

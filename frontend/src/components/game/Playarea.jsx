@@ -8,13 +8,11 @@ import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from '../Battle'
 
-
 export const PositionData = createContext()
 
 const Playarea = () => {
-
+  
   const { player, setPlayer, battle, setBattle, shop, setShop } = useContext(PlayerData)
-
   const [playerPosition, setPlayerPosition] = useState({ x: 0, y: -350, width: 100 }) //sets initial position of player avatar
 
   const [enemyPositions, setEnemyPositions] = useState([ //sets the position data for different enemies
@@ -63,10 +61,8 @@ const Playarea = () => {
       setShop(true)
     }
   }
-
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
-
       checkCollision();
     })
 
@@ -74,7 +70,6 @@ const Playarea = () => {
 
 
   return (
-
     <div id='playArea'>
       <div id='canvas'
         style={{
@@ -95,8 +90,7 @@ const Playarea = () => {
               ))}
 
             </>
-          ) : null}
-
+              ) : null}
           {battle ? ( //if battle is true render this
             <>
               <Battle />
@@ -104,17 +98,14 @@ const Playarea = () => {
             </>
           ) : null
           }
-
           {shop ? ( //if shop is true render this
             <>
               <Shop />
             </>
           ) : null}
-
         </PositionData.Provider>
       </div>
     </div>
   )
 }
-
 export default Playarea

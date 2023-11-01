@@ -3,14 +3,14 @@ const app = express();
 const Sequelize = require('sequelize');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
-const { Users } = require('./models'); 
+const { Users } = require('./models');
 
 app.use(express.json());
 app.use(cors());
 
 const sequelize = new Sequelize('Users', 'ograyfbl', process.env.PW, {
   host: process.env.HOST,
-  dialect: 'postgres'
+  dialect: 'postgres',
 });
 
 const saltRounds = 10;
@@ -24,13 +24,24 @@ app.post('/register', async (req, res) => {
   try {
     const { email, password, charName } = req.body;
 
-    // Hash the password before storing it in the database
+    const existingUser = await Users.findOne({
+      where: {
+        email: email,
+      },
+    });
+
+    if (existingUser) {
+      res.status(409).json({ error: 'Email is already taken' });
+      return;
+    }
+
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const newUser = await Users.create({
       email: email,
       password: hashedPassword,
-      charName: charName
+      charName: charName,
+      
     });
 
     res.json(newUser);
@@ -75,25 +86,26 @@ app.post('/login', async (req, res) => {
 
     const user = await Users.findOne({
       where: {
-        email: email
-      }
+        email: email,
+      },
     });
 
     if (!user) {
-      res.status(401).json('Invalid login credentials');
+    
+      res.status(401).json({ message: 'Unknown email' });
       return;
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (passwordMatch) {
-      res.json('Authentication successful');
+      res.json({ message: 'Authentication successful' });
     } else {
-      res.status(401).json('Invalid login credentials');
+      res.status(401).json({ message: 'Invalid login credentials' });
     }
   } catch (error) {
     console.error('Error during login:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
