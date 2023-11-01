@@ -1,6 +1,6 @@
-import React from 'react'
-import '../stylesheets/Homepage.css'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import '../stylesheets/Homepage.css';
+import { Link } from 'react-router-dom';
 
 const Homepage = () => {
   return (
@@ -10,16 +10,14 @@ const Homepage = () => {
       </div>
       <div className='MIDDLEBOX'>
         <div className='REGISTERLINK'>
-          <Link className='MIDDLE' as={Link} to="/registration">Registration</Link>
+          <Link  style={{textDecoration:"none"}}  className='MIDDLE' as={Link} to="/registration">Registration</Link>
         </div>
-        <br />
         <div className='LOGINLINK'>
-          <Link className='MIDDLE' as={Link} to="/login">Login</Link>
+          <Link  style={{textDecoration:"none"}} className='MIDDLE' as={Link} to="/login">Login</Link>
         </div>
       </div>
-      
     </div>
-  )
+  );
 }
 
 export default Homepage;

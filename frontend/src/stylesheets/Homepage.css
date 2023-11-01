@@ -4,15 +4,15 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    flex-direction: column; /* Stack children vertically */
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Align content to the top */
     text-align: center;
 }
 
 .MIDDLE {
     z-index: 10000;
-    color: pink;
+    color: rgb(251, 152, 193);
 }
 
 .MIDDLEBOX {
@@ -22,22 +22,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    border: 5px solid white;
+    flex-direction: column; /* Stack children vertically */
+    /* border: 5px solid white; */
     margin-top: 10px;
 }
 
-
 .REGISTERLINK, .LOGINLINK {
-    font-size: 25px; /* Adjust the font size as needed */
+    font-size: 65px;
     text-decoration: none;
+    
 }
 
 .HOMEPAGETITLE {
-    font-size: 75px; /* Adjust the font size as needed */
+    font-size: 250px;
     color: rgb(224, 234, 237);
-    border: 2px solid rgb(238, 228, 85);
     
+    margin-top: 100px; /* Add margin-top to the title */
 }
 .ACTUALTITLE{
     font-size: 75px;
