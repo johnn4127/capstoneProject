@@ -24,7 +24,6 @@ app.post('/register', async (req, res) => {
   try {
     const { email, password, charName } = req.body;
 
-  
     const existingUser = await Users.findOne({
       where: {
         email: email,
@@ -32,18 +31,17 @@ app.post('/register', async (req, res) => {
     });
 
     if (existingUser) {
-
       res.status(409).json({ error: 'Email is already taken' });
       return;
     }
 
-  
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const newUser = await Users.create({
       email: email,
       password: hashedPassword,
       charName: charName,
+      
     });
 
     res.json(newUser);
@@ -93,20 +91,21 @@ app.post('/login', async (req, res) => {
     });
 
     if (!user) {
-      res.status(401).json('Invalid login credentials');
+    
+      res.status(401).json({ message: 'Unknown email' });
       return;
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (passwordMatch) {
-      res.json('Authentication successful');
+      res.json({ message: 'Authentication successful' });
     } else {
-      res.status(401).json('Invalid login credentials');
+      res.status(401).json({ message: 'Invalid login credentials' });
     }
   } catch (error) {
     console.error('Error during login:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
