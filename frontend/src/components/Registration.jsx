@@ -3,7 +3,7 @@ import mp3 from '../assets/music/Registration.mp3'
 
 
 function RegisterForm() {
-
+  
   const audio = new Audio(mp3)
 
   
@@ -64,6 +64,9 @@ function RegisterForm() {
           Register
         </button>
       </form>
+      
+
+
     </div>
   );
 }
