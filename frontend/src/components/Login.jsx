@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -32,28 +30,22 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        
         setLoggedIn(true);
-
-      
-        navigate('/profile'); 
+        navigate('/profile');
       } else {
-        
         console.log('Login failed');
       }
     } catch (error) {
-      
       console.error('Error during login:', error);
     }
   };
 
   return (
-    <div>
-      {loggedIn ? (
-        <Profile />
-      ) : (
+    <div className="d-flex justify-content-center align-items-start" style={{ minHeight: '100vh' }}>
+      <div className="border rounded p-4" style={{ marginTop: '100px' }}>
+        <h1 className="text-center">Login</h1>
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
@@ -64,7 +56,7 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -75,11 +67,13 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Button onClick={handleLogin} variant="primary" type="button">
-            Submit
-          </Button>
+          <div style={{ textAlign: 'center', margin: '10px' }}>
+            <Button onClick={handleLogin} variant="primary" type="button">
+              Submit
+            </Button>
+          </div>
         </Form>
-      )}
+      </div>
     </div>
   );
 };
