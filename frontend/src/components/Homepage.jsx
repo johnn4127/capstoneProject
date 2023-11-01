@@ -9,9 +9,9 @@ const Homepage = () => {
 <div className='homepagebody' >
 <div className='MIDDLEBOX'>
     <div className='REGISTERLINK'>
-<Nav.Link className='MIDDLE' as={Link} to="/registration">Registration</Nav.Link> </div>
+<Link className='MIDDLE' as={Link} to="/registration">Registration</Link> </div>
 <div className='LOGINLINK'>
-<Nav.Link className='MIDDLE' as={Link} to="/login">LOGIN</Nav.Link> </div>
+<Link className='MIDDLE' as={Link} to="/login">LOGIN</Link> </div>
 </div>
 </div>
     </div>

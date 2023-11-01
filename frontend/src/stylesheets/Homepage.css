@@ -10,6 +10,7 @@
 
 .MIDDLE {
     z-index: 10000;
+    color: pink;
 }
 
 .MIDDLEBOX {
@@ -20,12 +21,16 @@
     align-items: center;
     justify-content: center;
     flex-direction: column; 
+    border: solid 5px white;
+    margin-top: 10px
 }
 
 .REGISTERLINK {
-    font-size: 24px; /* Adjust the font size as needed */
+    font-size: 25px; /* Adjust the font size as needed */
+    text-decoration: none;
+    
 }
 
 .LOGINLINK {
-    font-size: 24px; /* Adjust the font size as needed */
+    font-size: 25px; /* Adjust the font size as needed */
 }
