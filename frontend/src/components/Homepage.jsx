@@ -1,21 +1,25 @@
 import React from 'react'
 import '../stylesheets/Homepage.css'
-import {Link} from 'react-router-dom'
-import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom'
+
 const Homepage = () => {
   return (
-    
-    <div>
-<div className='homepagebody' >
-<div className='MIDDLEBOX'>
-    <div className='REGISTERLINK'>
-<Nav.Link className='MIDDLE' as={Link} to="/registration">Registration</Nav.Link> </div>
-<div className='LOGINLINK'>
-<Nav.Link className='MIDDLE' as={Link} to="/login">LOGIN</Nav.Link> </div>
-</div>
-</div>
+    <div className='homepagebody'>
+      <div className='HOMEPAGETITLE'>
+        <h1 className='ACTUALTITLE'>CODING PURSUIT</h1>
+      </div>
+      <div className='MIDDLEBOX'>
+        <div className='REGISTERLINK'>
+          <Link className='MIDDLE' as={Link} to="/registration">Registration</Link>
+        </div>
+        <br />
+        <div className='LOGINLINK'>
+          <Link className='MIDDLE' as={Link} to="/login">Login</Link>
+        </div>
+      </div>
+      
     </div>
   )
 }
 
-export default Homepage
+export default Homepage;
