@@ -5,28 +5,35 @@ import '../stylesheets/Battle.css';
 import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
 import Enemy from './Enemy';
+import { PositionData } from './Playarea';
 
 export const BattleContext = createContext()
 
-const Battle = () => {
+const Battle = ({ enemyIndex }) => {
 
+  
+  
   const [hidden, setHidden] = useState(true)
-
-
-const handleHide = () => {
-    if(hidden){
-        setHidden(false)
+  
+  
+  const handleHide = () => {
+    if (hidden) {
+      setHidden(false)
     }
-    if(!hidden){
-        setHidden(true)
+    if (!hidden) {
+      setHidden(true)
     }
-}
-
-  const { player, setPlayer, setBattle } = useContext(PlayerData)
-
+  }
+  
+  const { player, setPlayer, setBattle, enemies, setEnemies } = useContext(PlayerData)
+  const { enemyPositions, setEnemyPositions, index, setIndex } = useContext(PositionData)
+  
   const { charName } = useCharacter();
-  // const [playerCharCon, setPlayerCharCon] = useState(100);
-  const [enemyCon, setEnemyCon] = useState(100);
+  
+  const [currentEnemy, setCurrentEnemy] = useState(enemies[enemyIndex])
+  const updatedEnemyPos = [...enemyPositions]
+
+  const [enemyCon, setEnemyCon] = useState(currentEnemy.confidence);
   const [damageLog, setDamageLog] = useState('');
   const [enemyMessage, setEnemyMessage] = useState('');
   const [enemyLines, setEnemyLines] = useState([
@@ -36,18 +43,26 @@ const handleHide = () => {
     "Tell me about your salary expectations.",
     "What are some of your weaknesses?"
   ]);
+
   const getRandomEnemyLine = () => {
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
   };
 
   const endBattle = () => {
-    if(enemyCon <= 0){
+    if (enemyCon <= 0 || player.confidence <= 0) {
+
       setBattle(false)
-    setPlayer({...player, confidence: player.maxConfidence})}
+      setIndex(index + 1)
+      updatedEnemyPos[enemyIndex] = {...updatedEnemyPos[enemyIndex], defeated: true}
+      console.log(updatedEnemyPos)
+      setEnemyPositions(updatedEnemyPos)
+      setPlayer({ ...player, confidence: player.maxConfidence })
+      
+    }
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     endBattle()
   }, [enemyCon])
 
@@ -65,7 +80,6 @@ const handleHide = () => {
         </div>
       </div>
       <div>
-        <Enemy />
       </div>
       <BattleContext.Provider value={{ hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog }}>
         <p>It's your turn to attack</p>
@@ -74,7 +88,7 @@ const handleHide = () => {
         </div>
         <div className="damage-info-box">
           {damageLog && <p>{damageLog}</p>}
-          <Actionbar />
+          <Actionbar enemyIndex={ enemyIndex }/>
         </div>
       </BattleContext.Provider>
     </div>

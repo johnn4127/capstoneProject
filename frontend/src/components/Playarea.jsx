@@ -11,15 +11,17 @@ import Battle from './Battle'
 export const PositionData = createContext()
 
 const Playarea = () => {
-  
+
   const { player, setPlayer, battle, setBattle, shop, setShop } = useContext(PlayerData)
   const [playerPosition, setPlayerPosition] = useState({ x: 0, y: -350, width: 100 }) //sets initial position of player avatar
 
   const [enemyPositions, setEnemyPositions] = useState([ //sets the position data for different enemies
     { x: 400, y: 365, width: 100, defeated: false },
-    { x: 800, y: 365, width: 100, defeated: false  },
+    { x: 800, y: 365, width: 100, defeated: false },
     { x: 1200, y: 365, width: 100, defeated: false },
   ]);
+
+  const [index, setIndex] = useState(0)
 
   const [bossPosition, setBossPosition] = useState({ x: 1600, y: -600, width: 300 }) //sets initial position of player avatar
 
@@ -27,17 +29,17 @@ const Playarea = () => {
   const [secondEnemyDefeated, setSecondEnemyDefeated] = useState(false)
   const [thirdEnemyDefeated, setThirdEnemyDefeated] = useState(false)
 
-  
+
   const checkCollision = () => {
     const playerLeft = playerPosition.x; // Left side of the player div
     const playerRight = playerPosition.x + playerPosition.width; // Right side of the player div
-  
-    
+
+
     enemyPositions.forEach((enemyPos, index) => { //checks the size of each enemy div
       const enemyLeft = enemyPos.x; // Left side of the enemy div
       const enemyRight = enemyPos.x + enemyPos.width; // Right side of the enemy div
-  
-      
+
+
       if (playerRight > enemyLeft && playerLeft < enemyRight) { //checks whether or not play is interesecting with any enemies
         console.log(`Collision detected with Enemy ${index + 1}`);
         setBattle(true);
@@ -61,6 +63,7 @@ const Playarea = () => {
       setShop(true)
     }
   }
+
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
       checkCollision();
@@ -79,7 +82,8 @@ const Playarea = () => {
           overflow: 'hidden',
           backgroundColor: 'darkgray'
         }}>
-        <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition }}>
+
+        <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, setIndex }}>
           {!battle && !shop ? ( //if shop and battle are false render this
             <>
               <Background />
@@ -90,14 +94,16 @@ const Playarea = () => {
               ))}
 
             </>
-              ) : null}
+          ) : null}
+
           {battle ? ( //if battle is true render this
             <>
-              <Battle />
+              <Battle enemyIndex={index} />
               <button onClick={() => endBattle()}>End Battle</button>
             </>
           ) : null
           }
+          
           {shop ? ( //if shop is true render this
             <>
               <Shop />

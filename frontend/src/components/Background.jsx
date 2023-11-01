@@ -13,14 +13,14 @@ const Background = () => {
         const { x, y } = position;
 
         if (position.y < 0){
-            setPosition({y:0})
+            setPosition({ y: 0 })
         }
         switch (event.key) {
             case 'a':
-                setPosition({ x: x + stepSize})
+                setPosition({ x: x + stepSize })
                 break;
             case 'd':
-                setPosition({ x: x - stepSize})
+                setPosition({ x: x - stepSize })
                 break;
             default: break
         }
