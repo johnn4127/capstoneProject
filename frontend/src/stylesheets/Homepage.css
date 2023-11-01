@@ -1,0 +1,31 @@
+.homepagebody {
+    background-image: url('https://cdn.wallpapersafari.com/31/83/19sSjI.gif');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MIDDLE {
+    z-index: 10000;
+}
+
+.MIDDLEBOX {
+    width: 25vw;
+    height: 50vh;
+    z-index: 10000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+}
+
+.REGISTERLINK {
+    font-size: 24px; /* Adjust the font size as needed */
+}
+
+.LOGINLINK {
+    font-size: 24px; /* Adjust the font size as needed */
+}
