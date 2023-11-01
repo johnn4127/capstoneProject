@@ -4,6 +4,10 @@ import { Form, Button, Alert, Container } from 'react-bootstrap';
 
 function RegisterForm() {
   const audio = new Audio(mp3);
+  
+  
+
+  
 
   const [formData, setFormData] = useState({
     email: '',
