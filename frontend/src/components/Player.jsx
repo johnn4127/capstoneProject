@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { PositionData } from './Playarea';
+import { useCharacter } from './CharacterContext';
+import { useSelectedChar } from './SelectedCharContext';
 
-const Player = () => {
+import char1 from '../assets/images/pikachu.gif';   
+const Player = ({selectedPicture}) => {
+    const { charName } = useCharacter();
+    const { selectedCharacter } = useSelectedChar();
     const { playerPosition, setPlayerPosition } = useContext(PositionData) 
     const stepSize = 30; //controls how far player avatar moves 
-    
-
+    console.log(selectedCharacter)
     const handleKeyPress = (event) => { //function to allow player avatar to move upon key press
         const { x, y, width } = playerPosition;
         const maxX = 840;
@@ -41,9 +45,13 @@ const Player = () => {
             bottom: y,
             height: '100px',
             width: '100px',
-            background: 'green',
-            zIndex: 2
+            // background: 'green',
+            zIndex: 2,
+            
         }}>
+            
+          <p style={{zIndex:1000}} >{charName}</p>
+          <img src={char1} alt="Selected Character" />
           
         </div>
     )

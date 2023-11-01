@@ -8,7 +8,8 @@ export const useSelectedChar = () => {
 };
 
 export const SelectedCharProvider = ({ children }) => {
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [selectedCharacter, setSelectedCharacter] = useState('');
+  console.log(selectedCharacter)
 
   const setSelectedChar = (character) => {
     setSelectedCharacter(character);

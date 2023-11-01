@@ -13,9 +13,6 @@ import Homepage from './components/Homepage'
 const App = () => {
   return (
     <div>
-      {/* <Navbars/> */}
-
-
       <Routes>
 
       <Route path='/' element= {<Homepage/>}/>
@@ -27,7 +24,6 @@ const App = () => {
       <Route path='/actionbar' element= {<Actionbar/>}/>
       <Route path='/profile' element={<Profile />} />
       <Route path='/battle' element={<Battle />} />
-      
       <Route path='/login' element={<Login />} />
 
       
