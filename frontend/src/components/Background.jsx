@@ -1,6 +1,6 @@
-import React, {useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../stylesheets/Game.css'
-import Player from './Player'
+
 
 import background from '../assets/images/citypurp2.png'
 
@@ -15,14 +15,14 @@ const Background = () => {
         const { x, y } = position;
 
         if (position.y < 0){
-            setPosition({y:0})
+            setPosition({ y: 0 })
         }
         switch (event.key) {
             case 'a':
-                setPosition({ x: x + stepSize})
+                setPosition({ x: x + stepSize })
                 break;
             case 'd':
-                setPosition({ x: x - stepSize})
+                setPosition({ x: x - stepSize })
                 break;
             default: break
         }

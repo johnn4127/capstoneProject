@@ -4,24 +4,33 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../stylesheets/Battle.css';
 import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
-import { usePicture } from './PictureContext';
+import { PositionData } from './Game';
+import { usePicture } from './PictureContext'; 
 export const BattleContext = createContext()
 import enemy1 from '../assets/images/bossenemy.png'
-const Battle = () => {
+const Battle = ({ enemyIndex }) => {
   const {selectedPicture} = usePicture();
   const [hidden, setHidden] = useState(true)
-const handleHide = () => {
-    if(hidden){
-        setHidden(false)
+  const { enemyPositions, setEnemyPositions, handleStatIndex , playerPosition, setPlayerPosition} = useContext(PositionData)
+  
+  
+  const handleHide = () => {
+    if (hidden) {
+      setHidden(false)
     }
-    if(!hidden){
-        setHidden(true)
+    if (!hidden) {
+      setHidden(true)
     }
-}
-  const { player, setPlayer, setBattle } = useContext(PlayerData)
+  }
+  
+  const { player, setPlayer, setBattle, enemies, setEnemies } = useContext(PlayerData)
+  
   const { charName } = useCharacter();
-  // const [playerCharCon, setPlayerCharCon] = useState(100);
-  const [enemyCon, setEnemyCon] = useState(100);
+  
+  const [currentEnemy, setCurrentEnemy] = useState(enemies[enemyIndex])
+  const updatedEnemyPos = [...enemyPositions]
+
+  const [enemyCon, setEnemyCon] = useState(currentEnemy.confidence);
   const [damageLog, setDamageLog] = useState('');
   const [enemyMessage, setEnemyMessage] = useState('');
   const [enemyLines, setEnemyLines] = useState([
@@ -31,17 +40,27 @@ const handleHide = () => {
     "Tell me about your salary expectations.",
     "What are some of your weaknesses?"
   ]);
+
   const getRandomEnemyLine = () => {
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
   };
   const endBattle = () => {
-    if(enemyCon <= 0){
+    if (enemyCon <= 0 || player.confidence <= 0) {
+
       setBattle(false)
-    setPlayer({...player, confidence: player.maxConfidence})}
+      updatedEnemyPos[enemyIndex] = {...updatedEnemyPos[enemyIndex], defeated: true}
+      setEnemyPositions(updatedEnemyPos)
+      handleStatIndex()
+      console.log(playerPosition)
+      setPlayer({ ...player, confidence: player.maxConfidence })
+    }
   }
-  useEffect(() =>{
-    endBattle()
+
+  useEffect(() => {
+    if(enemyCon === 0){
+      endBattle()
+    }
   }, [enemyCon])
   return (
     <div>
@@ -56,11 +75,13 @@ const handleHide = () => {
         </div>
         <div className="target-box">
           <h2>CODING ENEMY</h2>
-          <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} max={100} variant="danger" />
+          <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} variant="danger" />
           <div style={{right:"5000px"}} >
     <img  className='battleenemy'src={enemy1}/>
     </div>
         </div>
+      </div>
+      <div>
       </div>
       <BattleContext.Provider value={{ hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog }}>
         <p>It's your turn to attack</p>
@@ -69,7 +90,7 @@ const handleHide = () => {
         </div>
         <div className="damage-info-box">
           {damageLog && <p>{damageLog}</p>}
-          <Actionbar />
+          <Actionbar enemyIndex={ enemyIndex }/>
         </div>
       </BattleContext.Provider>
     </div>
