@@ -78,7 +78,6 @@ const Battle = ({ enemyIndex }) => {
           <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} variant="danger" />
           <div style={{right:"5000px"}} >
     <img  className='battleenemy'src={enemy1}/>
-    
     </div>
         </div>
       </div>
@@ -97,5 +96,4 @@ const Battle = ({ enemyIndex }) => {
     </div>
   );
 };
-
 export default Battle;

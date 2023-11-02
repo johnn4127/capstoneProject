@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../stylesheets/Game.css'
 
 
-import background from '../assets/images/background2.gif'
+import background from '../assets/images/citypurp2.png'
 
 const Background = () => {
 
@@ -44,7 +44,7 @@ const Background = () => {
         position: 'absolute',
         left: x,
         top: y,
-        height: '80vh',
+        height: '100vh',
         width: '100vw',
         backgroundImage: `url(${background})`,
         backgroundRepeat: 'repeat-x', //set background image to repeat on the x-axis

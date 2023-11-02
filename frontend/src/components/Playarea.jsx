@@ -16,6 +16,7 @@ const Playarea = () => {
   const { selectedPicture } = usePicture();
   
   const { player, setPlayer, battle, setBattle, shop, setShop } = useContext(PlayerData)
+  
   const { playerPosition, enemyPositions, statIndex, setStatIndex } = useContext(PositionData)
 
 
@@ -63,7 +64,7 @@ const Playarea = () => {
           width: '100vw',
           height: '100vh',
           overflow: 'hidden',
-          backgroundColor: 'darkgray'
+          backgroundImage:`url(${battlescreen})`
         }}>
 
           {!battle && !shop ? ( //if shop and battle are false render this
