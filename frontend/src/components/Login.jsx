@@ -51,11 +51,12 @@ const Login = () => {
 
   return (
     <div className='mainBody'>
+      
     <div className="d-flex justify-content-center align-items-start" style={{ minHeight: '100vh' }}>
-      <div className="border rounded p-4" style={{ marginTop: '100px' }}>
-        <h1 className="text-center">Login</h1>
+      <div className=" rounded p-4" style={{ marginTop: '50px' }}>
+      <h1 style={{fontSize:'75px'}} className="text-center">Login</h1>
         <Form>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group style={{width:'100%',height:'200%'}} controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
@@ -78,19 +79,20 @@ const Login = () => {
           </Form.Group>
 
           <div style={{ textAlign: 'center', margin: '10px' }}>
-            <Button onClick={handleLogin} variant="primary" type="button">
+            <Button style={{width:'100px', height:'40px', fontSize:'20px'}} onClick={handleLogin} variant="primary" type="button">
               Submit
             </Button>
             <Link style={{textDecoration:'none', marginTop:'10px'}} to="/registration">
             <a ><p style={{marginTop:'10px'}} >Need to Register?</p></a>
             </Link>
           </div>
-          
+          <div style={{fontSize:'50%'}}>
           {errorMessage && (
             <Alert variant="danger">
               {errorMessage}
             </Alert>
           )}
+          </div>
         </Form>
       </div>
     </div>
