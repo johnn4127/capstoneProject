@@ -4,16 +4,15 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../stylesheets/Battle.css';
 import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
-import Enemy from './Enemy';
-import { PositionData } from './Playarea';
+import { PositionData } from './Game';
 
 export const BattleContext = createContext()
 
 const Battle = ({ enemyIndex }) => {
 
   
-  
   const [hidden, setHidden] = useState(true)
+  const { enemyPositions, setEnemyPositions, handleStatIndex , playerPosition, setPlayerPosition} = useContext(PositionData)
   
   
   const handleHide = () => {
@@ -26,7 +25,6 @@ const Battle = ({ enemyIndex }) => {
   }
   
   const { player, setPlayer, setBattle, enemies, setEnemies } = useContext(PlayerData)
-  const { enemyPositions, setEnemyPositions, index, setIndex } = useContext(PositionData)
   
   const { charName } = useCharacter();
   
@@ -53,16 +51,18 @@ const Battle = ({ enemyIndex }) => {
     if (enemyCon <= 0 || player.confidence <= 0) {
 
       setBattle(false)
-      setIndex(index + 1)
       updatedEnemyPos[enemyIndex] = {...updatedEnemyPos[enemyIndex], defeated: true}
-      console.log(updatedEnemyPos)
       setEnemyPositions(updatedEnemyPos)
+      handleStatIndex()
+      console.log(playerPosition)
       setPlayer({ ...player, confidence: player.maxConfidence })
-      
     }
   }
 
   useEffect(() => {
+    if(enemyCon === 0){
+      handleStatIndex
+    }
     endBattle()
   }, [enemyCon])
 
@@ -76,7 +76,7 @@ const Battle = ({ enemyIndex }) => {
         </div>
         <div className="target-box">
           <h2>CODING ENEMY</h2>
-          <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} max={100} variant="danger" />
+          <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} variant="danger" />
         </div>
       </div>
       <div>

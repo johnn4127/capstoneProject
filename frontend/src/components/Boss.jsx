@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { PositionData } from './Playarea';
+import { PositionData } from './Game';
 
 const Boss = () => {
 

@@ -7,7 +7,7 @@ import { BattleContext } from './Battle';
 
 const Actionbar = ({ enemyIndex }) => {
 
-  const {player, setPlayer, enemies, setEnemies, setIndex } = useContext(PlayerData)
+  const {player, setPlayer, enemies, setEnemies } = useContext(PlayerData)
 
   const { hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog } = useContext(BattleContext)
 

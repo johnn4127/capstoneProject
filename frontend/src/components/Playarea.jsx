@@ -4,72 +4,51 @@ import Player from './Player'
 import '../stylesheets/Game.css'
 import Enemy from './Enemy'
 import Boss from './Boss'
-import { PlayerData } from './Game'
+import { PlayerData, PositionData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from './Battle'
 
-export const PositionData = createContext()
+
 
 const Playarea = () => {
-
   const { player, setPlayer, battle, setBattle, shop, setShop } = useContext(PlayerData)
-  const [playerPosition, setPlayerPosition] = useState({ x: 0, y: -350, width: 100 }) //sets initial position of player avatar
-
-  const [enemyPositions, setEnemyPositions] = useState([ //sets the position data for different enemies
-    { x: 400, y: 365, width: 100, defeated: false },
-    { x: 800, y: 365, width: 100, defeated: false },
-    { x: 1200, y: 365, width: 100, defeated: false },
-  ]);
-
-  const [index, setIndex] = useState(0)
-
-  const [bossPosition, setBossPosition] = useState({ x: 1600, y: -600, width: 300 }) //sets initial position of player avatar
-
-  const [firstEnemyDefeated, setFirstEnemyDefeated] = useState(false)
-  const [secondEnemyDefeated, setSecondEnemyDefeated] = useState(false)
-  const [thirdEnemyDefeated, setThirdEnemyDefeated] = useState(false)
+  const { playerPosition, enemyPositions, statIndex, setStatIndex } = useContext(PositionData)
 
 
   const checkCollision = () => {
     const playerLeft = playerPosition.x; // Left side of the player div
     const playerRight = playerPosition.x + playerPosition.width; // Right side of the player div
 
+    const enemyLeft = enemyPositions[statIndex].x; // Left side of the enemy div
+    const enemyRight = enemyPositions[statIndex].x + enemyPositions[statIndex].width; // Right side of the enemy div
+    
+    
+    if (playerRight > enemyLeft) { //checks whether or not play is interesecting with any enemies
+      //console.log(`enemLeft: ${enemyLeft}, enemyRight: ${enemyRight}`)
+      console.log("Index at start of battle: ", statIndex);
+      setBattle(true);
+    }
 
-    enemyPositions.forEach((enemyPos, index) => { //checks the size of each enemy div
-      const enemyLeft = enemyPos.x; // Left side of the enemy div
-      const enemyRight = enemyPos.x + enemyPos.width; // Right side of the enemy div
+    // enemyPositions.forEach((enemyPos, index) => { //checks the size of each enemy div
+    //   const enemyLeft = enemyPos.x; // Left side of the enemy div
+    //   const enemyRight = enemyPos.x + enemyPos.width; // Right side of the enemy div
 
 
-      if (playerRight > enemyLeft && playerLeft < enemyRight) { //checks whether or not play is interesecting with any enemies
-        console.log(`Collision detected with Enemy ${index + 1}`);
-        setBattle(true);
-      }
-    });
+    //   if (playerRight > enemyLeft && playerLeft < enemyRight) { //checks whether or not play is interesecting with any enemies
+    //     console.log(`Collision detected with Enemy ${index + 1}`);
+    //     setBattle(true);
+    //   }
+    // });
   };
 
-  const endBattle = () => { //used to undrender battle component and render shop componnent. Should later be moved to battle component during testing.
-    if (!firstEnemyDefeated) {
-      setFirstEnemyDefeated(true)
-      setBattle(false)
-      setShop(true)
-    }
-    else if (firstEnemyDefeated && !secondEnemyDefeated) {
-      setSecondEnemyDefeated(true)
-      setBattle(false)
-      setShop(true)
-    } else if (firstEnemyDefeated && secondEnemyDefeated && !thirdEnemyDefeated) {
-      setThirdEnemyDefeated(true)
-      setBattle(false)
-      setShop(true)
-    }
-  }
+
 
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
       checkCollision();
     })
 
-  }, [playerPosition, enemyPositions])
+  }, [playerPosition, enemyPositions, statIndex])
 
 
   return (
@@ -83,7 +62,6 @@ const Playarea = () => {
           backgroundColor: 'darkgray'
         }}>
 
-        <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, setIndex }}>
           {!battle && !shop ? ( //if shop and battle are false render this
             <>
               <Background />
@@ -98,18 +76,16 @@ const Playarea = () => {
 
           {battle ? ( //if battle is true render this
             <>
-              <Battle enemyIndex={index} />
-              <button onClick={() => endBattle()}>End Battle</button>
+              <Battle enemyIndex={statIndex} />
             </>
           ) : null
           }
-          
+
           {shop ? ( //if shop is true render this
             <>
               <Shop />
             </>
           ) : null}
-        </PositionData.Provider>
       </div>
     </div>
   )
