@@ -7,23 +7,23 @@
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align content to the left */
+    align-items: flex-start; 
     text-align: left;
-    position: relative; /* Create a positioning context */
+    position: relative;
 }
 
 .selectedchar {
     position: absolute;
-    top: 20px; /* Position at the top */
-    left: 50%; /* Horizontally center the selected character */
-    transform: translateX(-50%); /* Center horizontally */
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%);
     text-align: center;
 }
 
 
 .selectedchar h3 {
-    margin-top: 75px; /* Adjust the margin as needed */
-    margin-left: 20px; /* Adjust the margin-left as needed */
+    margin-top: 75px;
+    margin-left: 20px; 
 }
 
 .selectedchar img {
@@ -31,9 +31,9 @@
 }
 
 .selectedchar p {
-    margin-top: 10px; /* Adjust the margin as needed */
-    font-size: 24px; /* Adjust the font size as needed */
-    color: white; /* Set the desired color */
+    margin-top: 10px; 
+    font-size: 24px; 
+    color: white; /
 }
 
 .startgamebutton {
