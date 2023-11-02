@@ -116,7 +116,7 @@ function RegisterForm() {
             </Link>
         </div>
         </Form>
-        <div style={{fontSize:'41%',}}>
+        <div style={{fontSize:'35%',}}>
         {registrationStatus === 'success' && (
           <Alert variant="success" className="mt-3">
             Registration successful!
