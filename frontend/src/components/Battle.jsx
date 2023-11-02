@@ -4,11 +4,11 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../stylesheets/Battle.css';
 import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
-
+import { usePicture } from './PictureContext'; 
 export const BattleContext = createContext()
-
+import enemy1 from '../assets/images/bossenemy.png'
 const Battle = () => {
-
+  const {selectedPicture} = usePicture();
   const [hidden, setHidden] = useState(true)
 
 
@@ -20,9 +20,7 @@ const handleHide = () => {
         setHidden(true)
     }
 }
-
   const { player, setPlayer, setBattle } = useContext(PlayerData)
-
   const { charName } = useCharacter();
   // const [playerCharCon, setPlayerCharCon] = useState(100);
   const [enemyCon, setEnemyCon] = useState(100);
@@ -39,17 +37,14 @@ const handleHide = () => {
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
   };
-
   const endBattle = () => {
     if(enemyCon <= 0){
       setBattle(false)
     setPlayer({...player, confidence: player.maxConfidence})}
   }
-
   useEffect(() =>{
     endBattle()
   }, [enemyCon])
-
   return (
     <div>
       <h1>CODING BATTLE</h1>
@@ -57,10 +52,17 @@ const handleHide = () => {
         <div className="target-box">
           <h2>{charName}</h2>
           <ProgressBar now={player.confidence} label={`Confidence: ${player.confidence}`} min='0' max={player.maxConfidence} variant="success" />
+          <div>
+          <img  className='battlecharacter' src={selectedPicture} alt="Selected Character" />
+          </div>
         </div>
         <div className="target-box">
           <h2>CODING ENEMY</h2>
           <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} max={100} variant="danger" />
+          <div style={{right:"5000px"}} >
+    <img  className='battleenemy'src={enemy1}/>
+    
+    </div>
         </div>
       </div>
       <BattleContext.Provider value={{ hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog }}>

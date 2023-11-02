@@ -5,9 +5,9 @@ import { useCharacter } from './CharacterContext';
 import { usePicture } from './PictureContext'; 
 import '../stylesheets/Profile.css'
 import Player from './Player'
-import char2 from '../assets/images/frog.gif';
+import char2 from '../assets/images/spin.gif';
 import char3 from '../assets/images/pikachu.gif';
-import char1 from '../assets/images/mariowalk.gif';
+import char1 from '../assets/images/ghost.gif';
 import char4 from '../assets/images/pug.gif';
 import char5 from '../assets/images/star.gif';
 import char6 from '../assets/images/cat.gif';
@@ -111,7 +111,7 @@ console.log(selectedPicture)
       </div>
       <div className='selectedchar'>
       <div className='selectedtitle' >
-        <h3>Selected CHARACTER</h3>
+        <h3>Selected Character</h3>
         </div>
       
         <img src={selectedPicture} alt="Selected Character" />

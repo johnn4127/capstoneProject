@@ -45,7 +45,7 @@ const Player = ({}) => {
             position: 'relative',
             left: x, 
             bottom: y,
-            height: '100px',
+            height: '70px',
             width: '100px',
             // background: 'green',
             zIndex: 2,

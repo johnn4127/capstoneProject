@@ -1,7 +1,9 @@
 import React, {useState, useEffect } from 'react'
 import '../stylesheets/Game.css'
 import Player from './Player'
-import background from '../assets/images/background.gif'
+
+import background from '../assets/images/background2.gif'
+
 const Background = () => {
 
     const backgroundUrl = 'https://cdnb.artstation.com/p/assets/images/images/024/841/051/original/mengo-fedorov-forest-snow-parallax.gif?1583715257'
@@ -42,11 +44,12 @@ const Background = () => {
         position: 'absolute',
         left: x,
         top: y,
-        height: '200vh',
-        width: '500vw',
+        height: '80vh',
+        width: '100vw',
         backgroundImage: `url(${background})`,
         backgroundRepeat: 'repeat-x', //set background image to repeat on the x-axis
-        overflow: 'visible'
+        overflow: 'visible',
+        backgroundSize: 'cover'
     }}>
     </div>
   )
