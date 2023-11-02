@@ -1,7 +1,9 @@
 import React, {useState, useEffect } from 'react'
 import '../stylesheets/Game.css'
 import Player from './Player'
+
 import background from '../assets/images/background2.gif'
+
 const Background = () => {
 
     const backgroundUrl = 'https://cdnb.artstation.com/p/assets/images/images/024/841/051/original/mengo-fedorov-forest-snow-parallax.gif?1583715257'
