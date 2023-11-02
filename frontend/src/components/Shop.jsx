@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { PlayerData } from './Game'
-
+import '../stylesheets/Shop.css'
 const Shop = () => {
     const {player, setPlayer, setShop} = useContext(PlayerData)
 
@@ -89,7 +89,7 @@ const Shop = () => {
 
     return (
         <>
-        <div>
+        <div className='shopMain'>
             <div >
                 <ul>
                     <li>proficiency: {player.proficiency}</li>

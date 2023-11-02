@@ -108,9 +108,11 @@ console.log(selectedPicture)
           <img style={{width:"100px",height:"120px"}} src={char6} alt="Picture 6" />
         </button>
       </div>
-<div className='selectedtitle' >
-        <h3>Selected CHARACTER</h3></div>
       <div className='selectedchar'>
+      <div className='selectedtitle' >
+        <h3>Selected CHARACTER</h3>
+        </div>
+      
         <img src={selectedPicture} alt="Selected Character" />
         <p>{charName}</p>
         <Nav.Link className="startgamebutton" as={Link} to="/game">
