@@ -62,12 +62,12 @@ function RegisterForm() {
 
   return (
     <div className='mainContainer'>
-      <h1 style={{fontSize:'75px',marginTop:'50px'}} className="text-center">Registration</h1>
+      <h1 style={{fontSize:'75px',marginTop:'100px'}} className="text-center">Registration</h1>
     <Container
       className="d-flex justify-content-center align-items-start"
       style={{ minHeight: '100vh' }}
     >
-      <div  style={{ marginTop: '30px', }}>
+      <div  style={{ marginTop: '0px', }}>
         
         <Form>
           <Form.Group  controlId="formBasicEmail">
