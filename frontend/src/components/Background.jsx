@@ -1,10 +1,10 @@
 import React, {useState, useEffect } from 'react'
 import '../stylesheets/Game.css'
 import Player from './Player'
-
+import background from '../assets/images/background.gif'
 const Background = () => {
 
-    const backgroundUrl = 'https://i.pinimg.com/originals/9c/3a/f7/9c3af7361bf5d65d3b1fd84a73c750f4.png'
+    const backgroundUrl = 'https://cdnb.artstation.com/p/assets/images/images/024/841/051/original/mengo-fedorov-forest-snow-parallax.gif?1583715257'
 
     const [position, setPosition] = useState({ x: 0})
     const stepSize = 20;
@@ -42,9 +42,9 @@ const Background = () => {
         position: 'absolute',
         left: x,
         top: y,
-        height: '70vh',
-        width: '300vh',
-        backgroundImage: `url('https://i.pinimg.com/originals/9c/3a/f7/9c3af7361bf5d65d3b1fd84a73c750f4.png')`,
+        height: '200vh',
+        width: '500vw',
+        backgroundImage: `url(${background})`,
         backgroundRepeat: 'repeat-x', //set background image to repeat on the x-axis
         overflow: 'visible'
     }}>

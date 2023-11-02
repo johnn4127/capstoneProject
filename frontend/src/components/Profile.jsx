@@ -5,9 +5,12 @@ import { useCharacter } from './CharacterContext';
 import { usePicture } from './PictureContext'; 
 import '../stylesheets/Profile.css'
 import Player from './Player'
-import char2 from '../assets/images/walkinggirlpng.gif';
+import char2 from '../assets/images/frog.gif';
 import char3 from '../assets/images/pikachu.gif';
-import char1 from '../assets/images/kid.gif';
+import char1 from '../assets/images/mariowalk.gif';
+import char4 from '../assets/images/pug.gif';
+import char5 from '../assets/images/star.gif';
+import char6 from '../assets/images/cat.gif';
 import { useSelectedChar } from './SelectedCharContext';
 const Profile = () => {
   const [newCharName, setNewCharName] = useState('');
@@ -94,6 +97,16 @@ console.log(selectedPicture)
         </button>
         <button onClick={() => handlePictureSelect(char3)}>
           <img style={{width:"100px",height:"120px"}} src={char3} alt="Picture 3" />
+        </button>
+        <br></br>
+        <button onClick={() => handlePictureSelect(char4)}>
+          <img style={{width:"100px",height:"120px"}} src={char4} alt="Picture 4" />
+        </button>
+        <button onClick={() => handlePictureSelect(char5)}>
+          <img style={{width:"100px",height:"120px"}} src={char5} alt="Picture 5" />
+        </button>
+        <button onClick={() => handlePictureSelect(char6)}>
+          <img style={{width:"100px",height:"120px"}} src={char6} alt="Picture 6" />
         </button>
       </div>
       <div className='selectedchar'>
