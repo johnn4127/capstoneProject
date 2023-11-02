@@ -2,18 +2,20 @@ import React, { useState, useEffect, useContext } from 'react'
 import { PositionData } from './Playarea';
 import { useCharacter } from './CharacterContext';
 import { useSelectedChar } from './SelectedCharContext';
-
-import char1 from '../assets/images/pikachu.gif';   
-const Player = ({selectedPicture}) => {
+import { usePicture } from './PictureContext'; 
+ 
+const Player = ({}) => {
     const { charName } = useCharacter();
-    const { selectedCharacter } = useSelectedChar();
+    const {selectedchar} = useSelectedChar();
+    const {selectedPicture} = usePicture();
+    console.log(charName)
+    console.log({selectedchar})
     const { playerPosition, setPlayerPosition } = useContext(PositionData) 
     const stepSize = 30; //controls how far player avatar moves 
-    console.log(selectedCharacter)
+    
     const handleKeyPress = (event) => { //function to allow player avatar to move upon key press
         const { x, y, width } = playerPosition;
         const maxX = 840;
-
         switch (event.key) {
             case 'a':
                 if(x - stepSize >= 0){ // checks whether player is within bounds of background
@@ -51,7 +53,9 @@ const Player = ({selectedPicture}) => {
         }}>
             
           <p style={{zIndex:1000}} >{charName}</p>
-          <img src={char1} alt="Selected Character" />
+          
+        <img src={selectedPicture} alt="Selected Character" />
+      
           
         </div>
     )

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Nav } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useCharacter } from './CharacterContext';
 import { usePicture } from './PictureContext'; 
 import '../stylesheets/Profile.css'
-
+import Player from './Player'
 import char2 from '../assets/images/walkinggirlpng.gif';
 import char3 from '../assets/images/pikachu.gif';
-import char1 from '../assets/images/duck.gif';
+import char1 from '../assets/images/kid.gif';
 import { useSelectedChar } from './SelectedCharContext';
 const Profile = () => {
   const [newCharName, setNewCharName] = useState('');
-  // const [selectedCharacter, setSelectedCharacter] = useState(<char1/>); 
+  //const [selectedCharacter, setSelectedCharacter] = useState(<char1/>); 
   const { userId } = useParams();
   const { setSelectedChar } = useSelectedChar();
   const handleCharacterSelect = (characterImage) => {
@@ -57,7 +57,13 @@ console.log(selectedPicture)
     setCharacterName(newCharName);
   };
 
-  console.log(selectedPicture)
+  console.log(selectedPicture);
+
+  const navigate = useNavigate();
+
+  const startGame = (e) => {
+    navigate('/game')
+  }
 
   return (
     <div className='profilebackground'>
