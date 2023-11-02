@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { PositionData } from './Playarea';
-
+import enemy1 from '../assets/images/bossenemy.png'
 const Enemy = ({ index }) => {
   const { enemyPositions, setEnemyPositions } = useContext(PositionData);
   const stepSize = 30;
@@ -56,11 +56,10 @@ const Enemy = ({ index }) => {
         left: x,
         bottom: y,
         width: '100px',
-        height: '100px',
-        background: 'red',
+        height: '30px',
       }}
     >
-      <p>Enemy {index + 1}</p>
+      <p>Enemy <img style={{height:"100px"}}  src={enemy1}/> {index + 1}</p>
     </div>
   );
 };

@@ -52,9 +52,9 @@ const Player = ({}) => {
             
         }}>
             
-          <p style={{zIndex:1000}} >{charName}</p>
+          <p  style={{zIndex:1000}} className='playcharactername' >{charName}</p>
           
-        <img src={selectedPicture} alt="Selected Character" />
+        <img className='playcharacter' src={selectedPicture} alt="Selected Character" />
       
           
         </div>
