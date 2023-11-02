@@ -7,10 +7,14 @@ import Boss from './Boss'
 import { PlayerData, PositionData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from './Battle'
+import { usePicture } from './PictureContext';
 
 
 
 const Playarea = () => {
+
+  const { selectedPicture } = usePicture();
+  
   const { player, setPlayer, battle, setBattle, shop, setShop } = useContext(PlayerData)
   const { playerPosition, enemyPositions, statIndex, setStatIndex } = useContext(PositionData)
 

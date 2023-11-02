@@ -5,7 +5,7 @@
   }
   
   .target-box {
-    border: 1px solid #ccc;
+    border: 1px solid #b98585;
     padding: 10px;
     margin: 10px;
     width: 45%;
@@ -23,3 +23,8 @@
     margin: 10px;
   }
   
+.battlecharacter{height: 150px;
+width: 150px;}
+
+.battleenemy{height: 150px;
+  width: 150px;}

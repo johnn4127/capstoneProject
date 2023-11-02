@@ -1,5 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { PositionData, PlayerData } from './Game';
+import { PositionData, PlayerData } from './Game';;
+import enemy1 from '../assets/images/bossenemy.png'
+
 
 const Enemy = ({ index }) => {
 
@@ -69,10 +71,10 @@ const handlePlayerAdvance = () => {
           bottom: y,
           width: '100px',
           height: '100px',
-          background: 'red',
+          height: '30px',
         }}
         >
-            <p>Enemy {index + 1}</p>
+             <p>Enemy <img style={{height:"100px"}}  src={enemy1}/> {index + 1}</p>
           </div>
       </button>
       ) : null}

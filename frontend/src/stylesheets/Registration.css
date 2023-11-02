@@ -2,5 +2,14 @@
 margin: 10px;
 }
 .mainContainer{
-    background-image: url('https://i.redd.it/5fxny70880xb1.gif');
+    background-image: url('https://64.media.tumblr.com/0be6dd3b9a8624c8b0ed47deec5f39fd/tumblr_o9w9bfjRiY1vyuxeno1_1280.gif');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -5,12 +5,11 @@ import '../stylesheets/Battle.css';
 import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
 import { PositionData } from './Game';
-
+import { usePicture } from './PictureContext'; 
 export const BattleContext = createContext()
-
+import enemy1 from '../assets/images/bossenemy.png'
 const Battle = ({ enemyIndex }) => {
-
-  
+  const {selectedPicture} = usePicture();
   const [hidden, setHidden] = useState(true)
   const { enemyPositions, setEnemyPositions, handleStatIndex , playerPosition, setPlayerPosition} = useContext(PositionData)
   
@@ -46,7 +45,6 @@ const Battle = ({ enemyIndex }) => {
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
   };
-
   const endBattle = () => {
     if (enemyCon <= 0 || player.confidence <= 0) {
 
@@ -61,11 +59,9 @@ const Battle = ({ enemyIndex }) => {
 
   useEffect(() => {
     if(enemyCon === 0){
-      handleStatIndex
+      endBattle()
     }
-    endBattle()
   }, [enemyCon])
-
   return (
     <div>
       <h1>CODING BATTLE</h1>
@@ -73,10 +69,17 @@ const Battle = ({ enemyIndex }) => {
         <div className="target-box">
           <h2>{charName}</h2>
           <ProgressBar now={player.confidence} label={`Confidence: ${player.confidence}`} min='0' max={player.maxConfidence} variant="success" />
+          <div>
+          <img  className='battlecharacter' src={selectedPicture} alt="Selected Character" />
+          </div>
         </div>
         <div className="target-box">
           <h2>CODING ENEMY</h2>
           <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} variant="danger" />
+          <div style={{right:"5000px"}} >
+    <img  className='battleenemy'src={enemy1}/>
+    
+    </div>
         </div>
       </div>
       <div>

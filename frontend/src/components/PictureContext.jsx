@@ -8,8 +8,10 @@ export const usePicture = () => {
 
 export const PictureProvider = ({ children }) => {
   const [selectedPicture, setSelectedPicture] = useState(null);
+  console.log("Pic State: ", selectedPicture )
 
   const setPicture = (picture) => {
+    console.log(`Picture: ${picture}`)
     setSelectedPicture(picture);
   };
 

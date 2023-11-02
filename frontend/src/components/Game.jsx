@@ -1,5 +1,7 @@
 import React, { useState, createContext } from 'react';
 import Playarea from './Playarea';
+import { usePicture } from './PictureContext';
+
 
 
 export const PlayerData = createContext();
@@ -31,6 +33,8 @@ const Game = () => {
   const handleStatIndex = () => setStatIndex(statIndex + 1)
 
   const [bossPosition, setBossPosition] = useState({ x: 1600, y: -600, width: 300 }) //sets initial position of player avatar
+
+  const { selectedPicture } = usePicture();
 
   return (
     <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, battle, setBattle, shop, setShop }}>
