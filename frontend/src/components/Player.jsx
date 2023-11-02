@@ -1,15 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { PositionData } from './Playarea';
-
-const Player = () => {
+import { useCharacter } from './CharacterContext';
+import { useSelectedChar } from './SelectedCharContext';
+import { usePicture } from './PictureContext'; 
+ 
+const Player = ({}) => {
+    const { charName } = useCharacter();
+    const {selectedchar} = useSelectedChar();
+    const {selectedPicture} = usePicture();
+    console.log(charName)
+    console.log({selectedchar})
     const { playerPosition, setPlayerPosition } = useContext(PositionData) 
     const stepSize = 30; //controls how far player avatar moves 
     
-
     const handleKeyPress = (event) => { //function to allow player avatar to move upon key press
         const { x, y, width } = playerPosition;
         const maxX = 840;
-
         switch (event.key) {
             case 'a':
                 if(x - stepSize >= 0){ // checks whether player is within bounds of background
@@ -41,9 +47,15 @@ const Player = () => {
             bottom: y,
             height: '100px',
             width: '100px',
-            background: 'green',
-            zIndex: 2
+            // background: 'green',
+            zIndex: 2,
+            
         }}>
+            
+          <p style={{zIndex:1000}} >{charName}</p>
+          
+        <img src={selectedPicture} alt="Selected Character" />
+      
           
         </div>
     )

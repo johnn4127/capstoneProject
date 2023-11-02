@@ -7,10 +7,13 @@ import Boss from './Boss'
 import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from './Battle'
+import { usePicture } from './PictureContext';
 
 export const PositionData = createContext()
 
 const Playarea = () => {
+
+  const { selectedPicture } = usePicture();
   
   const { player, setPlayer, battle, setBattle, shop, setShop } = useContext(PlayerData)
   const [playerPosition, setPlayerPosition] = useState({ x: 0, y: -350, width: 100 }) //sets initial position of player avatar
