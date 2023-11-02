@@ -98,6 +98,7 @@ console.log(selectedPicture)
         <button onClick={() => handlePictureSelect(char3)}>
           <img style={{width:"100px",height:"120px"}} src={char3} alt="Picture 3" />
         </button>
+        <br></br>
         <button onClick={() => handlePictureSelect(char4)}>
           <img style={{width:"100px",height:"120px"}} src={char4} alt="Picture 4" />
         </button>
