@@ -62,15 +62,16 @@ function RegisterForm() {
 
   return (
     <div className='mainContainer'>
+      <h1 style={{fontSize:'75px',marginTop:'50px'}} className="text-center">Registration</h1>
     <Container
       className="d-flex justify-content-center align-items-start"
       style={{ minHeight: '100vh' }}
     >
-      <div className="border rounded p-4" style={{ marginTop: '100px' }}>
-        <h1 className="text-center">User Registration</h1>
+      <div  style={{ marginTop: '30px', }}>
+        
         <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+          <Form.Group  controlId="formBasicEmail">
+            <Form.Label style={{margin:'10px'}}>Email Address</Form.Label>
             <Form.Control
               type="email"
               name="email"
@@ -81,7 +82,7 @@ function RegisterForm() {
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label style={{margin:'10px'}}>Password</Form.Label>
             <Form.Control
               type="password"
               name="password"
@@ -92,7 +93,7 @@ function RegisterForm() {
           </Form.Group>
 
           <Form.Group controlId="formConfirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label style={{margin:'10px'}}>Confirm Password</Form.Label>
             <Form.Control
               type="password"
               name="confirmPassword"
@@ -103,19 +104,19 @@ function RegisterForm() {
           </Form.Group>
             <div style={{justifyContent:''}}></div>
           <div style={{ textAlign: 'center', margin: '10px' }}>
-            <Button variant="primary" type="button" onClick={handleRegister}>
+            <Button style={{width:'100px', height:'40px', fontSize:'65%'}} variant="primary" type="button" onClick={handleRegister}>
               Register
             </Button>
           </div>
         <div style={{ textAlign: 'center', margin: '10px' }}>
           <Link to="/login">
-            <Button variant="primary" type="button">
+            <Button style={{width:'100px', height:'40px', fontSize:'65%'}} variant="primary" type="button">
               Login
             </Button>
             </Link>
         </div>
         </Form>
-      
+        <div style={{fontSize:'41%',}}>
         {registrationStatus === 'success' && (
           <Alert variant="success" className="mt-3">
             Registration successful!
@@ -141,6 +142,7 @@ function RegisterForm() {
             This email is already taken. Please use a different email.
           </Alert>
         )}
+        </div>
       </div>
     </Container>
     </div>
