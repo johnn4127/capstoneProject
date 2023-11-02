@@ -4,14 +4,12 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../stylesheets/Battle.css';
 import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
-import { usePicture } from './PictureContext'; 
+import { usePicture } from './PictureContext';
 export const BattleContext = createContext()
 import enemy1 from '../assets/images/bossenemy.png'
 const Battle = () => {
   const {selectedPicture} = usePicture();
   const [hidden, setHidden] = useState(true)
-
-
 const handleHide = () => {
     if(hidden){
         setHidden(false)
@@ -61,7 +59,6 @@ const handleHide = () => {
           <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} max={100} variant="danger" />
           <div style={{right:"5000px"}} >
     <img  className='battleenemy'src={enemy1}/>
-    
     </div>
         </div>
       </div>
@@ -78,5 +75,4 @@ const handleHide = () => {
     </div>
   );
 };
-
 export default Battle;

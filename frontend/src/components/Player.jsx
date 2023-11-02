@@ -4,7 +4,7 @@ import { useCharacter } from './CharacterContext';
 import { useSelectedChar } from './SelectedCharContext';
 import { usePicture } from './PictureContext'; 
  
-const Player = ({}) => {
+const Player = () => {
     const { charName } = useCharacter();
     const {selectedchar} = useSelectedChar();
     const {selectedPicture} = usePicture();
@@ -54,9 +54,7 @@ const Player = ({}) => {
             
           <p  style={{zIndex:1000}} className='playcharactername' >{charName}</p>
           
-        <img className='playcharacter' src={selectedPicture} alt="Selected Character" />
-      
-          
+        <img className='playcharacter' src={selectedPicture} alt="Selected Character" />        
         </div>
     )
 }

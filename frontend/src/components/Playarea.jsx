@@ -8,7 +8,7 @@ import { PlayerData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from './Battle'
 import { usePicture } from './PictureContext';
-
+import battlescreen from '../assets/images/battlescreen.png'
 export const PositionData = createContext()
 
 const Playarea = () => {
@@ -80,7 +80,7 @@ const Playarea = () => {
           width: '100vw',
           height: '100vh',
           overflow: 'hidden',
-          backgroundColor: 'darkgray'
+          backgroundImage:`url(${battlescreen})`
         }}>
         <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition }}>
           {!battle && !shop ? ( //if shop and battle are false render this
