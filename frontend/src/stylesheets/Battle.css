@@ -23,4 +23,8 @@
     margin: 10px;
   }
   
-  
+.battlecharacter{height: 150px;
+width: 150px;}
+
+.battleenemy{height: 150px;
+  width: 150px;}
