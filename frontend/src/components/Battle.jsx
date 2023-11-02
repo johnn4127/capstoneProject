@@ -61,6 +61,7 @@ const handleHide = () => {
           <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} max={100} variant="danger" />
           <div style={{right:"5000px"}} >
     <img  className='battleenemy'src={enemy1}/>
+    
     </div>
         </div>
       </div>
