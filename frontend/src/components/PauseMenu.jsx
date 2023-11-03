@@ -34,7 +34,7 @@ const openShop = () => {
             
                 
                     <h3>{charName}</h3>
-                    <img src={selectedPicture} alt="" />
+                    <img src={selectedPicture} alt="" height='200px'/>
                 
         <div id='playerStats'>
                 <ul>

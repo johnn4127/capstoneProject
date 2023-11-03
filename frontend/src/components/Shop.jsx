@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { PlayerData } from './Game'
 import '../stylesheets/Shop.css'
 const Shop = () => {
-    const {player, setPlayer, setShop} = useContext(PlayerData)
+    const {player, setPlayer, setShop, setPause} = useContext(PlayerData)
 
 
     const skill1 = {
@@ -84,6 +84,7 @@ const Shop = () => {
 
     const closeShop = () => {
         setShop(false)
+        setPause(true)
     }
 
 
@@ -114,7 +115,7 @@ const Shop = () => {
                         <p>Experience Price: {item.price}</p>
                     </div>
                 ))}
-                <button onClick={() => closeShop()}>Close Shop</button>
+                <button onClick={() => closeShop()}>Exit Shop</button>
             </div>
          </div>
         </>
