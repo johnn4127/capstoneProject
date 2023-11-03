@@ -1,4 +1,4 @@
-#playArea{
+playArea{
     height: 90vh;
     display: flex;
     justify-content: center;
@@ -23,4 +23,8 @@ body{
 .playcharactername{
     color: white;
 }
-
+.pixelated {
+    opacity: 1;
+  transition: opacity .1s ease-in-out; /* Adjust the transition duration as needed */
+  }
+  

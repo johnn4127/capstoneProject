@@ -24,6 +24,10 @@ const Battle = ({ enemyIndex }) => {
     setBattle(false)
   }
   
+  const [message, setMessage] = useState(''); // Add a state for the message
+
+  const updateMessage = (newMessage) => {
+    setMessage(newMessage);};
   //OTHERS
   const handleHide = () => {
     if (hidden) {
@@ -71,11 +75,15 @@ const Battle = ({ enemyIndex }) => {
   return (
     <div>
       <div className="box">
+      <div class="centered-element">
+        {message && <img src={message} alt="Exclamation Point" />}
+      </div>
         <div className="target-box">
           <h2 className='character-info' >CODING ENEMY</h2>
           <ProgressBar now={enemyCon} label={`${Math.round((enemyCon / currentEnemy.maxConfidence) * 100)}%`} variant="danger" />
           <div className='character-info' style={{ right: "5000px" }}>
             <img className='battleenemy' src={enemy1} alt="Enemy" />
+           
           </div>
         </div>
       </div>
@@ -97,7 +105,7 @@ const Battle = ({ enemyIndex }) => {
             </div>
             <div className="damage-info-box">
               {damageLog && <p>{damageLog}</p>}
-              <Actionbar enemyIndex={enemyIndex} />
+              <Actionbar enemyIndex={enemyIndex} updateMessage={updateMessage} />
             </div>
           </div>
         </div>
