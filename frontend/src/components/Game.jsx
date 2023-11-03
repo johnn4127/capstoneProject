@@ -2,14 +2,19 @@ import React, { useState, createContext } from 'react';
 import Playarea from './Playarea';
 import { usePicture } from './PictureContext';
 
-
-
 export const PlayerData = createContext();
-export const PositionData = createContext()
+export const PositionData = createContext();
 
 const Game = () => {
+  const [player, setPlayer] = useState({
+    proficiency: 50,
+    confidence: 200,
+    maxConfidence: 200,
+    skills: [],
+    exp: 0,
+  });
 
-  const [player, setPlayer] = useState({ proficiency: 15, confidence: 200, maxConfidence: 200, skills: [], exp: 3000 })
+  
   const [battle, setBattle] = useState(false) //controls rendering of battle component
   const [shop, setShop] = useState(false) //controls rendering of shop component
   const [pause, setPause] = useState(false)
@@ -29,11 +34,17 @@ const Game = () => {
     { x: 1200, y: 200, width: 100, defeated: false },
   ]);
 
-  const [statIndex, setStatIndex] = useState(0)
+  const [statIndex, setStatIndex] = useState(0);
 
-  const handleStatIndex = () => setStatIndex(statIndex + 1)
+  const handleStatIndex = () => setStatIndex(statIndex + 1);
 
-  const [bossPosition, setBossPosition] = useState({ x: 1600, y: -600, width: 300 }) //sets initial position of player avatar
+  const [bossPosition, setBossPosition] = useState({
+    x: 1600,
+    y: -600,
+    width: 300,
+  });
+
+  const [acquiredExp, setAcquiredExp] = useState(0); // New state to track acquired experience points
 
   const { selectedPicture } = usePicture();
 
@@ -42,9 +53,10 @@ const Game = () => {
       <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, statIndex, setStatIndex, handleStatIndex }}>
 
         <Playarea />
-
+        <div style={{ marginTop: '10px' }}>
+          <strong>Acquired EXP: {acquiredExp}</strong>
+        </div>
       </PositionData.Provider>
-
     </PlayerData.Provider>
   );
 };
