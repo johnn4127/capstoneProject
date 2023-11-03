@@ -14,8 +14,10 @@ const Game = () => {
     exp: 0,
   });
 
-  const [battle, setBattle] = useState(false); // Controls rendering of battle component
-  const [shop, setShop] = useState(false); // Controls rendering of the shop component
+  
+  const [battle, setBattle] = useState(false) //controls rendering of battle component
+  const [shop, setShop] = useState(false) //controls rendering of shop component
+  const [pause, setPause] = useState(false)
 
   const [enemies, setEnemies] = useState([
     { proficiency: 10, confidence: 100, maxConfidence: 100, exp: 100 },
@@ -59,23 +61,9 @@ const Game = () => {
   const { selectedPicture } = usePicture();
 
   return (
-    <PlayerData.Provider
-      value={{ player, setPlayer, enemies, setEnemies, battle, setBattle, shop, setShop }}
-    >
-      <PositionData.Provider
-        value={{
-          playerPosition,
-          setPlayerPosition,
-          enemyPositions,
-          setEnemyPositions,
-          bossPosition,
-          setBossPosition,
-          statIndex,
-          setStatIndex,
-          handleStatIndex,
-          acquiredExp, // Provide acquiredExp in the context
-        }}
-      >
+    <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, battle, setBattle, shop, setShop, pause, setPause }}>
+      <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, statIndex, setStatIndex, handleStatIndex }}>
+
         <Playarea />
         <div style={{ marginTop: '10px' }}>
           <strong>Acquired EXP: {acquiredExp}</strong>
