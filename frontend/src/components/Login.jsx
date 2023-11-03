@@ -83,7 +83,7 @@ const Login = () => {
               Submit
             </Button>
             <Link style={{textDecoration:'none', marginTop:'10px'}} to="/registration">
-            <a ><p style={{marginTop:'10px'}} >Need to Register?</p></a>
+            <a  ><p style={{marginTop:'10px', color:'white', fontSize:'20px'}} >Need to Register?</p></a>
             </Link>
           </div>
           <div style={{fontSize:'50%'}}>
