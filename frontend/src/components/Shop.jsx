@@ -97,6 +97,7 @@ const Shop = () => {
             <div id='shopItems'>
                 <h3 
                 style={{alignSelf: 'center'}}>Skills</h3>
+                
                 {shop.map((item, index) => (
                     <div key={index}>
                         <button 
@@ -109,12 +110,14 @@ const Shop = () => {
                         <p>Price: {item.price} exp</p>
                     </div>
                 ))}
+                <p>Current EXP: {player.exp}</p>
                 </div>
                 <div>
-                    
+                
                 </div>
                 <div id='exit'> 
-                <button onClick={() => closeShop()}>Exit Shop</button>
+                <button style={{ position: "absolute", bottom: 0 }} onClick={() => closeShop()}>Exit Shop</button>
+
                 </div>
             </div>
          </div>

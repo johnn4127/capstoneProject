@@ -15,7 +15,18 @@ import PauseMenu from './PauseMenu'
 
 const Playarea = () => {
   const [pixelated, setPixelated] = useState(true); // Initial pixelation effect
+  const [showTextBox, setShowTextBox] = useState(true); // State to control text box visibility
+  const textBoxDuration = 10000; // 10 seconds in milliseconds
 
+  useEffect(() => {
+    // Hide the text box after the specified duration
+    const hideTextBoxTimeout = setTimeout(() => {
+      setShowTextBox(false);
+    }, textBoxDuration);
+
+    // Cleanup the timeout to avoid memory leaks
+    return () => clearTimeout(hideTextBoxTimeout);
+  }, []); // Empty dependency arr
   useEffect(() => {
     
     const pixelationTimeout = setTimeout(() => {
@@ -107,9 +118,13 @@ const Playarea = () => {
           {!battle && !shop ? ( //if shop and battle are false render this
             <>
               <Background />
+              
             {pause ? (
               <PauseMenu />
             ) : null}
+            {showTextBox && (
+          <div  style={{zIndex:1000}} className="herotextbox">UH OH THIS DOESN'T LOOK TOO GOOD</div>
+        )}
               <Player />
               <Boss />
               {enemyPositions.map((enemyPosition, index) => (

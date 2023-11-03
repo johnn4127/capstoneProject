@@ -86,3 +86,32 @@ width: 150px;}
     transform: translate(-50%, -50%);
     color: white;
   }
+
+  .enemy-text-box {
+    position: fixed; /* Use a fixed position */
+    top: 10px; /* Adjust the top position as needed */
+    left: 70%;
+    transform: translateX(-50%);
+    background-color: white; /* Set a white background color */
+    border: 1px solid black; /* Add a border for visibility */
+    color: black; /* Change text color to black */
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out forwards;
+  
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  .bossenemypic{
+    right: 10%;
+    height: 450px;
+    width: 450px;
+  }
