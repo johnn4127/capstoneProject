@@ -71,7 +71,7 @@ const handlePlayerAdvance = () => {
           bottom: y,
           width: '100px',
           height: '100px',
-          height: '30px',
+          
         }}
         >
              <p>Enemy <img style={{height:"100px"}}  src={enemy1}/> {index + 1}</p>
