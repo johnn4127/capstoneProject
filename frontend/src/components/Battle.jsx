@@ -23,6 +23,7 @@ const Battle = ({ enemyIndex }) => {
     setShowModal(false);
     setBattle(false)
   }
+  
   //OTHERS
   const handleHide = () => {
     if (hidden) {
