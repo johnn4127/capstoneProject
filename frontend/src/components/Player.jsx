@@ -12,9 +12,9 @@ const Player = () => {
     console.log({selectedchar})
     
     const { playerPosition, setPlayerPosition } = useContext(PositionData) 
-    const stepSize = 20; //controls how far player avatar moves 
+    const stepSize = 20; 
     
-    const handleKeyPress = (event) => { //function to allow player avatar to move upon key press
+    const handleKeyPress = (event) => { 
         const { x, y, width } = playerPosition;
         const maxX = 840;
         switch (event.key) {
