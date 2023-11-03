@@ -21,12 +21,12 @@ const Game = () => {
   const { boss, setBoss } = useState({ proficiency: 20, confidence: 500, maxConfidence: 500, exp: 1000, defeated: false })
 
 
-  const [playerPosition, setPlayerPosition] = useState({ x: 30, y: 365, width: 100, defeated: false }) //sets initial position of player avatar
+  const [playerPosition, setPlayerPosition] = useState({ x: 30, y: 200, width: 100, defeated: false }) //sets initial position of player avatar
 
   const [enemyPositions, setEnemyPositions] = useState([ //sets the position data for different enemies
-    { x: 400, y: 365, width: 100, defeated: false },
-    { x: 800, y: 365, width: 100, defeated: false },
-    { x: 1200, y: 365, width: 100, defeated: false },
+    { x: 400, y: 200, width: 100, defeated: false },
+    { x: 800, y: 200, width: 100, defeated: false },
+    { x: 1200, y: 200, width: 100, defeated: false },
   ]);
 
   const [statIndex, setStatIndex] = useState(0)
