@@ -64,7 +64,7 @@ const Playarea = () => {
           width: '100vw',
           height: '100vh',
           overflow: 'hidden',
-          backgroundImage:`url(${battlescreen})`
+          // backgroundImage:`url(${battlescreen})`
         }}>
 
           {!battle && !shop ? ( //if shop and battle are false render this

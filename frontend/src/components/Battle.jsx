@@ -5,7 +5,7 @@ import '../stylesheets/Battle.css';
 import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
 import { PositionData } from './Game';
-import { usePicture } from './PictureContext'; 
+import { usePicture } from './PictureContext';
 export const BattleContext = createContext()
 import enemy1 from '../assets/images/bossenemy.png'
 import Modal from 'react-bootstrap/Modal';
@@ -15,14 +15,13 @@ const Battle = ({ enemyIndex }) => {
   const [hidden, setHidden] = useState(true)
   const { enemyPositions, setEnemyPositions, handleStatIndex , playerPosition, setPlayerPosition} = useContext(PositionData)
   //MODAL STUFF
-  
   const [showModal, setShowModal] = useState(false);
   const handleShowModal = () => {
     setShowModal(true);
   }
   const handleCloseModal = () => {
     setShowModal(false);
-    
+    setBattle(false)
   }
   //OTHERS
   const handleHide = () => {
@@ -33,14 +32,10 @@ const Battle = ({ enemyIndex }) => {
       setHidden(true)
     }
   }
-  
   const { player, setPlayer, setBattle, enemies, setEnemies } = useContext(PlayerData)
-  
   const { charName } = useCharacter();
-  
   const [currentEnemy, setCurrentEnemy] = useState(enemies[enemyIndex])
   const updatedEnemyPos = [...enemyPositions]
-
   const [enemyCon, setEnemyCon] = useState(currentEnemy.confidence);
   const [damageLog, setDamageLog] = useState('');
   const [enemyMessage, setEnemyMessage] = useState('');
@@ -51,14 +46,12 @@ const Battle = ({ enemyIndex }) => {
     "Tell me about your salary expectations.",
     "What are some of your weaknesses?"
   ]);
-
   const getRandomEnemyLine = () => {
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
   };
   const endBattle = () => {
     if (enemyCon <= 0 || player.confidence <= 0) {
-
       // setBattle(false)
       handleShowModal();
       updatedEnemyPos[enemyIndex] = {...updatedEnemyPos[enemyIndex], defeated: true}
@@ -68,7 +61,6 @@ const Battle = ({ enemyIndex }) => {
       setPlayer({ ...player, confidence: player.maxConfidence })
     }
   }
-
   useEffect(() => {
     if(enemyCon === 0){
       endBattle()
@@ -122,3 +114,10 @@ const Battle = ({ enemyIndex }) => {
   );
 };
 export default Battle;
+
+
+
+
+
+
+
