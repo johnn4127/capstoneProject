@@ -67,6 +67,7 @@ const Battle = ({ enemyIndex }) => {
       endBattle()
     }
   }, [enemyCon])
+  
   return (
     <div>
       <div className="box">
