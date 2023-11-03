@@ -1,24 +1,50 @@
-/* Center the content on the screen */
+/* Center the content both horizontally and render text in a column */
 .intro-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #222; /* Set your background color */
-    color: #fff; /* Set your text color */
-    font-family: Arial, sans-serif; /* Choose a suitable font-family */
-  }
-  
-  /* Style the intro content */
-  .intro-content {
-    text-align: center;
-    max-width: 80%;
-    padding: 20px;
-  }
-  
-  /* Style individual paragraphs */
-  .intro-content p {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background: url('../assets/images/portal.gif') center/cover no-repeat fixed; /* Use the portal.gif as the background */
+  background-color: rgba(255, 255, 255, 0.2); /* Add a semi-transparent white background */
+  flex-direction: column; /* Render text in a column */
+  text-align: center; /* Center text horizontally */
+}
+
+/* Styling for the intro content */
+.intro-content {
+  max-width: 80%; /* Limit the width of the text content */
+  margin: 20px auto; /* Center text horizontally and add margin for spacing */
+  background: rgba(255, 255, 255, 0.5); /* Add a slightly foggy and transparent background to the text */
+  padding: 20px; /* Add padding for spacing */
+  border-radius: 10px; /* Round the corners of the text background */
+}
+
+/* Styling for the rendered text */
+.white-text {
+  color: white;
+  font-weight: lighter;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling for the "Start Game" button */
+.startgamebutton {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.startgamebutton:hover {
+  background-color: #0056b3;
+  color: white;
+}

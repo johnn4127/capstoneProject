@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../stylesheets/Intro.css';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import { Form, Nav } from 'react-bootstrap';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 const Intro = () => {
   const [story, setStory] = useState(''); // State to manage the rendered story
+  const [textRenderingComplete, setTextRenderingComplete] = useState(false); // State to track text rendering completion
+
   const fullStory =
     "Huh?! WHERE AM I ?? ALL I REMEMBER WAS I FELL ASLEEP LAST NIGHT AFTER STUDYING." +
     " You wake up in a place unlike any other. The surroundings are unfamiliar, and you find yourself in a world filled with magic and wonder. It's as if you've been transported to another realm." +
@@ -19,19 +20,22 @@ const Intro = () => {
         currentIndex++;
       } else {
         clearInterval(interval);
+        setTextRenderingComplete(true); // Set the rendering completion flag
       }
     }, 50); // Adjust the time interval (in milliseconds) to control the text rendering speed
   }, []);
 
   return (
     <div className="intro-container">
+      <div className="background-image"></div>
       <div className="intro-content">
-        <h1>INTRO</h1>
-        <p>{story}</p>
+        <p className="white-text">{story}</p>
+        {textRenderingComplete && (
+          <Nav.Link as={Link} to="/game">
+            <p className="startgamebutton">Start Game</p>
+          </Nav.Link>
+        )}
       </div>
-      <Nav.Link className="startgamebutton" as={Link} to="/game">
-        <p className='startgamebutton'>Start Game</p>
-      </Nav.Link>
     </div>
   );
 };
