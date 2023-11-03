@@ -24,7 +24,15 @@ body{
     color: white;
 }
 .pixelated {
-    opacity: 1;
-  transition: opacity .1s ease-in-out; /* Adjust the transition duration as needed */
+    animation: fadeIn 1s ease-in-out forwards;
+    opacity: 0; /* Set opacity to 0 initially */
   }
   
+  @keyframes fadeIn {
+    from {
+      opacity: 0; /* Start with full transparency */
+    }
+    to {
+      opacity: 1; /* End with full visibility */
+    }
+  }
