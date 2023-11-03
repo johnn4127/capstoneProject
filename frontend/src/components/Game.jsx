@@ -9,9 +9,10 @@ export const PositionData = createContext()
 
 const Game = () => {
 
-  const [player, setPlayer] = useState({ proficiency: 15, confidence: 200, maxConfidence: 200, skills: [], exp: 0 })
+  const [player, setPlayer] = useState({ proficiency: 15, confidence: 200, maxConfidence: 200, skills: [], exp: 3000 })
   const [battle, setBattle] = useState(false) //controls rendering of battle component
   const [shop, setShop] = useState(false) //controls rendering of shop component
+  const [pause, setPause] = useState(false)
 
   const [enemies, setEnemies] = useState([
     { proficiency: 10, confidence: 100, maxConfidence: 100, exp: 100 },
@@ -37,7 +38,7 @@ const Game = () => {
   const { selectedPicture } = usePicture();
 
   return (
-    <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, battle, setBattle, shop, setShop }}>
+    <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, battle, setBattle, shop, setShop, pause, setPause }}>
       <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, statIndex, setStatIndex, handleStatIndex }}>
 
         <Playarea />
