@@ -65,7 +65,7 @@ function RegisterForm() {
       <h1 style={{fontSize:'75px',marginTop:'100px'}} className="text-center">Registration</h1>
     <Container
       className="d-flex justify-content-center align-items-start"
-      style={{ minHeight: '100vh' }}
+      style={{ Height: '100%' }}
     >
       <div  style={{ marginTop: '0px', }}>
         
@@ -109,10 +109,8 @@ function RegisterForm() {
             </Button>
           </div>
         <div style={{ textAlign: 'center', margin: '10px' }}>
-          <Link to="/login">
-            <Button style={{width:'100px', height:'40px', fontSize:'65%'}} variant="primary" type="button">
-              Login
-            </Button>
+        <Link style={{textDecoration:'none', marginTop:'10px'}} to="/login">
+            <a><p style={{marginTop:'10px', fontSize:'15px', color:'white'}} >Already Have <br /> an Account?</p></a>
             </Link>
         </div>
         </Form>
