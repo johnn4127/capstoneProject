@@ -140,6 +140,7 @@ const Playarea = () => {
             </>
           ) : null
           }
+          
           {shop ? ( //if shop is true render this
             <>
               <Shop />
