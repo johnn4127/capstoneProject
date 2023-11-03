@@ -55,7 +55,7 @@ const Login = () => {
     <div className="d-flex justify-content-center align-items-start" style={{ minHeight: '100vh' }}>
       <div className=" rounded p-4" style={{ marginTop: '50px' }}>
       <h1 style={{fontSize:'75px'}} className="text-center">Login</h1>
-        <Form>
+        <Form className='forms'>
           <Form.Group style={{width:'100%',height:'200%'}} controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
