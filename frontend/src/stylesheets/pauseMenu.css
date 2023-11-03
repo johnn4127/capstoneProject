@@ -1,0 +1,31 @@
+#pauseMenu{
+    position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgb(169, 169, 169, .5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3
+}
+
+#pauseContent{
+    width:40%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgray;
+    border-style: solid;
+    border-radius: 10px 10px;
+}
+
+#pauseControls{
+    display: flex;
+    flex-direction: column;
+}
+
+Button {
+    margin: 5px;
+}
