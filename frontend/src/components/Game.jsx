@@ -24,8 +24,7 @@ const Game = () => {
     { proficiency: 12, confidence: 200, maxConfidence: 200, exp: 300 },
     { proficiency: 15, confidence: 350, maxConfidence: 350, exp: 500 }
   ]);
-  const [gainedExp, setGainedExp] = useState(0);
-  setGainedExp(defeatedEnemy.exp);
+  
   const [boss, setBoss] = useState({
     proficiency: 20,
     confidence: 500,
@@ -63,30 +62,12 @@ const Game = () => {
     width: 300
   });
 
-  const handleEnemyDefeat = () => {
-    const defeatedEnemy = enemies[statIndex];
-    setPlayer(prevPlayer => ({
-      ...prevPlayer,
-      exp: prevPlayer.exp + defeatedEnemy.exp
-    }));
-
-    setGainedExp(defeatedEnemy.exp); // Set the gained experience
-
-    defeatedEnemy.defeated = true;
-    const updatedEnemyPositions = [...enemyPositions];
-    updatedEnemyPositions[statIndex] = {
-      ...updatedEnemyPositions[statIndex],
-      defeated: true
-    };
-    setEnemyPositions(updatedEnemyPositions);
-
-    handleStatIndex();
-  };
+  
 
   const { selectedPicture } = usePicture();
 
   return (
-    <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, battle, setBattle, shop, setShop, pause, setPause, handleEnemyDefeat }}>
+    <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, battle, setBattle, shop, setShop, pause, setPause}}>
       <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, statIndex, setStatIndex, handleStatIndex }}>
         <Playarea />
       </PositionData.Provider>
