@@ -8,6 +8,7 @@ import { PlayerData, PositionData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from './Battle'
 import { usePicture } from './PictureContext';
+import battlescreen from '../assets/images/battlescreen.png'
 import PauseMenu from './PauseMenu'
 
 
@@ -86,7 +87,7 @@ const Playarea = () => {
           width: '100%',
           height: '100%',
           overflow: 'hidden',
-          // backgroundImage:`url(${battlescreen})`
+          backgroundImage:`url(${battlescreen})`
         }}>
 
           {!battle && !shop ? ( //if shop and battle are false render this

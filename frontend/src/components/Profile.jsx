@@ -116,7 +116,7 @@ console.log(selectedPicture)
       
         <img src={selectedPicture} alt="Selected Character" />
         <p>{charName}</p>
-        <Nav.Link className="startgamebutton" as={Link} to="/game">
+        <Nav.Link className="startgamebutton" as={Link} to="/intro">
         <p className='startgamebutton'>Start Game</p>
       </Nav.Link>
         </div>

@@ -8,6 +8,7 @@ import Game from './components/Game'
 import Shop from './components/Shop'
 import Actionbar from './components/Actionbar'
 import Battle from './components/Battle'
+import Intro from './components/Intro'
 
 import Homepage from './components/Homepage'
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
       <Route path='/profile' element={<Profile />} />
       <Route path='/battle' element={<Battle />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/intro' element={<Intro />} />
 
       
       </Routes>
