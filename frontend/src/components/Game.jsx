@@ -44,7 +44,7 @@ const Game = () => {
     width: 300,
   });
 
-  const [acquiredExp, setAcquiredExp] = useState(0); // New state to track acquired experience points
+  
 
   const { selectedPicture } = usePicture();
 
@@ -53,9 +53,6 @@ const Game = () => {
       <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, statIndex, setStatIndex, handleStatIndex }}>
 
         <Playarea />
-        <div style={{ marginTop: '10px' }}>
-          <strong>Acquired EXP: {acquiredExp}</strong>
-        </div>
       </PositionData.Provider>
     </PlayerData.Provider>
   );

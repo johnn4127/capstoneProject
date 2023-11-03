@@ -8,7 +8,7 @@ import { PlayerData, PositionData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from './Battle'
 import { usePicture } from './PictureContext';
-import battlescreen from '../assets/images/battlescreen.png'
+import battlescreen from '../assets/images/battlebackground.gif'
 import PauseMenu from './PauseMenu'
 
 
@@ -77,14 +77,19 @@ const Playarea = () => {
 
 
   return (
-    <div id='playArea'>
+    <div id='playArea'
+    style={{
+      width: '100vw',
+      height: '100vh',
+    }}>
       <div id='canvas'
         style={{
-          position: 'relative',
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          height: '100%',
           overflow: 'hidden',
-          backgroundImage:`url(${battlescreen})`
+          backgroundImage:`url(${battlescreen})`,
+          backgroundSize:'cover',
+          backgroundRepeat:'no-repeat'
         }}>
 
           {!battle && !shop ? ( //if shop and battle are false render this

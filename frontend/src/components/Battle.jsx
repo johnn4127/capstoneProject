@@ -37,8 +37,8 @@ const Battle = ({ enemyIndex }) => {
   const [currentEnemy, setCurrentEnemy] = useState(enemies[enemyIndex])
   const updatedEnemyPos = [...enemyPositions]
   const [enemyCon, setEnemyCon] = useState(currentEnemy.confidence);
-  const [damageLog, setDamageLog] = useState('');
-  const [enemyMessage, setEnemyMessage] = useState('');
+  const [damageLog, setDamageLog] = useState('Prepare Yourself!');
+  const [enemyMessage, setEnemyMessage] = useState('Battle Start');
   const [enemyLines, setEnemyLines] = useState([
     "Name a time you failed in life!",
     "Prepare to be coded out!",
@@ -68,35 +68,39 @@ const Battle = ({ enemyIndex }) => {
   }, [enemyCon])
   return (
     <div>
-      <h1>CODING BATTLE</h1>
       <div className="box">
         <div className="target-box">
-          <h2>{charName}</h2>
-          <ProgressBar now={player.confidence} label={`Confidence: ${player.confidence}`} min='0' max={player.maxConfidence} variant="success" />
-          <div>
-          <img  className='battlecharacter' src={selectedPicture} alt="Selected Character" />
+          <h2 className='character-info' >CODING ENEMY</h2>
+          <ProgressBar now={enemyCon} label={`${Math.round((enemyCon / currentEnemy.maxConfidence) * 100)}%`} variant="danger" />
+          <div className='character-info' style={{ right: "5000px" }}>
+            <img className='battleenemy' src={enemy1} alt="Enemy" />
           </div>
-        </div>
-        <div className="target-box">
-          <h2>CODING ENEMY</h2>
-          <ProgressBar now={enemyCon} label={`Confidence: ${enemyCon}`} variant="danger" />
-          <div style={{right:"5000px"}} >
-    <img  className='battleenemy'src={enemy1}/>
-    </div>
         </div>
       </div>
       <div>
       </div>
       <BattleContext.Provider value={{ hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog }}>
-        <p>It's your turn to attack</p>
-        <div className="enemy-message-box">
-          {enemyMessage && <p>{enemyMessage}</p>}
+        <div className='overallCharacter'>
+          <div className="character-box">
+            <h1 className='character-info'>{charName}</h1>
+            <ProgressBar now={player.confidence} label={`${Math.round((player.confidence / player.maxConfidence) * 100)}%`} min='0' max={player.maxConfidence} variant="success" />
+            <div className='character-info'>
+              <img className='battlecharacter' src={selectedPicture} alt="Selected Character" />
+            </div>
+          </div>
+          <div className='playerAction'>
+            <p>It's your turn to attack</p>
+            <div className="enemy-message-box">
+              {enemyMessage && <p>{enemyMessage}</p>}
+            </div>
+            <div className="damage-info-box">
+              {damageLog && <p>{damageLog}</p>}
+              <Actionbar enemyIndex={enemyIndex} />
+            </div>
+          </div>
         </div>
-        <div className="damage-info-box">
-          {damageLog && <p>{damageLog}</p>}
-          <Actionbar enemyIndex={ enemyIndex }/>
-        </div>
-        <Modal show={showModal} onHide={handleCloseModal}>
+      </BattleContext.Provider>
+      <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Victory!</Modal.Title>
         </Modal.Header>
@@ -109,7 +113,6 @@ const Battle = ({ enemyIndex }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      </BattleContext.Provider>
     </div>
   );
 };
