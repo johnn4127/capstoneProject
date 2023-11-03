@@ -69,7 +69,7 @@ function RegisterForm() {
       >
         <div style={{ marginTop: '0px', }}>
 
-          <Form>
+          <Form className='forms'>
             <Form.Group controlId="formBasicEmail">
               <Form.Label style={{ margin: '10px' }}>Email Address</Form.Label>
               <Form.Control
