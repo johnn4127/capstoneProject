@@ -14,6 +14,17 @@ import PauseMenu from './PauseMenu'
 
 
 const Playarea = () => {
+  const [pixelated, setPixelated] = useState(true); // Initial pixelation effect
+
+  useEffect(() => {
+    
+    const pixelationTimeout = setTimeout(() => {
+      setPixelated(false);
+    }, 700); // Adjust the delay as needed
+
+    // Cleanup the timeout to avoid memory leaks
+    return () => clearTimeout(pixelationTimeout);
+  }, []);
 
   const { selectedPicture } = usePicture();
   
@@ -90,7 +101,8 @@ const Playarea = () => {
           backgroundImage:`url(${battlescreen})`,
           backgroundSize:'cover',
           backgroundRepeat:'no-repeat'
-        }}>
+        }}
+        className={`pixelated ${pixelated ? 'fade' : ''}`}>
 
           {!battle && !shop ? ( //if shop and battle are false render this
             <>
