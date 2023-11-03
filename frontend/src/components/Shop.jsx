@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { PlayerData } from './Game'
 import '../stylesheets/Shop.css'
+
 const Shop = () => {
     const {player, setPlayer, setShop, setPause} = useContext(PlayerData)
 
@@ -90,19 +91,12 @@ const Shop = () => {
 
     return (
         <>
-        <div className='shopMain'>
-            <div >
-                <ul>
-                    <li>proficiency: {player.proficiency}</li>
-                    <li>confidence: {player.confidence}</li>
-                    <li>skills: {player.skills.map((skill, index) => (
-                        <span key={index}>{skill.name},</span>
-                    ))}
-                    </li>
-                    <li>exp: {player.exp}</li>
-                </ul>
-            </div>
+        <div id='shopMain'>
+            <h1>Welcome to Evoke</h1>
             <div>
+            <div id='shopItems'>
+                <h3 
+                style={{alignSelf: 'center'}}>Skills</h3>
                 {shop.map((item, index) => (
                     <div key={index}>
                         <button 
@@ -111,11 +105,17 @@ const Shop = () => {
                         disabled={item.bought === true}>
                             {item.name}
                         </button>
-                        <p> Description: {item.description}</p>
-                        <p>Experience Price: {item.price}</p>
+                        <p>{item.description}</p>
+                        <p>Price: {item.price} exp</p>
                     </div>
                 ))}
+                </div>
+                <div>
+                    
+                </div>
+                <div id='exit'> 
                 <button onClick={() => closeShop()}>Exit Shop</button>
+                </div>
             </div>
          </div>
         </>

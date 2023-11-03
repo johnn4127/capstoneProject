@@ -76,12 +76,15 @@ const Playarea = () => {
 
 
   return (
-    <div id='playArea'>
+    <div id='playArea'
+    style={{
+      width: '100vw',
+      height: '100vh',
+    }}>
       <div id='canvas'
         style={{
-          position: 'relative',
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          height: '100%',
           overflow: 'hidden',
           // backgroundImage:`url(${battlescreen})`
         }}>
@@ -107,12 +110,12 @@ const Playarea = () => {
             </>
           ) : null
           }
-
           {shop ? ( //if shop is true render this
             <>
               <Shop />
             </>
           ) : null}
+
 
       </div>
     </div>
