@@ -1,7 +1,7 @@
 /* Center the content both horizontally and render text in a column */
 .intro-container {
   display: flex;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
   height: 100vh;
   position: relative;
@@ -13,16 +13,16 @@
 
 /* Styling for the intro content */
 .intro-content {
-  max-width: 80%; /* Limit the width of the text content */
+  max-width: 50%; /* Limit the width of the text content */
   margin: 20px auto; /* Center text horizontally and add margin for spacing */
-  background: rgba(255, 255, 255, 0.5); /* Add a slightly foggy and transparent background to the text */
+  background: rgba(255, 255, 255, 0.3); /* Add a slightly foggy and transparent background to the text */
   padding: 20px; /* Add padding for spacing */
   border-radius: 10px; /* Round the corners of the text background */
 }
 
 /* Styling for the rendered text */
 .white-text {
-  color: white;
+  color: rgb(17, 10, 10);
   font-weight: lighter;
   font-size: 20px;
   margin: 0;
@@ -30,7 +30,7 @@
 }
 
 /* Styling for the "Start Game" button */
-.startgamebutton {
+.startgamebuttonintro {
   font-size: 20px;
   text-transform: uppercase;
   text-decoration: none;
@@ -47,4 +47,19 @@
 .startgamebutton:hover {
   background-color: #0056b3;
   color: white;
+}
+
+/* Apply rotation and size reduction animation to the "rotating" class */
+.rotating {
+  animation: rotateAndSizeReduce 1s linear infinite; 
+}
+
+/* Keyframes for the combined rotation and size reduction animation */
+@keyframes rotateAndSizeReduce {
+  0% {
+    transform: scale(1) rotate(0deg); /* Initial scale (100%) and rotation (0 degrees) */
+  }
+  100% {
+    transform: scale(0.5) rotate(720deg); /* Final scale (50%) and rotation (360 degrees) */
+  }
 }
