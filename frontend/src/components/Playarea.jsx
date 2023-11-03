@@ -14,15 +14,15 @@ import PauseMenu from './PauseMenu'
 
 
 const Playarea = () => {
-  const [pixelated, setPixelated] = useState(true); 
+  const [pixelated, setPixelated] = useState(true); // Initial pixelation effect
 
   useEffect(() => {
     
     const pixelationTimeout = setTimeout(() => {
       setPixelated(false);
-    }, 700); 
+    }, 700); // Adjust the delay as needed
 
-    
+    // Cleanup the timeout to avoid memory leaks
     return () => clearTimeout(pixelationTimeout);
   }, []);
 

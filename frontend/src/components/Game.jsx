@@ -24,7 +24,8 @@ const Game = () => {
     { proficiency: 12, confidence: 200, maxConfidence: 200, exp: 300 },
     { proficiency: 15, confidence: 350, maxConfidence: 350, exp: 500 }
   ]);
-
+  const [gainedExp, setGainedExp] = useState(0);
+  setGainedExp(defeatedEnemy.exp);
   const [boss, setBoss] = useState({
     proficiency: 20,
     confidence: 500,
@@ -66,8 +67,11 @@ const Game = () => {
     const defeatedEnemy = enemies[statIndex];
     setPlayer(prevPlayer => ({
       ...prevPlayer,
-      exp: prevPlayer.exp + defeatedEnemy.exp 
+      exp: prevPlayer.exp + defeatedEnemy.exp
     }));
+
+    setGainedExp(defeatedEnemy.exp); // Set the gained experience
+
     defeatedEnemy.defeated = true;
     const updatedEnemyPositions = [...enemyPositions];
     updatedEnemyPositions[statIndex] = {
@@ -75,6 +79,7 @@ const Game = () => {
       defeated: true
     };
     setEnemyPositions(updatedEnemyPositions);
+
     handleStatIndex();
   };
 
