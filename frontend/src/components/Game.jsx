@@ -22,28 +22,16 @@ const Game = () => {
   const [enemies, setEnemies] = useState([
     { proficiency: 10, confidence: 100, maxConfidence: 100, exp: 100 },
     { proficiency: 12, confidence: 200, maxConfidence: 200, exp: 300 },
-    { proficiency: 15, confidence: 350, maxConfidence: 350, exp: 500 },
-  ]);
+    { proficiency: 15, confidence: 350, maxConfidence: 350, exp: 500 }])
+  const { boss, setBoss } = useState({ proficiency: 20, confidence: 500, maxConfidence: 500, exp: 1000, defeated: false })
 
-  const { boss, setBoss } = useState({
-    proficiency: 20,
-    confidence: 500,
-    maxConfidence: 500,
-    exp: 1000,
-    defeated: false,
-  });
 
-  const [playerPosition, setPlayerPosition] = useState({
-    x: 30,
-    y: 365,
-    width: 100,
-    defeated: false,
-  });
+  const [playerPosition, setPlayerPosition] = useState({ x: 30, y: 200, width: 100, defeated: false }) //sets initial position of player avatar
 
-  const [enemyPositions, setEnemyPositions] = useState([
-    { x: 400, y: 365, width: 100, defeated: false },
-    { x: 800, y: 365, width: 100, defeated: false },
-    { x: 1200, y: 365, width: 100, defeated: false },
+  const [enemyPositions, setEnemyPositions] = useState([ //sets the position data for different enemies
+    { x: 400, y: 200, width: 100, defeated: false },
+    { x: 800, y: 200, width: 100, defeated: false },
+    { x: 1200, y: 200, width: 100, defeated: false },
   ]);
 
   const [statIndex, setStatIndex] = useState(0);
@@ -56,7 +44,7 @@ const Game = () => {
     width: 300,
   });
 
-  const [acquiredExp, setAcquiredExp] = useState(0); // New state to track acquired experience points
+  
 
   const { selectedPicture } = usePicture();
 
@@ -65,9 +53,6 @@ const Game = () => {
       <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, statIndex, setStatIndex, handleStatIndex }}>
 
         <Playarea />
-        <div style={{ marginTop: '10px' }}>
-          <strong>Acquired EXP: {acquiredExp}</strong>
-        </div>
       </PositionData.Provider>
     </PlayerData.Provider>
   );
