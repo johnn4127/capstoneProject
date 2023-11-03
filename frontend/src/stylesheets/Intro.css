@@ -1,0 +1,24 @@
+/* Center the content on the screen */
+.intro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222; /* Set your background color */
+    color: #fff; /* Set your text color */
+    font-family: Arial, sans-serif; /* Choose a suitable font-family */
+  }
+  
+  /* Style the intro content */
+  .intro-content {
+    text-align: center;
+    max-width: 80%;
+    padding: 20px;
+  }
+  
+  /* Style individual paragraphs */
+  .intro-content p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  

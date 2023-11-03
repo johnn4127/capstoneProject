@@ -8,12 +8,23 @@ import { PositionData } from './Game';
 import { usePicture } from './PictureContext'; 
 export const BattleContext = createContext()
 import enemy1 from '../assets/images/bossenemy.png'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 const Battle = ({ enemyIndex }) => {
   const {selectedPicture} = usePicture();
   const [hidden, setHidden] = useState(true)
   const { enemyPositions, setEnemyPositions, handleStatIndex , playerPosition, setPlayerPosition} = useContext(PositionData)
+  //MODAL STUFF
   
-  
+  const [showModal, setShowModal] = useState(false);
+  const handleShowModal = () => {
+    setShowModal(true);
+  }
+  const handleCloseModal = () => {
+    setShowModal(false);
+    
+  }
+  //OTHERS
   const handleHide = () => {
     if (hidden) {
       setHidden(false)
@@ -48,7 +59,8 @@ const Battle = ({ enemyIndex }) => {
   const endBattle = () => {
     if (enemyCon <= 0 || player.confidence <= 0) {
 
-      setBattle(false)
+      // setBattle(false)
+      handleShowModal();
       updatedEnemyPos[enemyIndex] = {...updatedEnemyPos[enemyIndex], defeated: true}
       setEnemyPositions(updatedEnemyPos)
       handleStatIndex()
@@ -92,6 +104,19 @@ const Battle = ({ enemyIndex }) => {
           {damageLog && <p>{damageLog}</p>}
           <Actionbar enemyIndex={ enemyIndex }/>
         </div>
+        <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Victory!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Congratulations! You have defeated the enemy.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       </BattleContext.Provider>
     </div>
   );

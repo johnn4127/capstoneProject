@@ -8,7 +8,7 @@ import { PlayerData, PositionData } from './Game'
 import Shop from './Shop.jsx'
 import Battle from './Battle'
 import { usePicture } from './PictureContext';
-
+import battlescreen from '../assets/images/battlescreen.png'
 
 
 const Playarea = () => {
