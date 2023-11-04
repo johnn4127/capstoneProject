@@ -2,6 +2,8 @@
 import React, { useState, createContext } from 'react';
 import Playarea from './Playarea';
 import { usePicture } from './PictureContext';
+import enemy1 from '../assets/images/bossenemy.png'
+import BossEnemy from '../assets/images/Boss.gif'
 
 export const PlayerData = createContext();
 export const PositionData = createContext();
@@ -34,16 +36,20 @@ const Game = () => {
   });
 
   const [playerPosition, setPlayerPosition] = useState({
-    x: 30,
-    y: 200,
+    x: 140,
+    y: 60,
     width: 100,
     defeated: false
   });
 
   const [enemyPositions, setEnemyPositions] = useState([
-    { x: 400, y: 200, width: 100, defeated: false },
-    { x: 800, y: 200, width: 100, defeated: false },
-    { x: 1200, y: 200, width: 100, defeated: false }
+    { img: enemy1, x: 250, y: 180, width: 100, defeated: false },
+    { img: '', x: 500, y: 340, width: 100, defeated: false },
+    { img: enemy1, x: 80, y: 390, width: 100, defeated: false },
+    { img: '', x: 230, y: 545, width: 100, defeated: false },
+    { img: '', x: 730, y: 700, width: 100, defeated: false },
+    { img: enemy1, x: 580, y: 100, width: 100, defeated: false },
+    { img: '', x: 950, y: 180, width: 100, defeated: false },
   ]);
 
   const [statIndex, setStatIndex] = useState(0);
@@ -56,11 +62,7 @@ const Game = () => {
     }
   };
 
-  const [bossPosition, setBossPosition] = useState({
-    x: 1600,
-    y: -600,
-    width: 300
-  });
+  const [bossPosition, setBossPosition] = useState({img: BossEnemy, x: 1020, y: 40, width: 300, defeated: false});
 
   
 
