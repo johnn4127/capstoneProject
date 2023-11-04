@@ -9,31 +9,6 @@ const Background = () => {
     const backgroundUrl = 'https://cdnb.artstation.com/p/assets/images/images/024/841/051/original/mengo-fedorov-forest-snow-parallax.gif?1583715257'
 
     const [position, setPosition] = useState({ x: 0})
-    const stepSize = 20;
-
-    const handleKeyPress = (event) => {
-        const { x, y } = position;
-
-        if (position.y < 0){
-            setPosition({ y: 0 })
-        }
-        switch (event.key) {
-            case 'a':
-                setPosition({ x: x + stepSize })
-                break;
-            case 'd':
-                setPosition({ x: x - stepSize })
-                break;
-            default: break
-        }
-    }
-
-    useEffect(() => {
-        document.addEventListener('keydown', handleKeyPress)
-
-        return () => {
-            document.removeEventListener('keydown', handleKeyPress)}
-    }, [position])
 
     const { x, y } = position
 
