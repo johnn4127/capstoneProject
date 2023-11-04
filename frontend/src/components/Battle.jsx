@@ -6,41 +6,49 @@ import { PlayerData } from './Game';
 import Actionbar from './Actionbar';
 import { PositionData } from './Game';
 import { usePicture } from './PictureContext';
-export const BattleContext = createContext()
-import enemy1 from '../assets/images/bossenemy.png'
+export const BattleContext = createContext();
+import enemy1 from '../assets/images/bossenemy.png';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+
+import { Link } from 'react-router-dom';
 const Battle = ({ enemyIndex }) => {
-  const {selectedPicture} = usePicture();
-  const [hidden, setHidden] = useState(true)
-  const { enemyPositions, setEnemyPositions, handleStatIndex , playerPosition, setPlayerPosition} = useContext(PositionData)
-  //MODAL STUFF
+  const { selectedPicture } = usePicture();
+  const [hidden, setHidden] = useState(true);
+  const { enemyPositions, setEnemyPositions, handleStatIndex, playerPosition, setPlayerPosition } = useContext(PositionData);
+
+  // MODAL STUFF
   const [showModal, setShowModal] = useState(false);
+
   const handleShowModal = () => {
     setShowModal(true);
   }
+
   const handleCloseModal = () => {
     setShowModal(false);
-    setBattle(false)
+    setBattle(false);
   }
-  
-  const [message, setMessage] = useState(''); // Add a state for the message
+
+  const [message, setMessage] = useState('');
 
   const updateMessage = (newMessage) => {
-    setMessage(newMessage);};
-  //OTHERS
+    setMessage(newMessage);
+  };
+
+  // OTHERS
   const handleHide = () => {
     if (hidden) {
-      setHidden(false)
+      setHidden(false);
     }
     if (!hidden) {
-      setHidden(true)
+      setHidden(true);
     }
   }
-  const { player, setPlayer, setBattle, enemies, setEnemies } = useContext(PlayerData)
+
+  const { player, setPlayer, setBattle, enemies, setEnemies } = useContext(PlayerData);
   const { charName } = useCharacter();
-  const [currentEnemy, setCurrentEnemy] = useState(enemies[enemyIndex])
-  const updatedEnemyPos = [...enemyPositions]
+  const [currentEnemy, setCurrentEnemy] = useState(enemies[enemyIndex]);
+  const updatedEnemyPos = [...enemyPositions];
   const [enemyCon, setEnemyCon] = useState(currentEnemy.confidence);
   const [damageLog, setDamageLog] = useState('Prepare Yourself!');
   const [enemyMessage, setEnemyMessage] = useState('Battle Start');
@@ -49,41 +57,63 @@ const Battle = ({ enemyIndex }) => {
     "Prepare to be coded out!",
     "I'm the master coder!",
     "Tell me about your salary expectations.",
-    "What are some of your weaknesses?"
+    "What are some of your weaknesses"
   ]);
+
   const getRandomEnemyLine = () => {
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
   };
+
+  // WIN CON
   const endBattle = () => {
     if (enemyCon <= 0 || player.confidence <= 0) {
-      // setBattle(false)
       handleShowModal();
-      updatedEnemyPos[enemyIndex] = {...updatedEnemyPos[enemyIndex], defeated: true}
-      setEnemyPositions(updatedEnemyPos)
-      handleStatIndex()
-      console.log(playerPosition)
-      setPlayer({ ...player, confidence: player.maxConfidence })
+      updatedEnemyPos[enemyIndex] = { ...updatedEnemyPos[enemyIndex], defeated: true };
+      setEnemyPositions(updatedEnemyPos);
+      handleStatIndex();
+      console.log(playerPosition);
+      setPlayer({ ...player, confidence: player.maxConfidence });
     }
   }
+
   useEffect(() => {
-    if(enemyCon === 0){
-      endBattle()
+    if (enemyCon === 0) {
+      endBattle();
     }
-  }, [enemyCon])
-  
+  }, [enemyCon]);
+
+  // LOSE CON
+  const [showModalLose, setShowModalLose] = useState(false);
+  const handleShowModalLose = () => {
+    setShowModalLose(true);
+  }
+
+  const handleCloseModalLose = () => {
+   
+  }
+
+  const endBattleLose = () => {
+    if (player.confidence <= 0) {
+      handleShowModalLose();
+    }
+  }
+
+  useEffect(() => {
+    endBattleLose();
+  }, [player.confidence]);
+
   return (
     <div>
       <div className="box">
-      <div class="centered-element">
-        {message && <img style={{height:"250px"}} src={message} alt="Exclamation Point" />}
-      </div>
+        <div className="centered-element">
+          {message && <img style={{ height: "250px" }} src={message} alt="Exclamation Point" />}
+        </div>
         <div className="target-box">
           <h2 className='character-info' >CODING ENEMY</h2>
           <ProgressBar now={enemyCon} label={`${Math.round((enemyCon / currentEnemy.maxConfidence) * 100)}%`} variant="danger" />
           <div className='character-info' style={{ right: "5000px" }}>
             <img className='battleenemy' src={enemy1} alt="Enemy" />
-           
           </div>
         </div>
       </div>
@@ -123,14 +153,24 @@ const Battle = ({ enemyIndex }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <Modal show={showModalLose} onHide={handleCloseModalLose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Game Over</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Your confidence has reached zero. You have lost the battle.
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to='/intro'>
+          <Button variant="secondary" onClick={handleCloseModalLose}>
+            Restart Game
+          </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
+
 export default Battle;
-
-
-
-
-
-
-
