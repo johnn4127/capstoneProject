@@ -71,9 +71,8 @@ const Battle = ({ enemyIndex }) => {
       handleShowModal();
       updatedEnemyPos[enemyIndex] = { ...updatedEnemyPos[enemyIndex], defeated: true };
       setEnemyPositions(updatedEnemyPos);
+      setPlayer({ ...player, confidence: player.maxConfidence, exp: player.exp + currentEnemy.exp });
       handleStatIndex();
-      console.log(playerPosition);
-      setPlayer({ ...player, confidence: player.maxConfidence });
     }
   }
 
