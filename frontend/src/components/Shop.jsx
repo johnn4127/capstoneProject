@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { PlayerData } from './Game'
 import '../stylesheets/Shop.css'
-
+import { PositionData } from './Game';
 const Shop = () => {
     const {player, setPlayer, setShop, setPause} = useContext(PlayerData)
 
