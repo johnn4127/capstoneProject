@@ -1,12 +1,13 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { PositionData, PlayerData } from './Game';;
 import enemy1 from '../assets/images/bossenemy.png'
-
+import EnemyTextBox from './EnemyTextBox';
 
 const Enemy = ({ index }) => {
 
   const { battle, setBattle } = useContext(PlayerData)
   const { enemyPositions, setEnemyPositions, setPlayerPosition } = useContext(PositionData);
+  const enemyMessage = 'GET HIM BOYS!!!!'; // Replace with your enemy's message
 
 
   const stepSize = 30;
@@ -73,7 +74,7 @@ const handlePlayerAdvance = () => {
           height: '100px',
           
         }}
-        >
+        ><EnemyTextBox message={enemyMessage} />
              <p>Enemy <img style={{height:"100px"}}  src={enemy1}/> {index + 1}</p>
           </div>
       </button>

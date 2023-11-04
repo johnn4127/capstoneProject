@@ -2,7 +2,7 @@ import React, {useState, createContext, useContext } from 'react'
 import Skillaction from './Skillaction'
 import { PlayerData } from './Game';
 import { BattleContext } from './Battle';
-import hit from '../assets/images/exclamationpoint.gif'
+import hit from '../assets/images/impact.gif'
 
 
 const Actionbar = ({ enemyIndex , updateMessage }) => {
@@ -20,7 +20,7 @@ const handleAttack = () => {
   updateMessage(hit);
   setTimeout(() => {
     updateMessage(''); // Clear the message state after 1 second
-  }, 1000);
+  }, 700);
 
   setPlayer({...player, confidence: player.confidence - enemyDamage});
   setDamageLog(`You attacked Coding Enemy for ${playerDamage} confidence damage. `);
