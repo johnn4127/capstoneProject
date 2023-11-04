@@ -51,7 +51,7 @@
 
 /* Apply rotation and size reduction animation to the "rotating" class */
 .rotating {
-  animation: rotateAndSizeReduce 10s linear infinite; 
+  animation: rotateAndSizeReduce 25s linear infinite; 
 }
 
 /* Keyframes for the combined rotation and size reduction animation */

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { PositionData } from './Game';
-
+import BossEnemy from '../assets/images/Boss.gif'
+import '../stylesheets/Battle.css'
 const Boss = () => {
 
     const { bossPosition, setBossPosition } = useContext(PositionData) 
@@ -36,11 +37,12 @@ const Boss = () => {
         position: 'sticky',
         left: x, 
         bottom: y,
-        width: '300px',
-        height: '350px',
-        background: 'purple'
+        width: '450px',
+        height: '450px',
+        
     }}>
-        <p>Boss</p>
+        <div  >
+        <img className='bossenemypic' src={BossEnemy}/></div>
     </div>
   )
 }

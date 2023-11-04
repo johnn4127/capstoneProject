@@ -12,7 +12,7 @@ const Game = () => {
     confidence: 200,
     maxConfidence: 200,
     skills: [],
-    exp: 0, 
+    exp: 5000, 
   });
 
   const [battle, setBattle] = useState(false);
