@@ -5,7 +5,7 @@
   align-items: center;
   height: 100vh;
   position: relative;
-  background: url('../assets/images/portal.gif') center/cover no-repeat fixed; /* Use the portal.gif as the background */
+  background: url('../assets/images/portal2.gif') center/cover no-repeat fixed; /* Use the portal.gif as the background */
   background-color: rgba(255, 255, 255, 0.2); /* Add a semi-transparent white background */
   flex-direction: column; /* Render text in a column */
   text-align: center; /* Center text horizontally */
