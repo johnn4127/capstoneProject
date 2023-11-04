@@ -8,8 +8,8 @@ export const PositionData = createContext();
 
 const Game = () => {
   const [player, setPlayer] = useState({
-    proficiency: 50,
-    confidence: 200,
+    proficiency: 5,
+    confidence: 50,
     maxConfidence: 200,
     skills: [],
     exp: 5000, 

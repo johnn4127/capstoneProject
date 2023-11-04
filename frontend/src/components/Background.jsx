@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../stylesheets/Game.css'
 
 
-import background from '../assets/images/citypurp2.png'
+import background from '../assets/images/playarea.jpeg'
 
 const Background = () => {
 
