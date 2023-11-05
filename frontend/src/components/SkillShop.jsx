@@ -11,6 +11,7 @@ const SkillShop = () => {
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
             setSkill1({...skill1, bought: true})
+            console.log('Bought')
         },
         price: 300,
         bought: false
@@ -22,6 +23,7 @@ const SkillShop = () => {
         effect: () => {
             setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * 0.15)) });
             setSkill2({...skill2, bought: true})
+            console.log('Bought')
         },
         price: 200,
         bought: false
@@ -33,6 +35,7 @@ const SkillShop = () => {
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.20)) });
             setSkill3({...skill3, bought: true})
+            console.log('Bought')
         },
         price: 350,
         bought: false
@@ -44,6 +47,7 @@ const SkillShop = () => {
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
             setSkill4({...skill4, bought: true})
+            console.log('Bought')
         },
         price: 200,
         bought: false
@@ -55,6 +59,7 @@ const SkillShop = () => {
         effect: () => {
             setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * 0.10)) });
             setSkill5({...skill5, bought: true})
+            console.log('Bought')
         },
         price: 300,
         bought: false
@@ -62,13 +67,6 @@ const SkillShop = () => {
 
 
     const skillShop = [skill1, skill2, skill3, skill4, skill5]
-    // const [disClick, setDisClick] = useState(false)
-    // const testClick = (e, item) => {
-    //     console.log(e, item)
-    //     if(e.target.value === item.name){
-    //         setDisClick(true)
-    //     }
-    // }
 
     const buy = (skill) => {
         if (player.exp >= skill.price) { //checks if player has enough experience to purchase skill
@@ -77,8 +75,7 @@ const SkillShop = () => {
                 exp: player.exp - skill.price, //subtracts skill price from players exp points
                 skills: [...player.skills, skill], //adds the purchased skill to the players skills array
             });
-            skill.bought = true
-            console.log('Bought')
+            
         }
 
     }
