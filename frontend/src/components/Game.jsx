@@ -10,11 +10,11 @@ export const PositionData = createContext();
 
 const Game = () => {
   const [player, setPlayer] = useState({
-    proficiency: 5,
-    confidence: 50,
-    maxConfidence: 200,
+    proficiency: 15,
+    confidence: 500,
+    maxConfidence: 500,
     skills: [],
-    exp: 5000, 
+    exp: 0, 
   });
 
   const [battle, setBattle] = useState(false);
@@ -24,7 +24,11 @@ const Game = () => {
   const [enemies, setEnemies] = useState([
     { proficiency: 10, confidence: 100, maxConfidence: 100, exp: 100 },
     { proficiency: 12, confidence: 200, maxConfidence: 200, exp: 300 },
-    { proficiency: 15, confidence: 350, maxConfidence: 350, exp: 500 }
+    { proficiency: 15, confidence: 350, maxConfidence: 350, exp: 500 },
+    { proficiency: 18, confidence: 500, maxConfidence: 500, exp: 750 },
+    { proficiency: 24, confidence: 700, maxConfidence: 700, exp: 1000 },
+    { proficiency: 30, confidence: 700, maxConfidence: 700, exp: 1250 },
+    { proficiency: 36, confidence: 700, maxConfidence: 700, exp: 1500 }
   ]);
   
   const [boss, setBoss] = useState({
@@ -43,13 +47,13 @@ const Game = () => {
   });
 
   const [enemyPositions, setEnemyPositions] = useState([
-    { img: enemy1, x: 250, y: 180, width: 100, defeated: false },
-    { img: '', x: 500, y: 340, width: 100, defeated: false },
-    { img: enemy1, x: 80, y: 390, width: 100, defeated: false },
-    { img: '', x: 230, y: 545, width: 100, defeated: false },
-    { img: '', x: 730, y: 700, width: 100, defeated: false },
-    { img: enemy1, x: 580, y: 100, width: 100, defeated: false },
-    { img: '', x: 950, y: 180, width: 100, defeated: false },
+    { img: enemy1, x: 250, y: 180, width: 100, defeated: false, active: true },
+    { img: '', x: 500, y: 340, width: 100, defeated: false, active: false },
+    { img: enemy1, x: 80, y: 390, width: 100, defeated: false, active: false },
+    { img: '', x: 230, y: 545, width: 100, defeated: false, active: false },
+    { img: '', x: 730, y: 700, width: 100, defeated: false, active: false },
+    { img: enemy1, x: 580, y: 100, width: 100, defeated: false, active: false },
+    { img: '', x: 950, y: 180, width: 100, defeated: false, active: false },
   ]);
 
   const [statIndex, setStatIndex] = useState(0);
