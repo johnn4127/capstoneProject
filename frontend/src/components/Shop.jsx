@@ -26,23 +26,24 @@ const Shop = () => {
     return (
         <>
             <div id='shopMain'>
+                <div style={{display: 'flex'}}>
                 <h1>Welcome to Evoke</h1>
-                <div>
-
-                    <button onClick={handleStoreMode}>
+                <button onClick={handleStoreMode}>
                         {!storeMode ? (<>Upgrades</>) : (<>Skills</>)}
                     </button>
+
+                </div>
+                <div>
+                    
 
                     <div id='shopItems' style={{ overflow: 'scroll' }}>
                         {!storeMode ? (<SkillShop />) : (<ItemShop />)}
                         <p>Current EXP: {player.exp}</p>
                     </div>
-                    <div>
-
-                    </div>
+                </div>
+                <div>
                     <div id='exit'>
                         <button style={{ position: "absolute", bottom: 0 }} onClick={() => closeShop()}>Exit Shop</button>
-
                     </div>
                 </div>
             </div>
