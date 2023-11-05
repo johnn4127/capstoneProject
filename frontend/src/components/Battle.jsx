@@ -70,6 +70,7 @@ const Battle = ({ enemyIndex }) => {
     if (enemyCon <= 0 || player.confidence <= 0) {
       handleShowModal();
       updatedEnemyPos[enemyIndex] = { ...updatedEnemyPos[enemyIndex], defeated: true };
+      updatedEnemyPos[enemyIndex + 1] = { ...updatedEnemyPos[enemyIndex + 1], active: true };
       setEnemyPositions(updatedEnemyPos);
       setPlayer({ ...player, confidence: player.maxConfidence, exp: player.exp + currentEnemy.exp });
       handleStatIndex();

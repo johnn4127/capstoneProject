@@ -24,7 +24,8 @@ const handlePlayerAdvance = () => {
     <button onClick={handlePlayerAdvance} style={{
       border: 'none',
       background: 'none'
-    }}>
+    }}
+    disabled={!enemyPositions[index].active}>
         <div
         className='enemy'
         style={{
