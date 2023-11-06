@@ -1,40 +1,54 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useContext } from 'react';
+
+//Component imports
 import Skillaction from './Skillaction';
+
+//Context imports
 import { PlayerData } from './Game';
 import { BattleContext } from './Battle';
+
+//Asset imports
 import hit from '../assets/images/impact.gif';
 import fireball from '../assets/images/fire.gif'
 import thunder from '../assets/images/lightningstrike.gif'
 import ice from '../assets/images/iceshard.gif'
+
+
 const Actionbar = ({ enemyIndex, updateMessage }) => {
-  const { player, setPlayer, enemies, setEnemies } = useContext(PlayerData);
 
-  const { hidden, setHidden, handleHide, enemyCon, setEnemyCon, enemyLines, getRandomEnemyLine, setEnemyMessage, setDamageLog } = useContext(BattleContext);
+  //Contexts
+  const { player, setPlayer, enemies } = useContext(PlayerData); // imports context for player and enemy stats
+  const { hidden, handleHide, enemyCon, setEnemyCon, getRandomEnemyLine, setEnemyMessage, setDamageLog } = useContext(BattleContext); //imports contexts for for in-game battles
 
-  const currentEnemy = enemies[enemyIndex];
+  const currentEnemy = enemies[enemyIndex]; // initalizes varibale to represent the current enemy being interacted with. 
 
   const handleAttack = () => {
-    const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 5);
-    const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 5);
+
+    const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 5); //sets player damage to a range
+    const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 5);  //sets enemy damage to a range
     updateMessage(hit);
     setTimeout(() => {
-      updateMessage(''); 
+      updateMessage('');
     }, 700);
 
-    setPlayer({ ...player, confidence: player.confidence - enemyDamage });
+    setPlayer({ ...player, confidence: player.confidence - enemyDamage }); // subtracts the enemy damage from the players health
     setDamageLog(`You attacked Coding Enemy for ${playerDamage} damage.`);
 
     const enemyLine = getRandomEnemyLine();
     setEnemyMessage(`Coding Enemy: "${enemyLine}"`);
 
-    setEnemyCon(enemyCon - playerDamage);
+    setEnemyCon(enemyCon - playerDamage); //subtracts player damage from enemy health
     setDamageLog((prevDamageLog) => [
       ...prevDamageLog,
       `Coding Enemy attacked you for ${enemyDamage} confidence damage.`,
     ]);
 
-    if (playerDamage > enemyCon) {
+    if (playerDamage > enemyCon) { //checks whether or not the player damage would be greater than remaining enemy health. If so sets the health to 0.
       setEnemyCon(0);
+    }
+
+    if (enemyDamage > player.confidence) { //checks whether or not the enemy damage would be greater than remaining player health. If so sets the health to 0.
+      setPlayer({ ...player, confidence: 0 })
     }
   };
 
@@ -43,7 +57,7 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
     const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 15);
     updateMessage(fireball);
     setTimeout(() => {
-      updateMessage(''); 
+      updateMessage('');
     }, 1500);
 
     setPlayer({ ...player, confidence: player.confidence - enemyDamage });
@@ -93,7 +107,7 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
     const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 25);
     updateMessage(ice);
     setTimeout(() => {
-      updateMessage(''); 
+      updateMessage('');
     }, 700);
 
     setPlayer({ ...player, confidence: player.confidence - enemyDamage });

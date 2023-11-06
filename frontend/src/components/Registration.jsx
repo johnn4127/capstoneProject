@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import mp3 from '../assets/music/Registration.mp3';
-import { Form, Button, Alert, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+
+//Style imports
 import '../stylesheets/Registration.css'
+import { Form, Button, Alert, Container } from 'react-bootstrap';
+
+//Asset imports
+import mp3 from '../assets/music/Registration.mp3';
+
 function RegisterForm() {
-  const audio = new Audio(mp3);
-
-
-
-
+const audio = new Audio(mp3);
 
   const [formData, setFormData] = useState({
     email: '',

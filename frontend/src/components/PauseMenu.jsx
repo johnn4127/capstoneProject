@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react'
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import React, { useContext } from 'react'
+
+//Context imports
 import { PlayerData } from './Game';
 import { useCharacter } from './CharacterContext';
 import { usePicture } from './PictureContext';
+
+//Style imports
 import '../stylesheets/pauseMenu.css'
-
-
+import Button from 'react-bootstrap/Button';
 
 const PauseMenu = () => {
 

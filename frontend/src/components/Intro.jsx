@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+//Context imports
+import { usePicture } from './PictureContext';
+
+//Style imports
 import '../stylesheets/Intro.css';
 import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { usePicture } from './PictureContext';
+
 const Intro = () => {
-  const [story, setStory] = useState(''); 
-  const [textRenderingComplete, setTextRenderingComplete] = useState(false); 
-  const {selectedPicture} = usePicture();
+  //Contexts
+  const { selectedPicture } = usePicture();
+
+  //States
+  const [story, setStory] = useState('');
+  const [textRenderingComplete, setTextRenderingComplete] = useState(false);
   const fullStory =
     "Huh?! WHERE AM I ?? ALL I REMEMBER WAS I FELL ASLEEP LAST NIGHT AFTER STUDYING!" +
     " Am I being teleported to a different world??? This has always been my dream! I hope I'll become a super hero or something!" 
@@ -20,9 +28,9 @@ const Intro = () => {
         currentIndex++;
       } else {
         clearInterval(interval);
-        setTextRenderingComplete(true); 
+        setTextRenderingComplete(true);
       }
-    }, 15); 
+    }, 15);
   }, []);
 
   return (
@@ -38,12 +46,12 @@ const Intro = () => {
       </div>
       <div className='battlecharacter rotating' >
         <img
-          className='battlecharacter rotating' 
+          className='battlecharacter rotating'
           src={selectedPicture}
           alt="Selected Character"
         /> </div>
-          
-          </div>
+
+    </div>
   );
 };
 

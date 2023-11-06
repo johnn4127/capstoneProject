@@ -2,14 +2,14 @@ import React, { useState, createContext } from 'react';
 import Playarea from './Playarea';
 import { usePicture } from './PictureContext';
 import enemy1 from '../assets/images/bossenemy.png'
-import enemy2 from '../assets/images/enemy2.gif'
+
 import bats from '../assets/images/bat.gif'
 import BossEnemy from '../assets/images/Boss.gif'
 
-import lastEnemy from '../assets/images/enemybig.gif'
+
 import dinosaur from '../assets/images/dinosaur.gif'
 import shadow from '../assets/images/shadow.gif'
-import sword from '../assets/images/sword.gif'
+
 import robot from '../assets/images/robot.gif'
 import robot2 from '../assets/images/robot2.gif'
 import gorilla from '../assets/images/gorilla.gif'

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert'; 
-import Profile from './Profile';
-import { useNavigate } from 'react-router-dom';
-import {Link} from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom';
+
+//Style imports
 import '../stylesheets/Login.css'
+import { Form, Button, Alert } from 'react-bootstrap';
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',

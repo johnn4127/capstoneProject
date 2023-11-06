@@ -1,10 +1,11 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
+//Style imports
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import '../stylesheets/Navbar.css'
+import { Navbar, Nav, Container } from 'react-bootstrap';
+
 const Navbars = () => {
   return (
     <div>
