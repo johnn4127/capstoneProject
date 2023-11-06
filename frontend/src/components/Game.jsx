@@ -4,7 +4,7 @@ import { usePicture } from './PictureContext';
 import enemy1 from '../assets/images/bossenemy.png'
 
 import bats from '../assets/images/bat.gif'
-import BossEnemy from '../assets/images/Boss.gif'
+import BossEnemy from '../assets/images/boss.gif'
 
 
 import dinosaur from '../assets/images/dinosaur.gif'
