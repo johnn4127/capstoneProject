@@ -8,7 +8,7 @@ import Playarea from './Playarea';
 
 //Asset imports
 import enemy1 from '../assets/images/bossenemy.png'
-import BossEnemy from '../assets/images/Boss.gif'
+import BossEnemy from '../assets/images/boss.gif'
 import bats from '../assets/images/bat.gif'
 import dinosaur from '../assets/images/dinosaur.gif'
 import shadow from '../assets/images/shadow.gif'
