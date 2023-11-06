@@ -3,9 +3,16 @@ import Playarea from './Playarea';
 import { usePicture } from './PictureContext';
 import enemy1 from '../assets/images/bossenemy.png'
 import enemy2 from '../assets/images/enemy2.gif'
-
+import bats from '../assets/images/bat.gif'
 import BossEnemy from '../assets/images/Boss.gif'
 
+import lastEnemy from '../assets/images/enemybig.gif'
+import dinosaur from '../assets/images/dinosaur.gif'
+import shadow from '../assets/images/shadow.gif'
+import sword from '../assets/images/sword.gif'
+import robot from '../assets/images/robot.gif'
+import robot2 from '../assets/images/robot2.gif'
+import gorilla from '../assets/images/gorilla.gif'
 export const PlayerData = createContext();
 export const PositionData = createContext();
 
@@ -48,14 +55,15 @@ const Game = () => {
   });
 
   const [enemyPositions, setEnemyPositions] = useState([
-    { img: enemy1, x: 250, y: 180, width: 100, defeated: false, active: true },
-    { img: '', x: 500, y: 340, width: 100, defeated: false, active: false },
-    { img: enemy1, x: 80, y: 390, width: 100, defeated: false, active: false },
-    { img: '', x: 230, y: 545, width: 100, defeated: false, active: false },
-    { img: '', x: 730, y: 700, width: 100, defeated: false, active: false },
+    { img: bats, x: 250, y: 180, width: 100, defeated: false, active: true },
+    { img: shadow, x: 500, y: 340, width: 100, defeated: false, active: false },
+    { img: robot, x: 80, y: 390, width: 100, defeated: false, active: false },
+    { img: robot2, x: 230, y: 545, width: 100, defeated: false, active: false },
+    { img: gorilla, x: 730, y: 700, width: 100, defeated: false, active: false },
     { img: enemy1, x: 580, y: 100, width: 100, defeated: false, active: false },
-    { img: '', x: 950, y: 180, width: 100, defeated: false, active: false },
+    { img: dinosaur, x: 950, y: 180, width: 100, defeated: false, active: false },
   ]);
+
 
   const [statIndex, setStatIndex] = useState(0);
 

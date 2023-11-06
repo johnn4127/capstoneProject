@@ -16,7 +16,7 @@ const Battle = ({ enemyIndex }) => {
   const { selectedPicture } = usePicture();
   const [hidden, setHidden] = useState(true);
   const { enemyPositions, setEnemyPositions, handleStatIndex, playerPosition, setPlayerPosition } = useContext(PositionData);
-
+ 
   // MODAL STUFF
   const [showModal, setShowModal] = useState(false);
 
@@ -113,7 +113,7 @@ const Battle = ({ enemyIndex }) => {
           <h2 className='character-info' >CODING ENEMY</h2>
           <ProgressBar now={enemyCon} label={`${Math.round((enemyCon / currentEnemy.maxConfidence) * 100)}%`} variant="danger" />
           <div className='character-info' style={{ right: "5000px" }}>
-            <img className='battleenemy' src={enemy1} alt="Enemy" />
+            <img className='battleenemy' src={enemyPositions[enemyIndex].img} alt="Enemy" />
           </div>
         </div>
       </div>
