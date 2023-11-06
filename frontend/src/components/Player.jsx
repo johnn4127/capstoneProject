@@ -13,8 +13,7 @@ const Player = () => {
     
     const { playerPosition, setPlayerPosition } = useContext(PositionData) 
 
-    const { x, y } = playerPosition //sets variables x and y to equal position.x and position.y respectively
-
+    const { x, y } = playerPosition 
     return (
         <div id='player' style={{
             position: 'absolute',
@@ -23,7 +22,7 @@ const Player = () => {
             height: '70px',
             width: '100px',
             //background: 'green',
-            zIndex: 2 //ensures that player is always visible above other elements
+            zIndex: 2 
         }}>
             
           <p  style={{zIndex:1000}} className='playcharactername' >{charName}</p>

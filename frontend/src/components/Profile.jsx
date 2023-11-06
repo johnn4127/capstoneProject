@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Nav } from 'react-bootstrap'; // Import Form and Button from React Bootstrap
+import { Form, Button, Nav } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useCharacter } from './CharacterContext';
-import { usePicture } from './PictureContext'; 
-import '../stylesheets/Profile.css'
+import { usePicture } from './PictureContext';
+import '../stylesheets/Profile.css';
 import Player from './Player';
 import char2 from '../assets/images/spin.gif';
 import char3 from '../assets/images/pikachu.gif';
@@ -20,9 +20,12 @@ const Profile = () => {
 
   const { selectedPicture, setPicture } = usePicture();
   const { charName, setCharacterName } = useCharacter();
+  const [isNameSet, setIsNameSet] = useState(false);
+  const [isCharacterSelected, setIsCharacterSelected] = useState(false);
 
   const handlePictureSelect = (picture) => {
     setPicture(picture);
+    setIsCharacterSelected(true);
   };
 
   const fetchUsersData = async () => {
@@ -38,6 +41,7 @@ const Profile = () => {
         const data = await response.json();
         const charName = data.charName;
         setCharacterName(charName);
+        setIsNameSet(true);
       } else {
         console.error('Failed to fetch user data');
       }
@@ -56,12 +60,15 @@ const Profile = () => {
 
   const updateCharacterName = () => {
     setCharacterName(newCharName);
+    setIsNameSet(true);
   };
 
   const navigate = useNavigate();
 
   const startGame = (e) => {
-    navigate('/game');
+    if (isNameSet && isCharacterSelected) {
+      navigate('/game');
+    } 
   };
 
   return (
@@ -76,12 +83,12 @@ const Profile = () => {
             value={newCharName}
             onChange={handleInputChange}
           />
-          <Button style={{margin:'20px'}} onClick={updateCharacterName}>Update Character Name</Button>
+          <Button style={{ margin: '20px' }} onClick={updateCharacterName}>Update Character Name</Button>
         </Form.Group>
-      
-      <div className="character-selection-container">
-        <h2 style={{margin:'20px'}}>CHOOSE YOUR CHARACTER</h2>
-        <div className="character-selection-buttons">
+
+        <div className="character-selection-container">
+          <h2 style={{ margin: '20px' }}>CHOOSE YOUR CHARACTER</h2>
+          <div className="character-selection-buttons">
           <button onClick={() => handlePictureSelect(char1)}>
             <img style={{ width: "100px", height: "120px" }} src={char1} alt="Picture 1" />
           </button>
@@ -101,17 +108,26 @@ const Profile = () => {
           <button onClick={() => handlePictureSelect(char6)}>
             <img style={{ width: "100px", height: "120px" }} src={char6} alt="Picture 6" />
           </button>
+            
+          </div>
         </div>
-      </div>
       </div>
       <div className='selectedchar'>
         <div className='selectedtitle'>
           <h3>Selected Character</h3>
         </div>
-        <img src={selectedPicture} alt="Selected Character" />
-        <p>{charName}</p>
+        {isCharacterSelected ? (
+          <img src={selectedPicture} alt="Selected Character" />
+        ) : (
+          <p>Select a character</p>
+        )}
+        {isNameSet ? (
+          <p>{charName}</p>
+        ) : (
+          <p>Set a character name</p>
+        )}
         <Nav.Link className="startgamebutton" as={Link} to="/intro">
-          <p className='startgamebutton'>Start Game</p>
+          <p className='startgamebutton' onClick={startGame}>Start Game</p>
         </Nav.Link>
       </div>
     </div>

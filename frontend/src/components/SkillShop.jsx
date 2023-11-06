@@ -69,11 +69,11 @@ const SkillShop = () => {
     const skillShop = [skill1, skill2, skill3, skill4, skill5]
 
     const buy = (skill) => {
-        if (player.exp >= skill.price) { //checks if player has enough experience to purchase skill
+        if (player.exp >= skill.price) { 
             setPlayer({
                 ...player,
-                exp: player.exp - skill.price, //subtracts skill price from players exp points
-                skills: [...player.skills, skill], //adds the purchased skill to the players skills array
+                exp: player.exp - skill.price, 
+                skills: [...player.skills, skill], 
             });
             
         }

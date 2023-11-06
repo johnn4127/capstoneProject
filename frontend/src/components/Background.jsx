@@ -22,7 +22,7 @@ const Background = () => {
         height: '100vh',
         width: '100vw',
         backgroundImage: `url(${background})`,
-        backgroundRepeat: 'repeat-x', //set background image to repeat on the x-axis
+        backgroundRepeat: 'repeat-x', 
         overflow: 'visible',
         backgroundSize: 'cover'
     }}>
