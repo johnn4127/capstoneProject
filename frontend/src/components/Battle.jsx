@@ -1,9 +1,9 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 
 //Component imports
 import Actionbar from './Actionbar';
-
+import Outro from './Outro';
 //Context imports
 import { PlayerData, PositionData } from './Game';
 import { useCharacter } from './CharacterContext';
@@ -17,6 +17,12 @@ import { Modal, Button, ProgressBar } from 'react-bootstrap';
 import enemy1 from '../assets/images/bossenemy.png';
 
 export const BattleContext = createContext();
+
+
+ 
+
+  
+  
 
 const Battle = ({ enemyIndex }) => {
   
@@ -74,16 +80,20 @@ const Battle = ({ enemyIndex }) => {
 
 
   const endBattle = () => {//handles logic for the end of a battle
-    if (enemyCon <= 0 || player.confidence <= 0) {
-      handleShowModal();
-      updatedEnemyPos[enemyIndex] = { ...updatedEnemyPos[enemyIndex], defeated: true };
-      updatedEnemyPos[enemyIndex + 1] = { ...updatedEnemyPos[enemyIndex + 1], active: true };
-      setEnemyPositions(updatedEnemyPos);
-      setPlayer({ ...player, confidence: player.maxConfidence, exp: player.exp + currentEnemy.exp });
-      handleStatIndex();
-    }
+    
+
+      if (enemyCon <= 0 || player.confidence <= 0) {
+        handleShowModal();
+        updatedEnemyPos[enemyIndex] = { ...updatedEnemyPos[enemyIndex], defeated: true };
+        updatedEnemyPos[enemyIndex + 1] = { ...updatedEnemyPos[enemyIndex + 1], active: true };
+        setEnemyPositions(updatedEnemyPos);
+        setPlayer({ ...player, confidence: player.maxConfidence, exp: player.exp + currentEnemy.exp });
+        handleStatIndex();
+      }
+    
   }
   
+
   const handleShowModalLose = () => { //
     setShowModalLose(true);
   }
@@ -107,6 +117,7 @@ const Battle = ({ enemyIndex }) => {
   useEffect(() => {//checks whhether or not the enemy's health has reached zero. If so callse the endBattleLose function.
     endBattleLose();
   }, [player.confidence]);
+  
 
   return (
     <div>
@@ -174,6 +185,7 @@ const Battle = ({ enemyIndex }) => {
           </Link>
         </Modal.Footer>
       </Modal>
+      
     </div>
   );
 };
