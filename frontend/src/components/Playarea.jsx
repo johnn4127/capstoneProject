@@ -14,26 +14,26 @@ import PauseMenu from './PauseMenu'
 
 
 const Playarea = () => {
-  const [pixelated, setPixelated] = useState(true); // Initial pixelation effect
-  const [showTextBox, setShowTextBox] = useState(true); // State to control text box visibility
-  const textBoxDuration = 10000; // 10 seconds in milliseconds
+  const [pixelated, setPixelated] = useState(true); 
+  const [showTextBox, setShowTextBox] = useState(true); 
+  const textBoxDuration = 10000; 
 
   useEffect(() => {
-    // Hide the text box after the specified duration
+   
     const hideTextBoxTimeout = setTimeout(() => {
       setShowTextBox(false);
     }, textBoxDuration);
 
-    // Cleanup the timeout to avoid memory leaks
+    
     return () => clearTimeout(hideTextBoxTimeout);
-  }, []); // Empty dependency arr
+  }, []); 
   useEffect(() => {
     
     const pixelationTimeout = setTimeout(() => {
       setPixelated(false);
-    }, 700); // Adjust the delay as needed
+    }, 700); 
 
-    // Cleanup the timeout to avoid memory leaks
+    
     return () => clearTimeout(pixelationTimeout);
   }, []);
 
@@ -88,7 +88,7 @@ const Playarea = () => {
         }}
         className={`pixelated ${pixelated ? 'fade' : ''}`}>
 
-          {!battle && !shop ? ( //if shop and battle are false render this
+          {!battle && !shop ? ( 
             <>
               <Background />
               
@@ -107,14 +107,14 @@ const Playarea = () => {
             </>
           ) : null}
 
-          {battle ? ( //if battle is true render this
+          {battle ? ( 
             <>
               <Battle enemyIndex={statIndex} />
             </>
           ) : null
           }
           
-          {shop ? ( //if shop is true render this
+          {shop ? ( 
             <>
               <Shop />
             </>

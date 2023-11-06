@@ -1,15 +1,16 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { PositionData, PlayerData } from './Game';;
 import enemy1 from '../assets/images/bossenemy.png'
+import enemy2 from '../assets/images/enemy2.gif'
 import EnemyTextBox from './EnemyTextBox';
 
 const Enemy = ({ index }) => {
 
   const { battle, setBattle } = useContext(PlayerData)
   const { enemyPositions, setEnemyPositions, setPlayerPosition } = useContext(PositionData);
-  const enemyMessage = 'GET HIM BOYS!!!!'; // Replace with your enemy's message
+  const enemyMessage = 'GET HIM BOYS!!!!'; 
 
-  const [enemyPosition, setEnemyPosition] = useState(enemyPositions[index]); // initialize state with the enemy's position
+  const [enemyPosition, setEnemyPosition] = useState(enemyPositions[index]); 
 
   const { x, y } = enemyPosition;
 
@@ -37,7 +38,7 @@ const handlePlayerAdvance = () => {
           color: 'aliceblue'
         }}
         ><EnemyTextBox message={enemyMessage} />
-             <p>Enemy {index + 1}<img style={{height:"100px"}}  src={enemy1}/> </p> {/* Once all images for enemies are found, replace src with 'enemies[index].img'.*/}
+             <p>Enemy {index + 1}<img style={{height:"100px"}}  src={enemy1}/> </p> 
           </div>
       </button>
       ) : null}

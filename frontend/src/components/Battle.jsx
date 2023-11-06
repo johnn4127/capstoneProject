@@ -35,7 +35,7 @@ const Battle = ({ enemyIndex }) => {
     setMessage(newMessage);
   };
 
-  // OTHERS
+  
   const handleHide = () => {
     if (hidden) {
       setHidden(false);
@@ -53,11 +53,11 @@ const Battle = ({ enemyIndex }) => {
   const [damageLog, setDamageLog] = useState('Prepare Yourself!');
   const [enemyMessage, setEnemyMessage] = useState('Battle Start');
   const [enemyLines, setEnemyLines] = useState([
-    "Name a time you failed in life!",
-    "Prepare to be coded out!",
-    "I'm the master coder!",
-    "Tell me about your salary expectations.",
-    "What are some of your weaknesses"
+    "YOU'RE GOING DOWN BUDDY!!!!",
+    "YOU'RE NOT GETTING PAST ME!",
+    "YOU'RE A CHUMP",
+    "IS THAT ALL YOU GOT?"
+    
   ]);
 
   const getRandomEnemyLine = () => {
@@ -65,7 +65,7 @@ const Battle = ({ enemyIndex }) => {
     return enemyLines[randomIndex];
   };
 
-  // WIN CON
+  
   const endBattle = () => {
     if (enemyCon <= 0 || player.confidence <= 0) {
       handleShowModal();
@@ -83,7 +83,7 @@ const Battle = ({ enemyIndex }) => {
     }
   }, [enemyCon]);
 
-  // LOSE CON
+  
   const [showModalLose, setShowModalLose] = useState(false);
   const handleShowModalLose = () => {
     setShowModalLose(true);

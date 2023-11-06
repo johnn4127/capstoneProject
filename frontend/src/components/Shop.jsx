@@ -7,7 +7,7 @@ import ItemShop from './ItemShop'
 
 const Shop = () => {
     const { player, setPlayer, setShop, setPause } = useContext(PlayerData)
-    const [storeMode, setStoreMode] = useState(false) // Initializes state to control whether the skill shop or item shop renders. 
+    const [storeMode, setStoreMode] = useState(false) 
 
     const handleStoreMode = () => {
         if (!storeMode) {

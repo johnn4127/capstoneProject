@@ -18,7 +18,7 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
     const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 5);
     updateMessage(hit);
     setTimeout(() => {
-      updateMessage(''); // Clear the message state after 1 second
+      updateMessage(''); 
     }, 700);
 
     setPlayer({ ...player, confidence: player.confidence - enemyDamage });
@@ -43,7 +43,7 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
     const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 15);
     updateMessage(fireball);
     setTimeout(() => {
-      updateMessage(''); // Clear the message state after 1 second
+      updateMessage(''); 
     }, 1500);
 
     setPlayer({ ...player, confidence: player.confidence - enemyDamage });
@@ -68,7 +68,7 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
     const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 35);
     updateMessage(thunder);
     setTimeout(() => {
-      updateMessage(''); // Clear the message state after 1 second
+      updateMessage('');
     }, 2500);
 
     setPlayer({ ...player, confidence: player.confidence - enemyDamage });
@@ -93,7 +93,7 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
     const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 25);
     updateMessage(ice);
     setTimeout(() => {
-      updateMessage(''); // Clear the message state after 1 second
+      updateMessage(''); 
     }, 700);
 
     setPlayer({ ...player, confidence: player.confidence - enemyDamage });

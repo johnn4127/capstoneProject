@@ -1,8 +1,9 @@
-// Game.js
 import React, { useState, createContext } from 'react';
 import Playarea from './Playarea';
 import { usePicture } from './PictureContext';
 import enemy1 from '../assets/images/bossenemy.png'
+import enemy2 from '../assets/images/enemy2.gif'
+
 import BossEnemy from '../assets/images/Boss.gif'
 
 export const PlayerData = createContext();

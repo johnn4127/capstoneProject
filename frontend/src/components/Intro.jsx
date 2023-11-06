@@ -20,9 +20,9 @@ const Intro = () => {
         currentIndex++;
       } else {
         clearInterval(interval);
-        setTextRenderingComplete(true); // Set the rendering completion flag
+        setTextRenderingComplete(true); 
       }
-    }, 15); // Adjust the time interval (in milliseconds) to control the text rendering speed
+    }, 15); 
   }, []);
 
   return (

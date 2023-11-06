@@ -6,7 +6,7 @@ const Boss = () => {
 
     const { bossPosition, setBossPosition } = useContext(PositionData) 
    
-    const { x, y } = bossPosition //sets variables x and y to equal position.x and position.y respectively
+    const { x, y } = bossPosition 
 
   return (
     <div id='Boss' 
