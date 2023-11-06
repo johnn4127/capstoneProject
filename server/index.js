@@ -3,7 +3,7 @@ const app = express();
 const Sequelize = require('sequelize');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
-const { Users } = require('./models');
+// const { Users } = require('./models');
 
 app.use(express.json());
 app.use(cors());
@@ -20,94 +20,94 @@ app.get('/', (req, res) => {
   res.send('heartbeat');
 });
 
-app.post('/register', async (req, res) => {
-  try {
-    const { email, password, charName } = req.body;
+// app.post('/register', async (req, res) => {
+//   try {
+//     const { email, password, charName } = req.body;
 
-    const existingUser = await Users.findOne({
-      where: {
-        email: email,
-      },
-    });
+//     const existingUser = await Users.findOne({
+//       where: {
+//         email: email,
+//       },
+//     });
 
-    if (existingUser) {
-      res.status(409).json({ error: 'Email is already taken' });
-      return;
-    }
+//     if (existingUser) {
+//       res.status(409).json({ error: 'Email is already taken' });
+//       return;
+//     }
 
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+//     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    const newUser = await Users.create({
-      email: email,
-      password: hashedPassword,
-      charName: charName,
+//     const newUser = await Users.create({
+//       email: email,
+//       password: hashedPassword,
+//       charName: charName,
       
-    });
+//     });
 
-    res.json(newUser);
-  } catch (error) {
-    console.error('Error during registration:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+//     res.json(newUser);
+//   } catch (error) {
+//     console.error('Error during registration:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
-app.get('/profile/:userID', async (req, res) => {
-  const userID = req.params.userID;
+// app.get('/profile/:userID', async (req, res) => {
+//   const userID = req.params.userID;
 
-  try {
-    const charData = await Users.findByPk(userID);
+//   try {
+//     const charData = await Users.findByPk(userID);
 
-    if (!charData) {
-      res.status(404).json({ error: 'User not found' });
-      return;
-    }
+//     if (!charData) {
+//       res.status(404).json({ error: 'User not found' });
+//       return;
+//     }
 
-    res.json({ charName: charData.charName });
-  } catch (error) {
-    console.error('Error fetching profile:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+//     res.json({ charName: charData.charName });
+//   } catch (error) {
+//     console.error('Error fetching profile:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
-app.get('/users', async (req, res) => {
-  try {
-    const userData = await Users.findAll();
-    res.json(userData);
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+// app.get('/users', async (req, res) => {
+//   try {
+//     const userData = await Users.findAll();
+//     res.json(userData);
+//   } catch (error) {
+//     console.error('Error fetching users:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
-app.post('/login', async (req, res) => {
-  try {
-    const email = req.body.email;
-    const password = req.body.password;
+// app.post('/login', async (req, res) => {
+//   try {
+//     const email = req.body.email;
+//     const password = req.body.password;
 
-    const user = await Users.findOne({
-      where: {
-        email: email,
-      },
-    });
+//     const user = await Users.findOne({
+//       where: {
+//         email: email,
+//       },
+//     });
 
-    if (!user) {
+//     if (!user) {
     
-      res.status(401).json({ message: 'Unknown email' });
-      return;
-    }
+//       res.status(401).json({ message: 'Unknown email' });
+//       return;
+//     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+//     const passwordMatch = await bcrypt.compare(password, user.password);
 
-    if (passwordMatch) {
-      res.json({ message: 'Authentication successful' });
-    } else {
-      res.status(401).json({ message: 'Invalid login credentials' });
-    }
-  } catch (error) {
-    console.error('Error during login:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
+//     if (passwordMatch) {
+//       res.json({ message: 'Authentication successful' });
+//     } else {
+//       res.status(401).json({ message: 'Invalid login credentials' });
+//     }
+//   } catch (error) {
+//     console.error('Error during login:', error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
 
 const PORT = 3000;
 app.listen(PORT, () => {
