@@ -8,8 +8,8 @@ const { Users } = require('./models');
 app.use(express.json());
 app.use(cors());
 
-const sequelize = new Sequelize('Users', 'ograyfbl', process.env.PW, {
-  host: process.env.HOST,
+const sequelize = new Sequelize('Users', 'ograyfbl', "tTlxPTYCS8-1JoO1WpD0WcsiwA2NT_ZU", {
+  host: "suleiman.db.elephantsql.com",
   dialect: 'postgres',
 });
 
@@ -109,7 +109,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
