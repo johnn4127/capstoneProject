@@ -14,7 +14,7 @@ import '../stylesheets/Profile.css';
 import char1 from '../assets/images/ironman2.gif';
 import char2 from '../assets/images/spin.gif';
 import char3 from '../assets/images/pikachu.gif';
-import char4 from '../assets/images/pugspiderman.gif';
+import char4 from '../assets/images/spiderman.gif';
 import char5 from '../assets/images/star.gif';
 import char6 from '../assets/images/cat.gif';
 
