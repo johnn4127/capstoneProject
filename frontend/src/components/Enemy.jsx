@@ -15,6 +15,7 @@ const Enemy = ({ index }) => {
   const { enemyPositions, setPlayerPosition } = useContext(PositionData);
   const enemyMessage = 'GET HIM BOYS!!!!';
 
+  
   //States
   const [enemyPosition, setEnemyPosition] = useState(enemyPositions[index]);
 
