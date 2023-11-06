@@ -6,8 +6,8 @@ const SkillShop = () => {
     const { player, setPlayer, setShop, setPause } = useContext(PlayerData)
 
     const [skill1, setSkill1] = useState({
-        name: 'Take a Breather',
-        description: 'Heals your confidence by 10%.',
+        name: 'Delicious Apple',
+        description: 'Heals your HP by 10%.',
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
             setSkill1({...skill1, bought: true})
@@ -18,7 +18,7 @@ const SkillShop = () => {
     });
 
     const [skill2, setSkill2] = useState({
-        name: 'Resume Template',
+        name: 'Enery Drink',
         description: 'Boosts your proficiency by 15%.',
         effect: () => {
             setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * 0.15)) });
@@ -30,8 +30,8 @@ const SkillShop = () => {
     });
 
     const [skill3, setSkill3] = useState({
-        name: 'Star Method',
-        description: 'Heals your confidence by 20%.',
+        name: 'Med Kit',
+        description: 'Heals your HP by 20%.',
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.20)) });
             setSkill3({...skill3, bought: true})
@@ -42,8 +42,8 @@ const SkillShop = () => {
     });
 
     const [skill4, setSkill4] = useState({
-        name: 'Charm',
-        description: 'Heals your confidence by 10%.',
+        name: 'Bandage',
+        description: 'Heals your HP by 10%.',
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
             setSkill4({...skill4, bought: true})
@@ -54,7 +54,7 @@ const SkillShop = () => {
     });
 
     const [skill5, setSkill5] = useState({
-        name: 'Concise Elevator Pitch',
+        name: 'Power Up',
         description: 'Boosts your proficiency by 10%.',
         effect: () => {
             setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * 0.10)) });
@@ -82,7 +82,7 @@ const SkillShop = () => {
 
     return (
         <>
-            <h3 style={{ alignSelf: 'center' }}>Skills</h3>
+            <h3 style={{ alignSelf: 'center' }}>Consumables</h3>
             {skillShop.map((skill, index) => (
                 <div key={index}>
                     <button

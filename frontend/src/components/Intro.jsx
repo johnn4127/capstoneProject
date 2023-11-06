@@ -8,7 +8,7 @@ const Intro = () => {
   const [textRenderingComplete, setTextRenderingComplete] = useState(false); 
   const {selectedPicture} = usePicture();
   const fullStory =
-    "Huh?! WHERE AM I ?? ALL I REMEMBER WAS I FELL ASLEEP LAST NIGHT AFTER STUDYING." +
+    "Huh?! WHERE AM I ?? ALL I REMEMBER WAS I FELL ASLEEP LAST NIGHT AFTER STUDYING!" +
     " Am I being teleported to a different world??? This has always been my dream! I hope I'll become a super hero or something!" 
    ;
 

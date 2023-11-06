@@ -16,7 +16,7 @@ const Battle = ({ enemyIndex }) => {
   const { selectedPicture } = usePicture();
   const [hidden, setHidden] = useState(true);
   const { enemyPositions, setEnemyPositions, handleStatIndex, playerPosition, setPlayerPosition } = useContext(PositionData);
-
+ 
   // MODAL STUFF
   const [showModal, setShowModal] = useState(false);
 
@@ -56,7 +56,8 @@ const Battle = ({ enemyIndex }) => {
     "YOU'RE GOING DOWN BUDDY!!!!",
     "YOU'RE NOT GETTING PAST ME!",
     "YOU'RE A CHUMP",
-    "IS THAT ALL YOU GOT?"
+    "IS THAT ALL YOU GOT?",
+    "PICK ON SOMEONE YOUR OWN SIZE"
     
   ]);
 
@@ -110,10 +111,10 @@ const Battle = ({ enemyIndex }) => {
           {message && <img style={{ height: "650px",zIndex:10000000 }} src={message} alt="Exclamation Point" />}
         </div>
         <div className="target-box">
-          <h2 className='character-info' >CODING ENEMY</h2>
+          <h2 className='character-info' >ENEMY</h2>
           <ProgressBar now={enemyCon} label={`${Math.round((enemyCon / currentEnemy.maxConfidence) * 100)}%`} variant="danger" />
           <div className='character-info' style={{ right: "5000px" }}>
-            <img className='battleenemy' src={enemy1} alt="Enemy" />
+            <img className='battleenemy' src={enemyPositions[enemyIndex].img} alt="Enemy" />
           </div>
         </div>
       </div>

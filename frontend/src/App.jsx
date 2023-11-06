@@ -9,7 +9,7 @@ import Shop from './components/Shop'
 import Actionbar from './components/Actionbar'
 import Battle from './components/Battle'
 import Intro from './components/Intro'
-
+import Outro from './components/Outro'
 import Homepage from './components/Homepage'
 const App = () => {
   return (
@@ -27,6 +27,7 @@ const App = () => {
       <Route path='/battle' element={<Battle />} />
       <Route path='/login' element={<Login />} />
       <Route path='/intro' element={<Intro />} />
+      <Route path='/outro' element={<Outro />} />
 
       
       </Routes>
