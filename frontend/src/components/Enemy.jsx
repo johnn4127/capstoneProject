@@ -6,7 +6,7 @@ import { PositionData, PlayerData } from './Game';
 //Component imports
 import EnemyTextBox from './EnemyTextBox';
 
-import BossEnemy from '../assets/images/Boss.gif'
+import BossEnemy from '../assets/images/boss.gif'
 
 const Enemy = ({ index }) => {
 
