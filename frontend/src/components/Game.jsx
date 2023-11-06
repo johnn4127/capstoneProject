@@ -53,6 +53,7 @@ const Game = () => {
     { img: BossEnemy, x: 1000, y: 40, height: 475, width: 300, defeated: false, active: false }
   ]);
   
+  
   const [boss, setBoss] = useState({
     proficiency: 20,
     confidence: 500,
