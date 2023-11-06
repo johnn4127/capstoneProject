@@ -1,42 +1,62 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
-import { useCharacter } from './CharacterContext';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import '../stylesheets/Battle.css';
-import { PlayerData } from './Game';
-import Actionbar from './Actionbar';
-import { PositionData } from './Game';
-import { usePicture } from './PictureContext';
-export const BattleContext = createContext();
-import enemy1 from '../assets/images/bossenemy.png';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-
 import { Link } from 'react-router-dom';
-const Battle = ({ enemyIndex }) => {
-  const { selectedPicture } = usePicture();
-  const [hidden, setHidden] = useState(true);
-  const { enemyPositions, setEnemyPositions, handleStatIndex, playerPosition, setPlayerPosition } = useContext(PositionData);
- 
-  // MODAL STUFF
-  const [showModal, setShowModal] = useState(false);
 
-  const handleShowModal = () => {
+//Component imports
+import Actionbar from './Actionbar';
+
+//Context imports
+import { PlayerData, PositionData } from './Game';
+import { useCharacter } from './CharacterContext';
+import { usePicture } from './PictureContext';
+
+//Style imports
+import '../stylesheets/Battle.css';
+import { Modal, Button, ProgressBar } from 'react-bootstrap';
+
+//Asset imports
+import enemy1 from '../assets/images/bossenemy.png';
+
+export const BattleContext = createContext();
+
+const Battle = ({ enemyIndex }) => {
+  
+  //Contexts
+  const { charName } = useCharacter();
+  const { selectedPicture } = usePicture();
+  const { player, setPlayer, setBattle, enemies } = useContext(PlayerData);
+  const { enemyPositions, setEnemyPositions, handleStatIndex } = useContext(PositionData);
+  
+  //States
+  const [hidden, setHidden] = useState(true);
+  const [currentEnemy, setCurrentEnemy] = useState(enemies[enemyIndex]); //Intializes a state to hold current enemy stat info
+  const [enemyCon, setEnemyCon] = useState(currentEnemy.confidence); //State to represent enemy health
+  const [damageLog, setDamageLog] = useState('Prepare Yourself!'); 
+  const [message, setMessage] = useState('');
+  const [enemyMessage, setEnemyMessage] = useState('Battle Start'); 
+  const [enemyLines, setEnemyLines] = useState([ 
+    "YOU'RE GOING DOWN BUDDY!!!!",
+    "YOU'RE NOT GETTING PAST ME!",
+    "YOU'RE A CHUMP",
+    "IS THAT ALL YOU GOT?"
+  ]);
+  const [showModal, setShowModal] = useState(false); //State to handle rendering of modal
+  const [showModalLose, setShowModalLose] = useState(false); //State to control rendering of modal for losing
+
+  //Functions
+  const handleShowModal = () => {//Function to control opening of modal
     setShowModal(true);
   }
 
-  const handleCloseModal = () => {
+  const handleCloseModal = () => {//Function to control closeing of modal
     setShowModal(false);
     setBattle(false);
   }
-
-  const [message, setMessage] = useState('');
-
-  const updateMessage = (newMessage) => {
+  
+  const updateMessage = (newMessage) => {//Function to update game messages
     setMessage(newMessage);
   };
-
   
-  const handleHide = () => {
+  const handleHide = () => {//Function to control state of 'hide'
     if (hidden) {
       setHidden(false);
     }
@@ -44,29 +64,16 @@ const Battle = ({ enemyIndex }) => {
       setHidden(true);
     }
   }
-
-  const { player, setPlayer, setBattle, enemies, setEnemies } = useContext(PlayerData);
-  const { charName } = useCharacter();
-  const [currentEnemy, setCurrentEnemy] = useState(enemies[enemyIndex]);
-  const updatedEnemyPos = [...enemyPositions];
-  const [enemyCon, setEnemyCon] = useState(currentEnemy.confidence);
-  const [damageLog, setDamageLog] = useState('Prepare Yourself!');
-  const [enemyMessage, setEnemyMessage] = useState('Battle Start');
-  const [enemyLines, setEnemyLines] = useState([
-    "YOU'RE GOING DOWN BUDDY!!!!",
-    "YOU'RE NOT GETTING PAST ME!",
-    "YOU'RE A CHUMP",
-    "IS THAT ALL YOU GOT?"
-    
-  ]);
-
-  const getRandomEnemyLine = () => {
+  
+  const updatedEnemyPos = [...enemyPositions];//makes a copy of enemy positions state
+  
+  const getRandomEnemyLine = () => {//picks a random enemy line to appear
     const randomIndex = Math.floor(Math.random() * enemyLines.length);
     return enemyLines[randomIndex];
   };
 
-  
-  const endBattle = () => {
+
+  const endBattle = () => {//handles logic for the end of a battle
     if (enemyCon <= 0 || player.confidence <= 0) {
       handleShowModal();
       updatedEnemyPos[enemyIndex] = { ...updatedEnemyPos[enemyIndex], defeated: true };
@@ -77,29 +84,29 @@ const Battle = ({ enemyIndex }) => {
     }
   }
 
-  useEffect(() => {
-    if (enemyCon === 0) {
-      endBattle();
-    }
-  }, [enemyCon]);
-
   
-  const [showModalLose, setShowModalLose] = useState(false);
-  const handleShowModalLose = () => {
+  
+  const handleShowModalLose = () => { //
     setShowModalLose(true);
   }
-
+  
   const handleCloseModalLose = () => {
-   
+    
   }
-
-  const endBattleLose = () => {
+  
+  const endBattleLose = () => {//Function for hadling player loss.
     if (player.confidence <= 0) {
       handleShowModalLose();
     }
   }
 
   useEffect(() => {
+    if (enemyCon === 0) {//checks whether or not the enemy's health has reached zero. If so calls the endBattle function.
+      endBattle();
+    }
+  }, [enemyCon]);
+
+  useEffect(() => {//checks whhether or not the enemy's health has reached zero. If so callse the endBattleLose function.
     endBattleLose();
   }, [player.confidence]);
 
@@ -163,9 +170,9 @@ const Battle = ({ enemyIndex }) => {
         </Modal.Body>
         <Modal.Footer>
           <Link to='/intro'>
-          <Button variant="secondary" onClick={handleCloseModalLose}>
-            Restart Game
-          </Button>
+            <Button variant="secondary" onClick={handleCloseModalLose}>
+              Restart Game
+            </Button>
           </Link>
         </Modal.Footer>
       </Modal>

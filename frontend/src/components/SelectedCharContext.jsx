@@ -7,8 +7,8 @@ export const useSelectedChar = () => {
 };
 
 export const SelectedCharProvider = ({ children }) => {
+  //States
   const [selectedCharacter, setSelectedCharacter] = useState('');
-  console.log(selectedCharacter)
 
   const setSelectedChar = (character) => {
     setSelectedCharacter(character);

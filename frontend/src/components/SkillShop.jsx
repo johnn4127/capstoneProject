@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react'
+
+//Context imports
 import { PlayerData } from './Game'
 
 const SkillShop = () => {
 
-    const { player, setPlayer, setShop, setPause } = useContext(PlayerData)
+    //Contexts
+    const { player, setPlayer } = useContext(PlayerData)
 
+    //States
     const [skill1, setSkill1] = useState({
         name: 'Take a Breather',
         description: 'Heals your confidence by 10%.',

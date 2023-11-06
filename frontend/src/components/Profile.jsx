@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Nav } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+
+//Context imports
 import { useCharacter } from './CharacterContext';
 import { usePicture } from './PictureContext';
+import { useSelectedChar } from './SelectedCharContext';
+
+//Style imports
 import '../stylesheets/Profile.css';
-import Player from './Player';
+
+//Asset imports
+import char1 from '../assets/images/ghost.gif';
 import char2 from '../assets/images/spin.gif';
 import char3 from '../assets/images/pikachu.gif';
-import char1 from '../assets/images/spiderman.gif';
-import char4 from '../assets/images/ironman2.gif';
+import char4 from '../assets/images/pug.gif';
 import char5 from '../assets/images/star.gif';
 import char6 from '../assets/images/cat.gif';
-import { useSelectedChar } from './SelectedCharContext';
 
 const Profile = () => {
   const [newCharName, setNewCharName] = useState('');
