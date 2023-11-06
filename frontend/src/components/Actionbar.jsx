@@ -114,12 +114,12 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
     setDamageLog(`Ice blast does ${playerDamage} confidence damage.`);
 
     const enemyLine = getRandomEnemyLine();
-    setEnemyMessage(`Coding Enemy: "${enemyLine}"`);
+    setEnemyMessage(`Enemy: "${enemyLine}"`);
 
     setEnemyCon(enemyCon - playerDamage);
     setDamageLog((prevDamageLog) => [
       ...prevDamageLog,
-      `Coding Enemy attacked you for ${enemyDamage} confidence damage.`,
+      `Enemy attacked you for ${enemyDamage} confidence damage.`,
     ]);
 
     if (playerDamage > enemyCon) {

@@ -16,9 +16,9 @@ const Intro = () => {
   const [story, setStory] = useState('');
   const [textRenderingComplete, setTextRenderingComplete] = useState(false);
   const fullStory =
-    "Huh?! WHERE AM I ?? ALL I REMEMBER WAS I FELL ASLEEP LAST NIGHT AFTER STUDYING." +
-    " Am I being teleported to a different world??? This has always been my dream! I hope I'll become a super hero or something!"
-  ;
+    "Huh?! WHERE AM I ?? ALL I REMEMBER WAS I FELL ASLEEP LAST NIGHT AFTER STUDYING!" +
+    " Am I being teleported to a different world??? This has always been my dream! I hope I'll become a super hero or something!" 
+   ;
 
   useEffect(() => {
     let currentIndex = 0;
