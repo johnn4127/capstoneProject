@@ -6,11 +6,13 @@ import { PositionData, PlayerData } from './Game';
 //Component imports
 import EnemyTextBox from './EnemyTextBox';
 
+import BossEnemy from '../assets/images/Boss.gif'
+
 const Enemy = ({ index }) => {
 
   //Contexts
   const { setBattle } = useContext(PlayerData)
-  const { enemyPositions, setPlayerPosition, bossEnemy } = useContext(PositionData);
+  const { enemyPositions, setPlayerPosition } = useContext(PositionData);
   const enemyMessage = 'GET HIM BOYS!!!!';
 
   //States
@@ -42,7 +44,7 @@ const Enemy = ({ index }) => {
               color: 'aliceblue'
             }}
           ><EnemyTextBox message={enemyMessage} />
-            <p>Enemy {index + 1} <img style={!enemyPositions[index].img == bossEnemy ? { height: height } : { height: height, transform: 'scaleX(-1)'}} src={enemyPositions[index].img} /> </p>
+            <p>Enemy {index + 1} <img style={enemyPositions[index].img == BossEnemy ? { height: height, transform: 'scaleX(-1)'} : { height: height}} src={enemyPositions[index].img} /> </p>
           </div>
         </button>
       ) : null}

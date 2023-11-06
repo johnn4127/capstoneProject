@@ -1,39 +1,38 @@
-import React, { useState, createContext } from 'react';
-
-//Component imports
-import Playarea from './Playarea';
+import React, { useState, createContext, Component } from 'react';
 
 //Context imports
 import { usePicture } from './PictureContext';
 
+//Component imports
+import Playarea from './Playarea';
+
 //Asset imports
 import enemy1 from '../assets/images/bossenemy.png'
 import BossEnemy from '../assets/images/Boss.gif'
+import bats from '../assets/images/bat.gif'
 import dinosaur from '../assets/images/dinosaur.gif'
+import shadow from '../assets/images/shadow.gif'
+import robot from '../assets/images/robot.gif'
+import robot2 from '../assets/images/robot2.gif'
+import gorilla from '../assets/images/gorilla.gif'
 
-//Created Contexts
 export const PlayerData = createContext();
 export const PositionData = createContext();
 
 const Game = () => {
-
-  //States
-  const [player, setPlayer] = useState({ //State to represent player stats
+  const [player, setPlayer] = useState({
     proficiency: 15,
     confidence: 500,
     maxConfidence: 500,
     skills: [],
-    exp: 0,
+    exp: 0, 
   });
 
-  const [playerPosition, setPlayerPosition] = useState({//State to represent positional data of player
-    x: 140,
-    y: 60,
-    width: 100,
-    defeated: false
-  });
+  const [battle, setBattle] = useState(false);
+  const [shop, setShop] = useState(false);
+  const [pause, setPause] = useState(false);
 
-  const [enemies, setEnemies] = useState([ //State to represent stats of various enemies
+  const [enemies, setEnemies] = useState([
     { proficiency: 10, confidence: 100, maxConfidence: 100, exp: 100 },
     { proficiency: 12, confidence: 200, maxConfidence: 200, exp: 300 },
     { proficiency: 15, confidence: 350, maxConfidence: 350, exp: 500 },
@@ -43,18 +42,18 @@ const Game = () => {
     { proficiency: 36, confidence: 700, maxConfidence: 700, exp: 1500 }
   ]);
 
-  const [enemyPositions, setEnemyPositions] = useState([//State to represent postional data of enemies
-    { img: enemy1, x: 250, y: 180, height: '100px', width: '100px', defeated: false, active: true },
-    { img: '', x: 500, y: 340, height: '100px', width: '100px', defeated: false, active: false },
-    { img: enemy1, x: 80, y: 390,height: '100px',  width: '100px', defeated: false, active: false },
-    { img: '', x: 230, y: 545, height: '100px', width: '100px', defeated: false, active: false },
-    { img: '', x: 730, y: 700, height: '100px', width: '100px', defeated: false, active: false },
-    { img: enemy1, x: 580, y: '100px', height: '100px', width: '100px', defeated: false, active: false },
-    { img: dinosaur, x: 950, y: 180, height: '100px', width: '100px', defeated: false, active: false },
-    { img: BossEnemy, x: 1020, y: 40, height: 475, width: 300, defeated: false, active: false }
+  const [enemyPositions, setEnemyPositions] = useState([
+    { img: bats, x: 250, y: 180, height: 100, width: 100, defeated: false, active: true },
+    { img: shadow, x: 500, y: 340, height: 100, width: 100, defeated: false, active: false },
+    { img: robot, x: 80, y: 390, height: 100, width: 100, defeated: false, active: false },
+    { img: robot2, x: 230, y: 545, height: 100, width: 100, defeated: false, active: false },
+    { img: gorilla, x: 730, y: 700, height: 100, width: 100, defeated: false, active: false },
+    { img: enemy1, x: 580, y: 100, height: 100, width: 100, defeated: false, active: false },
+    { img: dinosaur, x: 950, y: 180, height: 100, width: 100, defeated: false, active: false },
+    { img: BossEnemy, x: 1000, y: 40, height: 475, width: 300, defeated: false, active: false }
   ]);
   
-  const [boss, setBoss] = useState({ //State to represent boss stats
+  const [boss, setBoss] = useState({
     proficiency: 20,
     confidence: 500,
     maxConfidence: 500,
@@ -62,16 +61,17 @@ const Game = () => {
     defeated: false,
     active: false
   });
-  
-  const [bossPosition, setBossPosition] = useState({ img: BossEnemy, x: 1020, y: 40, height: 600, width: 300, defeated: false });
 
-  const [statIndex, setStatIndex] = useState(0); //State to control which enemies are being interacted with
-  const [battle, setBattle] = useState(false); //State to control rendering of battle component
-  const [shop, setShop] = useState(false); //State to control rendering of shop component
-  const [pause, setPause] = useState(false);
+  const [playerPosition, setPlayerPosition] = useState({
+    x: 140,
+    y: 60,
+    width: 100,
+    defeated: false
+  });
 
-//Functions
-  const handleStatIndex = () => { //Controls the incrementation of 'statIndex' state
+  const [statIndex, setStatIndex] = useState(0);
+
+  const handleStatIndex = () => {
     if (statIndex < enemies.length - 1) {
       setStatIndex(statIndex + 1);
     } else {
@@ -82,7 +82,7 @@ const Game = () => {
 
   return (
     <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, boss, setBoss ,battle, setBattle, shop, setShop, pause, setPause }}>
-      <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, statIndex, setStatIndex, handleStatIndex }}>
+      <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, statIndex, setStatIndex, handleStatIndex }}>
         <Playarea />
       </PositionData.Provider>
     </PlayerData.Provider>

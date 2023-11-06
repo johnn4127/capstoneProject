@@ -115,7 +115,7 @@ const Battle = ({ enemyIndex }) => {
           {message && <img style={{ height: "650px",zIndex:10000000 }} src={message} alt="Exclamation Point" />}
         </div>
         <div className="target-box">
-          <h2 className='character-info' >CODING ENEMY</h2>
+          <h2 className='character-info' >ENEMY</h2>
           <ProgressBar now={enemyCon} label={`${Math.round((enemyCon / currentEnemy.maxConfidence) * 100)}%`} variant="danger" />
           <div className='character-info' style={{ right: "5000px" }}>
             <img className='battleenemy' src={enemyPositions[enemyIndex].img} alt="Enemy" />
@@ -150,7 +150,7 @@ const Battle = ({ enemyIndex }) => {
           <Modal.Title>Victory!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Congratulations! You have defeated the enemy.
+          Congratulations! You have defeated the enemy. Make sure to spend the experience you have gained in the shop menu to prepare yourself for future battles.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>
