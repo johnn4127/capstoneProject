@@ -116,16 +116,11 @@ const Profile = () => {
         <div className='selectedtitle'>
           <h3>Selected Character</h3>
         </div>
-        {isCharacterSelected ? (
+        
           <img src={selectedPicture} alt="Selected Character" />
-        ) : (
-          <p>Select a character</p>
-        )}
-        {isNameSet ? (
+        
+        
           <p>{charName}</p>
-        ) : (
-          <p>Set a character name</p>
-        )}
         <Nav.Link className="startgamebutton" as={Link} to="/intro">
           <p className='startgamebutton' onClick={startGame}>Start Game</p>
         </Nav.Link>
