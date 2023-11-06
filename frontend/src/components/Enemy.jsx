@@ -38,7 +38,7 @@ const handlePlayerAdvance = () => {
           color: 'aliceblue'
         }}
         ><EnemyTextBox message={enemyMessage} />
-             <p>Enemy {index + 1}<img style={{height:"100px"}}  src={enemy1}/> </p> 
+             <p>Enemy {index + 1}<img style={{height:"100px"}}  src={enemyPositions[index].img}/> </p> 
           </div>
       </button>
       ) : null}
