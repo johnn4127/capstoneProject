@@ -107,7 +107,7 @@ const Battle = ({ enemyIndex }) => {
     <div>
       <div className="box">
         <div className="centered-element">
-          {message && <img style={{ height: "250px" }} src={message} alt="Exclamation Point" />}
+          {message && <img style={{ height: "650px",zIndex:10000000 }} src={message} alt="Exclamation Point" />}
         </div>
         <div className="target-box">
           <h2 className='character-info' >CODING ENEMY</h2>
