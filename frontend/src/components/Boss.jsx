@@ -8,23 +8,33 @@ import '../stylesheets/Battle.css'
 
 const Boss = () => {
 
-  const { bossPosition, setBossPosition } = useContext(PositionData)
+  const { bossPosition, setBossPosition, enemyPositions } = useContext(PositionData)
 
   const { x, y } = bossPosition
 
-  return (
-    <div id='Boss'
-      style={{
-        position: 'absolute',
-        left: x,
-        bottom: y,
-        width: '450px',
-        height: '450px',
+  const handleBossFight = () => {
+    setPlayerPosition({ ...bossPosition })
+    setBattle(true)
+  }
 
-      }}>
-      <div  >
-        <img className='bossenemypic' src={bossPosition.img} style={{ transform: 'scaleX(-1)' }} /></div>
-    </div>
+  return (
+    <button onClick={handleBossFight} style={{
+      border: 'none',
+      background: 'none'
+    }}
+    disabled={!enemyPositions[enemyPositions.length-1].defeated}>
+      <div id='Boss'
+        style={{
+          position: 'absolute',
+          left: x,
+          bottom: y,
+          width: '450px',
+          height: '450px',
+        }}>
+        <div  >
+          <img className='bossenemypic' src={bossPosition.img} style={{ transform: 'scaleX(-1)' }} /></div>
+      </div>
+    </button>
   )
 }
 

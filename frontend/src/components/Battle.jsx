@@ -83,8 +83,6 @@ const Battle = ({ enemyIndex }) => {
       handleStatIndex();
     }
   }
-
-  
   
   const handleShowModalLose = () => { //
     setShowModalLose(true);

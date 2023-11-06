@@ -10,13 +10,13 @@ const Enemy = ({ index }) => {
 
   //Contexts
   const { setBattle } = useContext(PlayerData)
-  const { enemyPositions, setPlayerPosition } = useContext(PositionData);
+  const { enemyPositions, setPlayerPosition, bossEnemy } = useContext(PositionData);
   const enemyMessage = 'GET HIM BOYS!!!!';
 
   //States
   const [enemyPosition, setEnemyPosition] = useState(enemyPositions[index]);
 
-  const { x, y } = enemyPosition;
+  const { x, y, height, width  } = enemyPosition;
 
   const handlePlayerAdvance = () => {
     setPlayerPosition({ ...enemyPositions[index] })
@@ -37,12 +37,12 @@ const Enemy = ({ index }) => {
               position: 'absolute',
               left: x,
               bottom: y,
-              width: '100px',
-              height: '100px',
+              width: width,
+              height: height,
               color: 'aliceblue'
             }}
           ><EnemyTextBox message={enemyMessage} />
-            <p>Enemy {index + 1}<img style={{ height: "100px" }} src={enemyPositions[index].img} /> </p>
+            <p>Enemy {index + 1} <img style={!enemyPositions[index].img == bossEnemy ? { height: height } : { height: height, transform: 'scaleX(-1)'}} src={enemyPositions[index].img} /> </p>
           </div>
         </button>
       ) : null}

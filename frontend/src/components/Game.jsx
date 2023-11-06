@@ -9,6 +9,7 @@ import { usePicture } from './PictureContext';
 //Asset imports
 import enemy1 from '../assets/images/bossenemy.png'
 import BossEnemy from '../assets/images/Boss.gif'
+import dinosaur from '../assets/images/dinosaur.gif'
 
 //Created Contexts
 export const PlayerData = createContext();
@@ -43,13 +44,14 @@ const Game = () => {
   ]);
 
   const [enemyPositions, setEnemyPositions] = useState([//State to represent postional data of enemies
-    { img: enemy1, x: 250, y: 180, width: 100, defeated: false, active: true },
-    { img: '', x: 500, y: 340, width: 100, defeated: false, active: false },
-    { img: enemy1, x: 80, y: 390, width: 100, defeated: false, active: false },
-    { img: '', x: 230, y: 545, width: 100, defeated: false, active: false },
-    { img: '', x: 730, y: 700, width: 100, defeated: false, active: false },
-    { img: enemy1, x: 580, y: 100, width: 100, defeated: false, active: false },
-    { img: dinosaur, x: 950, y: 180, width: 100, defeated: false, active: false },
+    { img: enemy1, x: 250, y: 180, height: '100px', width: '100px', defeated: false, active: true },
+    { img: '', x: 500, y: 340, height: '100px', width: '100px', defeated: false, active: false },
+    { img: enemy1, x: 80, y: 390,height: '100px',  width: '100px', defeated: false, active: false },
+    { img: '', x: 230, y: 545, height: '100px', width: '100px', defeated: false, active: false },
+    { img: '', x: 730, y: 700, height: '100px', width: '100px', defeated: false, active: false },
+    { img: enemy1, x: 580, y: '100px', height: '100px', width: '100px', defeated: false, active: false },
+    { img: dinosaur, x: 950, y: 180, height: '100px', width: '100px', defeated: false, active: false },
+    { img: BossEnemy, x: 1020, y: 40, height: 475, width: 300, defeated: false, active: false }
   ]);
   
   const [boss, setBoss] = useState({ //State to represent boss stats
@@ -57,10 +59,11 @@ const Game = () => {
     confidence: 500,
     maxConfidence: 500,
     exp: 1000,
-    defeated: false
+    defeated: false,
+    active: false
   });
   
-  const [bossPosition, setBossPosition] = useState({ img: BossEnemy, x: 1020, y: 40, width: 300, defeated: false });
+  const [bossPosition, setBossPosition] = useState({ img: BossEnemy, x: 1020, y: 40, height: 600, width: 300, defeated: false });
 
   const [statIndex, setStatIndex] = useState(0); //State to control which enemies are being interacted with
   const [battle, setBattle] = useState(false); //State to control rendering of battle component
@@ -78,7 +81,7 @@ const Game = () => {
 
 
   return (
-    <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, battle, setBattle, shop, setShop, pause, setPause }}>
+    <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, boss, setBoss ,battle, setBattle, shop, setShop, pause, setPause }}>
       <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, bossPosition, setBossPosition, statIndex, setStatIndex, handleStatIndex }}>
         <Playarea />
       </PositionData.Provider>
