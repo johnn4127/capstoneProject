@@ -145,7 +145,7 @@ const Battle = ({ enemyIndex }) => {
           <Modal.Title>Victory!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Congratulations! You have defeated the enemy.
+          Congratulations! You have defeated the enemy. Make sure to spend the experience you have gained in the shop menu to prepare yourself for future battles.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>
