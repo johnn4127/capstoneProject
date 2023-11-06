@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState } from 'react';
 
 const CharacterContext = createContext();
@@ -8,6 +7,7 @@ export const useCharacter = () => {
 };
 
 export const CharacterProvider = ({ children }) => {
+
   const [charName, setCharName] = useState('');
 
   const setCharacterName = (name) => {

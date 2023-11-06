@@ -1,8 +1,11 @@
 import React from 'react';
-import '../stylesheets/Homepage.css';
 import { Link } from 'react-router-dom';
 
+//Style imports
+import '../stylesheets/Homepage.css';
+
 const Homepage = () => {
+
   return (
     <div className='homepagebody'>
       <div className='HOMEPAGETITLE'>
