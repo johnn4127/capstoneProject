@@ -102,8 +102,9 @@ const Playarea = () => {
             {showTextBox && (
               <div style={{ zIndex: 1000 }} className="herotextbox">UH OH THIS DOESN'T LOOK TOO GOOD</div>
             )}
+            
             <Player />
-            <Boss />
+
             {enemyPositions.map((enemyPosition, index) => (
               <Enemy key={index} index={index} />
             ))}
