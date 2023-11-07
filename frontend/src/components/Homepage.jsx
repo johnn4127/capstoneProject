@@ -9,7 +9,7 @@ const Homepage = () => {
   return (
     <div className='homepagebody'>
       <div className='HOMEPAGETITLE'>
-        <h1 className='ACTUALTITLE'>CODING PURSUIT</h1>
+        <h1 className='ACTUALTITLE'>CODE PURSUIT</h1>
       </div>
       <div className='MIDDLEBOX'>
         <div className='REGISTERLINK'>
