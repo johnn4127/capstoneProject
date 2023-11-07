@@ -89,8 +89,8 @@ width: 150px;}
 
   .enemy-text-box {
     position: fixed; /* Use a fixed position */
-    top: 10px; /* Adjust the top position as needed */
-    left: 70%;
+    top: 45%; /* Adjust the top position as needed */
+    left: 67%;
     transform: translateX(-50%);
     background-color: white; /* Set a white background color */
     border: 1px solid black; /* Add a border for visibility */

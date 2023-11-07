@@ -9,6 +9,7 @@
   background-color: rgba(255, 255, 255, 0.2); /* Add a semi-transparent white background */
   flex-direction: column; /* Render text in a column */
   text-align: center; /* Center text horizontally */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Styling for the intro content */

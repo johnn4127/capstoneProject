@@ -21,7 +21,7 @@ export const PositionData = createContext();
 
 const Game = () => {
   const [player, setPlayer] = useState({
-    proficiency: 15,
+    proficiency: 30,
     confidence: 500,
     maxConfidence: 500,
     skills: [],
