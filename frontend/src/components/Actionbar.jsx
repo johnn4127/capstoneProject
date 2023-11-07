@@ -11,7 +11,7 @@ import { BattleContext } from './Battle';
 import hit from '../assets/images/impact.gif';
 import fireball from '../assets/images/fire.gif'
 import thunder from '../assets/images/lightningstrike.gif'
-import ice from '../assets/images/iceshard.gif'
+import ice from '../assets/images/minato.gif'
 
 
 const Actionbar = ({ enemyIndex, updateMessage }) => {
@@ -53,8 +53,8 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
   };
 
   const handleFireball = () => {
-    const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 5);
-    const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 15);
+    const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 15);
+    const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 5);
     updateMessage(fireball);
     setTimeout(() => {
       updateMessage('');
@@ -78,8 +78,8 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
   };
 
   const handleThunderbolt = () => {
-    const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 5);
-    const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 35);
+    const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 25);
+    const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 5);
     updateMessage(thunder);
     setTimeout(() => {
       updateMessage('');
@@ -103,12 +103,12 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
   };
 
   const handleIceBlast = () => {
-    const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) + 5);
-    const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 25);
+    const playerDamage = Math.floor(Math.random() * (player.proficiency - 5 + 1) +15);
+    const enemyDamage = Math.floor(Math.random() * (currentEnemy.proficiency - 5 + 1) + 5);
     updateMessage(ice);
     setTimeout(() => {
       updateMessage('');
-    }, 700);
+    }, 1400);
 
     setPlayer({ ...player, confidence: player.confidence - enemyDamage });
     setDamageLog(`Ice blast does ${playerDamage} confidence damage.`);
@@ -131,8 +131,8 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
     <div>
       <button onClick={handleAttack}>Proficiency</button>
       <button onClick={handleFireball}>Fireball</button>
-      <button onClick={handleThunderbolt}>Thunderbolt</button>
-      <button onClick={handleIceBlast}>Ice Blast</button>
+      <button onClick={handleThunderbolt}>Water Strike</button>
+      <button onClick={handleIceBlast}>Summoning Skill</button>
       <button onClick={handleHide}>Skills</button>
       {!hidden ? <div><Skillaction /></div> : null}
     </div>

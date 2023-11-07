@@ -11,7 +11,7 @@ const SkillShop = () => {
     //States
     const [skill1, setSkill1] = useState({
         name: 'Delicious Apple',
-        description: 'Heals your HP by 10%.',
+        description: 'Heals your HP by 110%.',
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
             setSkill1({...skill1, bought: true})
@@ -23,9 +23,9 @@ const SkillShop = () => {
 
     const [skill2, setSkill2] = useState({
         name: 'Enery Drink',
-        description: 'Boosts your proficiency by 15%.',
+        description: 'Boosts your proficiency by 50%.',
         effect: () => {
-            setPlayer({ ...player, proficiency: player.proficiency + (Math.round(player.proficiency * 0.15)) });
+            setPlayer({ ...player, proficiency: player.proficiency + 100 });
             setSkill2({...skill2, bought: true})
             console.log('Bought')
         },
@@ -35,9 +35,9 @@ const SkillShop = () => {
 
     const [skill3, setSkill3] = useState({
         name: 'Med Kit',
-        description: 'Heals your HP by 20%.',
+        description: 'Heals your HP by 250.',
         effect: () => {
-            setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.20)) });
+            setPlayer({ ...player, confidence: player.confidence + 250 });
             setSkill3({...skill3, bought: true})
             console.log('Bought')
         },
@@ -47,7 +47,7 @@ const SkillShop = () => {
 
     const [skill4, setSkill4] = useState({
         name: 'Bandage',
-        description: 'Heals your HP by 10%.',
+        description: 'Heals your HP by 110%.',
         effect: () => {
             setPlayer({ ...player, confidence: player.confidence + (Math.round(player.confidence * 0.10)) });
             setSkill4({...skill4, bought: true})
