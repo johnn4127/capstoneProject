@@ -12,7 +12,7 @@ const ItemShop = () => {
     const [item1, setItem1] = useState({
         name: 'Armor Upgrade',
         desc: 'Increases max HP by 50%.',
-        price: 0,
+        price: 300,
         uses: 3,
         effect: () => {
             if (item1.uses > 0) {
@@ -26,7 +26,7 @@ const ItemShop = () => {
     const [item2, setItem2] = useState({
         name: 'Damage Amplifier',
         desc: 'Increases proficency by 50%.',
-        price: 0,
+        price: 300,
         uses: 3,
         effect: () => {
             if (item2.uses > 0) {
