@@ -5,7 +5,7 @@ import { usePicture } from './PictureContext';
 
 //Component imports
 import Playarea from './Playarea';
-
+import Outro from './Outro';
 //Asset imports
 import enemy1 from '../assets/images/bossenemy.png'
 import BossEnemy from '../assets/images/boss.gif'
@@ -21,7 +21,7 @@ export const PositionData = createContext();
 
 const Game = () => {
   const [player, setPlayer] = useState({
-    proficiency: 15,
+    proficiency: 15000,
     confidence: 500,
     maxConfidence: 500,
     skills: [],
@@ -39,7 +39,8 @@ const Game = () => {
     { proficiency: 18, confidence: 500, maxConfidence: 500, exp: 750 },
     { proficiency: 24, confidence: 700, maxConfidence: 700, exp: 1000 },
     { proficiency: 30, confidence: 700, maxConfidence: 700, exp: 1250 },
-    { proficiency: 36, confidence: 700, maxConfidence: 700, exp: 1500 }
+    { proficiency: 36, confidence: 700, maxConfidence: 700, exp: 1500 },
+    { proficiency: 55, confidence: 1000, maxConfidence: 1000, exp: 1500000000 }
   ]);
 
   const [enemyPositions, setEnemyPositions] = useState([
@@ -79,12 +80,14 @@ const Game = () => {
       setBattle(false);
     }
   };
+ 
+  
 
 
   return (
     <PlayerData.Provider value={{ player, setPlayer, enemies, setEnemies, boss, setBoss ,battle, setBattle, shop, setShop, pause, setPause }}>
       <PositionData.Provider value={{ playerPosition, setPlayerPosition, enemyPositions, setEnemyPositions, statIndex, setStatIndex, handleStatIndex }}>
-        <Playarea />
+      <Playarea  />
       </PositionData.Provider>
     </PlayerData.Provider>
   );

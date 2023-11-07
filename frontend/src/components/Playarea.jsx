@@ -91,7 +91,6 @@ const Playarea = () => {
           backgroundRepeat: 'no-repeat'
         }}
         className={`pixelated ${pixelated ? 'fade' : ''}`}>
-
         {!battle && !shop ? (
           <>
             <Background />
