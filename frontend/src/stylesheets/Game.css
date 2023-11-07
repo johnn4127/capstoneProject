@@ -45,7 +45,7 @@ body{
     border: 1px solid black;
     color: black;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 5px; 
     text-align: center;
     z-index: 9; /* Set a high z-index to ensure it appears above other elements */
     animation: fadeIn 1s ease-in-out forwards;

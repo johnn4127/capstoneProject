@@ -9,7 +9,7 @@ const Skillaction = () => {
   //Contexts
   const { player, setPlayer } = useContext(PlayerData)
   const { setHidden } = useContext(BattleContext)
-
+//hello hello
   return (
     <div>
         {player.skills.map((skill, index) => (
