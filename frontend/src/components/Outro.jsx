@@ -4,7 +4,7 @@ import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { usePicture } from './PictureContext';
 import Girl from '../assets/images/save.gif';
-
+import Pikachu from '../assets/images/pikachu.gif'
 const Outro = () => {
   const [message, setMessage] = useState('');
   const [textRenderingComplete, setTextRenderingComplete] = useState(false);
@@ -29,7 +29,7 @@ const Outro = () => {
     <div className="outro-container">
       <div className="characters-container">
         <div className="character">
-          <img src={selectedPicture} alt="Selected Character" />
+          <img src={Pikachu} alt="Selected Character" />
         </div>
         <div className="savegirl">
           <img src={Girl} alt="Savegirl" />

@@ -133,7 +133,7 @@ const Actionbar = ({ enemyIndex, updateMessage }) => {
       <button onClick={handleFireball}>Fireball</button>
       <button onClick={handleThunderbolt}>Water Strike</button>
       <button onClick={handleIceBlast}>Summoning Skill</button>
-      <button onClick={handleHide}>Skills</button>
+      <button onClick={handleHide}>Items</button>
       {!hidden ? <div><Skillaction /></div> : null}
     </div>
   );
